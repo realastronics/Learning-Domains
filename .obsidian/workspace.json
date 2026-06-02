@@ -34,9 +34,23 @@
               "icon": "lucide-file",
               "title": "Machine-Learning"
             }
+          },
+          {
+            "id": "6aa9bdc85e05d390",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Mobile-Application-Dev.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Mobile-Application-Dev"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -209,10 +223,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "bc59cef48cbd3af2",
+  "active": "6aa9bdc85e05d390",
   "lastOpenFiles": [
-    "JAVA.md",
     "Artificial-Intelligence/Machine-Learning.md",
+    "Mobile-Application-Dev.md",
+    "JAVA.md",
     "Algorithms/Algorithms.md",
     "README.md",
     "Algorithms",
