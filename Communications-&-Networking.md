@@ -2,7 +2,7 @@
 
 ## 1\) Communication
 
-Data Communication is the exchange of data between two devices via some transmission medium with a **protocol,** that \*\*\*\*is a set of rules that govern data communications. It represents an
+Data Communication is the exchange of data between two devices via some transmission medium with a **protocol,** that is a set of rules that govern data communications. It represents an
 agreement between the communicating devices.
 
 #### Communication b/w two devices can be:
