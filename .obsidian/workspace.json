@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Core-Concepts/Communications-&-Networking.md",
-                "mode": "preview",
+                "file": "Core-Concepts/DBMS.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Communications-&-Networking"
+              "title": "DBMS"
             }
           }
         ],
@@ -225,6 +225,7 @@
   },
   "active": "2b9ed61904130171",
   "lastOpenFiles": [
+    "Core-Concepts/Communications-&-Networking.md",
     "Data-Structures-&-Algo/Data Strucutres.md",
     "Data-Structures-&-Algo/Algorithms.md",
     "Mobile Application Development.md",
@@ -233,7 +234,6 @@
     "Core-Concepts",
     "Pasted image 20260603000654.png",
     "Pasted image 20260603000627.png",
-    "Core-Concepts/Communications-&-Networking.md",
     "Data-Structures-&-Algo",
     "Artificial-Intelligence/Machine-Learning.md",
     "Artificial-Intelligence/Natural-Language-Processing.md",

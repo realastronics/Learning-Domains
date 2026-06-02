@@ -1,3 +1,4 @@
+# Database Management Systems
 ## 1. Fundamentals
 
 - **Data** is defined as raw, unorganized facts, often stored as bits and bytes (integers, text, etc.). It has no inherent meaning or significance until it is processed.
