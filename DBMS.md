@@ -19,9 +19,7 @@
 ## 2. Database System Architecture
 
 A DBMS serves **three completely different types of people** at the same time.
-
-![image.png](attachment:0ad90f4a-b06c-4ef9-84cc-e9924900b389:image.png)
-
+![[Pasted image 20260603000627.png]]
 Example of Google Maps.
 
 - **External level:** You see a clean map with routes and restaurant pins
