@@ -1,4 +1,5 @@
-# Mobile Application Development
+# Mobile Application Development using JAVA
+
 ## 1) Basic Background
 
 We are using JAVA instead of Kotlin or Flutter because Kotlin is very similar to JAVA and Flutter can be learnt anytime. JAVA is a pre-requisite for this course on Mobile App Development.
@@ -212,13 +213,13 @@ A **Layout**, or **ViewGroup**, is an invisible container that holds multiple **
 
 **3. Key Differences at a Glance**
 
-|**Feature**|**View**|**Layout (ViewGroup)**|
-|---|---|---|
-|**Visibility**|**Visible** to the user (draws something).|Usually **invisible** (acts as a manager).|
-|**Primary Job**|Displays information or captures interaction.|Arranges and holds components in a specific order.|
-|**Nesting**|Cannot contain other components.|Can contain both **Views** and other **ViewGroups**.|
-|**Hierarchy**|Represents the **leaves** of the UI tree.|Represents the **branches/roots** of the UI tree.|
-|**Attributes**|Focused on content: **`text`**, **`src`**, **`hint`**.|Focused on positioning: **`orientation`**, **`below`**, **`constraints`**.|
+| **Feature** | **View** | **Layout (ViewGroup)** |
+| --- | --- | --- |
+| **Visibility** | **Visible** to the user (draws something). | Usually **invisible** (acts as a manager). |
+| **Primary Job** | Displays information or captures interaction. | Arranges and holds components in a specific order. |
+| **Nesting** | Cannot contain other components. | Can contain both **Views** and other **ViewGroups**. |
+| **Hierarchy** | Represents the **leaves** of the UI tree. | Represents the **branches/roots** of the UI tree. |
+| **Attributes** | Focused on content: **`text`**, **`src`**, **`hint`**. | Focused on positioning: **`orientation`**, **`below`**, **`constraints`**. |
 
 **4. How They Work Together (The Hierarchy)**
 
@@ -279,7 +280,7 @@ The sources provide a **skeleton code** to help you visualize the order of metho
 - **App Start:** Executing **`onCreate()`**, **`onStart()`**, and **`onResume()`** produces three consecutive toast messages.
 - **App Close:** Executing **`onPause()`**, **`onStop()`**, and **`onDestroy()`** also triggers three consecutive toasts.
 
-**3. Event Handling Logic**
+**3. Event Handling Logic** 
 
 **A. RadioButton Logic**
 
@@ -290,7 +291,7 @@ In this code, the Activity implements **`RadioGroup.OnCheckedChangeListener`**.
 3. **Logic:** Inside **`onCheckedChanged`**, the code gets the ID of the selected button, retrieves the text, and converts it to a string using **.toString()**.
 4. **Comparison:** It uses **`s.compareToIgnoreCase(key)`** to check if the answer is "Correct" and displays the result via a **Toast**.
 
-**B. String Concatenation Logic**
+**B. String Concatenation Logic** 
 
 This shows how to manipulate text dynamically:
 
