@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JAVA.md",
+                "file": "Artificial-Intelligence/Machine-Learning.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "JAVA"
+              "title": "Machine-Learning"
             }
           }
         ],
@@ -211,8 +211,8 @@
   },
   "active": "bc59cef48cbd3af2",
   "lastOpenFiles": [
-    "Artificial-Intelligence/Machine-Learning.md",
     "JAVA.md",
+    "Artificial-Intelligence/Machine-Learning.md",
     "Algorithms/Algorithms.md",
     "README.md",
     "Algorithms",
