@@ -20,7 +20,7 @@
 ## 2. Database System Architecture
 
 A DBMS serves **three completely different types of people** at the same time.
-![[Pasted image 20260603000654.png]]
+![[dbms-three-level-arch.png]]
 Example of Google Maps.
 
 - **External level:** You see a clean map with routes and restaurant pins
@@ -41,8 +41,6 @@ MySQL is a server program that stores structured data in tables and lets you que
 3. Management System - software that controls, protects and enforces rules over the data.
 
 #### Types of SQL commands
-
-![image.png](attachment:37628950-f635-4e45-91a9-3849be85b0cf:image.png)
 
 ### Schema and Instances
 

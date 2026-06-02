@@ -1,4 +1,4 @@
-# Mobile Application Development using JAVA
+# MAD using JAVA
 
 ## 1) Basic Background
 
