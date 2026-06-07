@@ -69,12 +69,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Android-Application-Development.md",
-                "mode": "preview",
+                "file": "Artificial-Intelligence/Machine-Learning.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Android-Application-Development"
+              "title": "Machine-Learning"
             }
           }
         ],
@@ -253,22 +253,23 @@
   },
   "active": "7f9fb06210b638ae",
   "lastOpenFiles": [
-    "Core-Concepts/Data-Communications-&-Networking.md",
     "Core-Concepts/Database-Management.md",
+    "Data-Structures-&-Algo/Data-Strucutres.md",
+    "Core-Concepts/Operating-Systems.md",
+    "Core-Concepts/Data-Communications-&-Networking.md",
+    "Artificial-Intelligence/Machine-Learning.md",
+    "README.md",
+    "Artificial-Intelligence/Knowledge-Representation.md",
+    "Android-Application-Development.md",
     "Languages/JAVA.md",
     "Languages",
     "Languages/Go-lang.md",
-    "README.md",
-    "Android-Application-Development.md",
-    "Data-Structures-&-Algo/Data-Strucutres.md",
-    "Core-Concepts/Operating-Systems.md",
     "Attachments/dbms-three-level-arch.png",
     "Attachments",
     "Data-Structures-&-Algo/Algorithms.md",
     "Core-Concepts",
     "Pasted image 20260603000627.png",
     "Data-Structures-&-Algo",
-    "Artificial-Intelligence/Machine-Learning.md",
     "Artificial-Intelligence/Natural-Language-Processing.md",
     "Mobile-Application-Dev.md.md",
     "Algorithms",
