@@ -33,7 +33,7 @@ New domains are added whenever curiosity wanders somewhere interesting.
 * Content is organized by domain rather than chronology.
 * Images, diagrams, and supporting resources are stored alongside notes.
 * Ideas are revisited frequently and refined over time.
-* removing evil comit
+* backing evil comit
 
 ## Philosophy
 
