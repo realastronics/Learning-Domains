@@ -7,11 +7,10 @@ agreement between the communicating devices.
 
 #### Communication b/w two devices can be:
 
-1. **Simplex** - unidirectional communication only, one receiver and one sender, eg: Keyboard and traditional monitor.
-(When you "click" something in a program, it is usually a **mouse** sending data about a screen position, not the monitor itself. The computer uses the mouse's input to determine what object is being clicked and acts accordingly.)
-2. **Half Duplex** - each station can both transmit and receive, but not at the same
+	1. **Simplex** - unidirectional communication only, one receiver and one sender, eg: Keyboard and traditional monitor. (When you "click" something in a program, it is usually a **mouse** sending data about a screen position, not the monitor itself. The computer uses the mouse's input to determine what object is being clicked and acts accordingly.)
+1. **Half Duplex** - each station can both transmit and receive, but not at the same
 time, eg: one way lane, walkie talkie
-3. **Full Duplex** - both stations can transmit and receive simultaneously, eg: telephone
+2. **Full Duplex** - both stations can transmit and receive simultaneously, eg: telephone
 
 ## 2\) Networks:
 
