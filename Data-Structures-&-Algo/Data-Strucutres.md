@@ -63,7 +63,7 @@ The above program has the time complexity of **$O(N^2)$.**
 
 Always compute time complexity in terms of the worst case scenario, ignore constants and lower values. There are also theta() and omega() notations for average and the minimal complexities respectively.
 
-![image.png](attachment:b122c86b-1cb2-41e5-bdaa-be1840cb64ea:image.png)
+![:b122c86b-1cb2-41e5-bdaa-be1840cb64ea:image.png)
 
 ## 2) Space Complexity
 
@@ -109,6 +109,8 @@ Continuous memory allocation, size of array = [number of those data * size of da
 There are compile time errors which get identified before the program runs, things to the left of the = sing.
 
 ## 5) Strings
+
+
 
 ## 6) HashMaps & HashSets
 

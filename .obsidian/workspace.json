@@ -69,12 +69,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "Data-Structures-&-Algo/Data-Strucutres.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "Data-Strucutres"
             }
           }
         ],
@@ -253,20 +253,20 @@
   },
   "active": "7f9fb06210b638ae",
   "lastOpenFiles": [
-    "Android-Application-Development.md",
+    "Data-Structures-&-Algo/Algorithms.md",
     "Core-Concepts/Data-Communications-&-Networking.md",
-    "Artificial-Intelligence/Machine-Learning.md",
     "Core-Concepts/Database-Management.md",
+    "Android-Application-Development.md",
+    "README.md",
+    "Artificial-Intelligence/Machine-Learning.md",
     "Data-Structures-&-Algo/Data-Strucutres.md",
     "Core-Concepts/Operating-Systems.md",
-    "README.md",
     "Artificial-Intelligence/Knowledge-Representation.md",
     "Languages/JAVA.md",
     "Languages",
     "Languages/Go-lang.md",
     "Attachments/dbms-three-level-arch.png",
     "Attachments",
-    "Data-Structures-&-Algo/Algorithms.md",
     "Core-Concepts",
     "Pasted image 20260603000627.png",
     "Data-Structures-&-Algo",
