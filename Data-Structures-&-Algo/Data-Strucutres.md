@@ -63,8 +63,6 @@ The above program has the time complexity of **$O(N^2)$.**
 
 Always compute time complexity in terms of the worst case scenario, ignore constants and lower values. There are also theta() and omega() notations for average and the minimal complexities respectively.
 
-![:b122c86b-1cb2-41e5-bdaa-be1840cb64ea:image.png)
-
 ## 2) Space Complexity
 
 It is the total memory space that an algorithm takes, Auxiliary Space(memory used by the algorithm to execute) and the Input Space. Also denoted by **Big-O** notation.
