@@ -35,6 +35,7 @@ Goes around head looking for things that aren’t being used anymore/occupy memo
 
 ### 0.8) Mallocs
 
+Malloc stands for memory allocation and is a standard library in C/C++ used to allocate specific amount of memory *dynamically* at runtime. It requests the memory from **heap** and returns a pointer to the first byte of the allocated space.
 ## 1) Time Complexity
 
 It is the rate of which the execution time of an algorithm increases with respect to the input size (N). It is denoted by the **Big-O notation**, example:
