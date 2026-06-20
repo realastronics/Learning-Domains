@@ -83,12 +83,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "To Do (summer break).md",
-                "mode": "source",
+                "file": "Core-Concepts/Data-Communications-&-Networking.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "To Do (summer break)"
+              "title": "Data-Communications-&-Networking"
             }
           }
         ],
@@ -267,11 +267,11 @@
   },
   "active": "1903e642a60cb0df",
   "lastOpenFiles": [
-    "Core-Concepts/Data-Communications-&-Networking.md",
-    "To Do (summer break).md",
+    "Core-Concepts/Database-Management.md",
     "Data-Structures-&-Algo/Data-Strucutres.md",
     "Data-Structures-&-Algo/Algorithms.md",
-    "Core-Concepts/Database-Management.md",
+    "To Do (summer break).md",
+    "Core-Concepts/Data-Communications-&-Networking.md",
     "Android-Application-Development.md",
     "README.md",
     "Artificial-Intelligence/Machine-Learning.md",
