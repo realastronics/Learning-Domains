@@ -83,12 +83,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Core-Concepts/Data-Communications-&-Networking.md",
-                "mode": "preview",
+                "file": "To Do (summer break).md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Data-Communications-&-Networking"
+              "title": "To Do (summer break)"
             }
           }
         ],
@@ -149,7 +149,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "989493f5aa1001c6",
@@ -251,7 +252,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -267,11 +268,11 @@
   },
   "active": "1903e642a60cb0df",
   "lastOpenFiles": [
+    "Core-Concepts/Data-Communications-&-Networking.md",
     "Core-Concepts/Database-Management.md",
+    "To Do (summer break).md",
     "Data-Structures-&-Algo/Data-Strucutres.md",
     "Data-Structures-&-Algo/Algorithms.md",
-    "To Do (summer break).md",
-    "Core-Concepts/Data-Communications-&-Networking.md",
     "Android-Application-Development.md",
     "README.md",
     "Artificial-Intelligence/Machine-Learning.md",
