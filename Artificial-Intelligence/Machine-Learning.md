@@ -46,3 +46,5 @@ These models make predicts by being rewarded or penalized based on their actions
 ### 4. Generative AI
 
 A class of models that creates content from user inputs, it can summarize essays and is not restrited by the type of input or output. eg: text-to-image, text-to-text
+
+## Transformers

@@ -49,8 +49,7 @@
               "title": "To Do (summer break)"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -224,10 +223,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "7f9fb06210b638ae",
+  "active": "ae3587e57824e8ba",
   "lastOpenFiles": [
-    "To Do (summer break).md",
     "Core-Concepts/Data-Communications-&-Networking.md",
+    "To Do (summer break).md",
     "Core-Concepts/Database-Management.md",
     "Data-Structures-&-Algo/Data-Strucutres.md",
     "Data-Structures-&-Algo/Algorithms.md",
