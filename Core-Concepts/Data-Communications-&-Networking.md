@@ -1,5 +1,7 @@
 # Data Communications \& Computer Networks
 
+#### What is the internet?
+The Internet is a globally distributed *packet-switched system* connecting billions of end systems through routers, links, and protocols. Data is broken into packets, routed hop-by-hop across multiple autonomous networks using IP, while higher-level protocols like TCP and HTTP provide reliable application communication.
 ## 1\) Communication
 
 Data Communication is the exchange of data between two devices via some transmission medium with a **protocol,** that is a set of rules that govern data communications. It represents an
