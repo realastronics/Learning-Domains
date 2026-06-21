@@ -132,5 +132,5 @@ This is the most powerful error *detector*. It's based on **binary division** â€
 * Sender transmits: **data + CRC**
 * Receiver divides received message by same divisor â€” if remainder is **0**, no error
 
-This learning is being accompanies by 
+This learning is being accompanies by practical expose to linux commands and lab experience, using oracle virtual box vm. Th
 
