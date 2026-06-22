@@ -85,7 +85,7 @@ This is the **“where”** of the communication, it is responsible for delivery
 
    - **IP Addressing**: every device gets a logical address, eg- 192.168.1.10
    - Routing: choses the best path for the communication
-   - Packet Forwarding: move packets hop by hop, but there is no guarantee of transportation
+   - **Packet Forwarding:** move packets hop by hop, but there is no guarantee of transportation
 #### 4) Transport Layer 
 One of the **most important layers,** this controls the mechanism of data transfer, it ensures the packets go through:
 
