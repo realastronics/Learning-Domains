@@ -10,6 +10,8 @@
 - Loss - is the packets dropped
 ### Core Issues:
 The key issue with networking is physical constrains like Bandwidth limit, the speed of light, congestion, noise and failures.
+#### Byte Stream Model:
+is a communication abstraction where the network treats **data as a continuous, unstructured sequence of bytes** rather than distinct messages. It acts as a continuous conduit between the sender and receiver, leaving the application responsible for packaging and interpreting the data.
 #### What is the internet?
 The Internet is a globally distributed *packet-switched system* connecting billions of end systems through routers, links, and protocols. Data is broken into packets, routed hop-by-hop across multiple autonomous networks using IP, while higher-level protocols like TCP and HTTP provide reliable application communication.
 ## 1\) Communication
@@ -77,20 +79,25 @@ Application → Presentation → Session → Transport → Network → Data Link
 ##### 1) Physical Layer 
 This is where actual transmission happens, having devices like **Hub and Router**. It has **bits being sent physically**. Signal can be electrical, optical or radio waves, this is used to define voltage, frequency, connectors. Ex: Fiber Optic, Ethernet, Wi-fi Radio Waves.
 ##### 2) Data Link Layer
-The data link layer is responsible for moving frames from one hop (node) to the next.
+The data link layer is responsible for moving frames from one hop (node) to the next. Link layers can be very different in terms of how they transport information
 #### 3) Network Layer
-This is the **“where”** of the communication, it is responsible for delivery of individual packets from the source to the destination host:
-   - IP Addressing: every device gets a logical address, eg- 192.168.1.10
+This is the **“where”** of the communication, it is responsible for delivery of individual packets from the source to the destination host. It sends data grams to the Link layer:
+
+   - **IP Addressing**: every device gets a logical address, eg- 192.168.1.10
    - Routing: choses the best path for the communication
-   - Packet Forwarding: move packets hop by hop
+   - Packet Forwarding: move packets hop by hop, but there is no guarantee of transportation
 #### 4) Transport Layer 
-One of the **most important layers,** this controls the mechanism of data transfer:
+One of the **most important layers,** this controls the mechanism of data transfer, it ensures the packets go through:
 
 1. Segmentation: large data is broken down into smaller chunks
 2. Reliability:
 3. Ordering:
 4. Flow Control:
 5. Port Numbers:
+
+Transport Layer has two ways to accomplish it's job; TCP or UDP.
+TCP (Transmission Control Protocol) makes sure the data delivered from end is correctly received on the other end, if the network layers drops datagrams or mis-orders them, TCP corrects it by sending again.
+Some applications which do not need every byte (say a video) to be resent, they can use a simpler method, UDP (user Datagram Protocol). It offers no delivery guarantee.
 #### 5) Session Layer
 This layer controls the session establishment, maintenance, synchronization and termination,
 
@@ -152,12 +159,12 @@ This is the most powerful error *detector*. It's based on **binary division** �
 * Sender transmits: **data + CRC**
 * Receiver divides received message by same divisor — if remainder is **0**, no error
 
-## 6) Protocol Dives
+## 6) Protocol Deep Dives
 ### BitTorrent
 The problem this addresses is of distributing huge files efficiently without central server overload. The way this works is breaking the data into pieces and splitting the load onto many clients, this scales much better.
-### TCP
-#### Byte Stream Model:
-is a communication abstraction where the network treats **data as a continuous, unstructured sequence of bytes** rather than distinct messages. It acts as a continuous conduit between the sender and receiver, leaving the application responsible for packaging and interpreting the data.
+### NAT
+Network Address Translation (NAT) is a networking technique used by routers to modify IP addresses while data is in transit. It allows multiple devices within a private local network to share a single, publicly routable IP address when accessing the internet. It was primarily desgined for the IPv4 technology
+
 ## 7) Real Packet Journey
 
 1. Browser checks cache
