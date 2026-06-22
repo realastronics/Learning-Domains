@@ -148,12 +148,14 @@ This is the most powerful error *detector*. It's based on **binary division** â€
 * Receiver divides received message by same divisor â€” if remainder is **0**, no error
 
 ## 6) Protocol Dives
+### BitTorrent
 
+Breaks files into pieces and clients joins the server and leave dynamically. 
 ### TCP
 #### Byte Stream Model:
 TCP does not preserve message with boundaries, it only keeps the sequence of the digits and their delivery. So the spacing might get mismatched.
 ### HTTP
-
+a client opens a connection to a server and sends requests, like get request, which asks for the page. The server responds to the request with a numeric code (200, 400) about the status of the request and the linking information. It is all ascii text.
 
 ## 7) Real Packet Journey
 
