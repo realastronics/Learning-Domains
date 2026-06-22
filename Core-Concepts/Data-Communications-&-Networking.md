@@ -141,11 +141,19 @@ add image
 
 This is the most powerful error *detector*. It's based on **binary division** — specifically, division using **XOR** (no carries, no borrows — just XOR each bit).
 
+#### The concept first:
+
+* Sender takes the data, **appends zeros** (as many zeros as degree of divisor), divides by a **generator/divisor**, and the **remainder** becomes the CRC
+* Sender transmits: **data + CRC**
+* Receiver divides received message by same divisor — if remainder is **0**, no error
+
 ## 6) Protocol Dives
 
 ### TCP
 #### Byte Stream Model:
 TCP does not preserve message with boundaries, it only keeps the sequence of the digits and their delivery. So the spacing might get mismatched.
+### HTTP
+
 
 ## 7) Real Packet Journey
 
@@ -159,13 +167,7 @@ TCP does not preserve message with boundaries, it only keeps the sequence of the
 8. TLS handshake
 9. HTTP request
 10. Response returns
-11. Browser renders page`
-
-### The concept first:
-
-* Sender takes the data, **appends zeros** (as many zeros as degree of divisor), divides by a **generator/divisor**, and the **remainder** becomes the CRC
-* Sender transmits: **data + CRC**
-* Receiver divides received message by same divisor — if remainder is **0**, no error
+11. Browser renders page
 
 This learning is being accompanies by practical expose to linux commands and lab experience, using oracle virtualbox VM on Ubuntu distro. 
 
