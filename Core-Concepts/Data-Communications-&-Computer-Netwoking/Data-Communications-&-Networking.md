@@ -69,12 +69,14 @@ Networks can be classified into types based on the area of their coverage:
 ## 3\) Layers
 
 ### 3.1) OSI Model
-The **Open Systems Interconnection (OSI)** model is a conceptual framework consisting of **7-layers**, defined by the ISO (International Standards Organization) in the 1970’s. This has now been replaced by the **4-layer Internet model**. 
-Think of the OSI model as a **communication pipeline**, where **each layer has one responsibility** and only talks to the layer immediately above and below it.
+The **Open Systems Interconnection (OSI)** model is a conceptual framework consisting of **7-layers**, defined by the ISO (International Standards Organization) in the 1970’s. 
+Think of the OSI model as a **communication pipeline**, where **each layer has one responsibility** and only talks to the layer immediately above and below it. This is like an ideal blueprint of how a network should work.
+
+This has now been replaced by the **4-layer Internet model** also called the **TCP/IP** model which was made by the **Department of Defense (DoD)** to address real-world communication, this has modern protocols like TCP, IP and UDP. 
 
 **"All People Seem To Need Data Processing"**
 Application → Presentation → Session → Transport → Network → Data Link → Physical
-![[Pasted image 20260622190223.png]]
+![[OSI Model Layers.png]]
 #### Explaining the 7 layers of the OSI Model:
 
 ##### 1) Physical Layer 
@@ -96,7 +98,8 @@ One of the **most important layers,** this controls the mechanism of data transf
 4. Flow Control:
 5. Port Numbers:
 
-Transport Layer has two ways to accomplish it's job; TCP or UDP:
+Transport Layer in practice (beyond the OSI model) has two ways to accomplish it's job; TCP or UDP:
+
  - **TCP (Transmission Control Protocol)** makes sure the data delivered from end is correctly received on the other end, if the network layers drops datagrams or mis-orders them, TCP corrects it by sending again.
 - Some applications which do not need every byte (say a video) to be resent, they can use a simpler method, **UDP (User Datagram Protocol)**. It offers no delivery guarantee.
 #### 5) Session Layer
@@ -161,8 +164,16 @@ This is the most powerful error *detector*. It's based on **binary division** �
 * Receiver divides received message by same divisor — if remainder is **0**, no error
 
 ## 6) Protocol Deep Dives
-### IP
+### IP (Internet Protocol)
+IP Datagram has some **header (address of source and destination) and data (the actual message)**, when the transport layer has data to send, it hands a transport segment to the layer below (Network Layer) and this layer puts the data into a new IP Datagram, IP's job is to ensure the delivery to the other corner of the internet. Before that it transfers the data to the Link Layer.
 
+IP is however unreliable, like there is possibility of dropping packet incase of high traffic, it does not even try sending the dropped packets again. It works on any link layer since it makes very few assumptions about the link layer and is extremely light and simple.
+
+TTL Field - Is a layer in IP that prevents packets from looping forever.
+Header Checksum - 
+Fragmentation - 
+
+There are two commonly used types of IPs used, IPv4 (32 bit) and IPv6 (128 bit)
 ### BitTorrent
 The problem this addresses is of distributing huge files efficiently without central server overload. The way this works is breaking the data into pieces and splitting the load onto many clients, this scales much better.
 ### NAT

@@ -27,7 +27,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Core-Concepts/Data-Communications-&-Networking.md",
+                "file": "Core-Concepts/Data-Communications-&-Computer-Netwoking/Data-Communications-&-Networking.md",
                 "mode": "source",
                 "source": false
               },
@@ -107,8 +107,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "989493f5aa1001c6",
@@ -226,17 +225,18 @@
   },
   "active": "7f9fb06210b638ae",
   "lastOpenFiles": [
-    "Pasted image 20260622191827.png",
+    "Core-Concepts/Data-Communications-&-Computer-Netwoking/OSI Model Layers.png",
+    "Core-Concepts/Operating-Systems.md",
+    "Core-Concepts/Data-Communications-&-Computer-Netwoking/Data-Communications-&-Networking.md",
+    "Core-Concepts/Data-Communications-&-Computer-Netwoking",
+    "Core-Concepts/Database-Management.md",
+    "README.md",
+    "Android-Application-Development.md",
     "Pasted image 20260622190223.png",
     "Artificial-Intelligence/Machine-Learning.md",
-    "Core-Concepts/Data-Communications-&-Networking.md",
     "To Do (summer break).md",
-    "Core-Concepts/Database-Management.md",
     "Data-Structures-&-Algo/Data-Strucutres.md",
     "Data-Structures-&-Algo/Algorithms.md",
-    "Android-Application-Development.md",
-    "README.md",
-    "Core-Concepts/Operating-Systems.md",
     "Artificial-Intelligence/Knowledge-Representation.md",
     "Languages/JAVA.md",
     "Languages",
