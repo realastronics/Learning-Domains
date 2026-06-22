@@ -57,14 +57,14 @@ devices on either side of it forming a loop
 
 Networks can be classified into types based on the area of their coverage:
 
-|Type|Full Form / Meaning|Range / Structure|Example|
-|-|-|-|-|
-|**PAN**|Personal Area Network|Very short range (few meters)|Bluetooth, phone hotspot|
-|**LAN**|Local Area Network|Small area (room/building)|Home, college lab Wi-Fi|
-|**MAN**|Metropolitan Area Network|City-wide network|City cable/internet network|
-|**WAN**|Wide Area Network|Large geographic area|Internet|
-|**P2P**|Peer-to-Peer|Devices communicate directly|Torrent sharing|
-|**Broadcast / Multipoint**|One-to-many communication|Shared communication channel|Wi-Fi, radio transmission|
+| Type                       | Full Form / Meaning       | Range / Structure             | Example                     |
+| -------------------------- | ------------------------- | ----------------------------- | --------------------------- |
+| **PAN**                    | Personal Area Network     | Very short range (few meters) | Bluetooth, phone hotspot    |
+| **LAN**                    | Local Area Network        | Small area (room/building)    | Home, college lab Wi-Fi     |
+| **MAN**                    | Metropolitan Area Network | City-wide network             | City cable/internet network |
+| **WAN**                    | Wide Area Network         | Large geographic area         | Internet                    |
+| **P2P**                    | Peer-to-Peer              | Devices communicate directly  | Torrent sharing             |
+| **Broadcast / Multipoint** | One-to-many communication | Shared communication channel  | Wi-Fi, radio transmission   |
 
 ## 3\) Layers
 
@@ -72,36 +72,45 @@ Networks can be classified into types based on the area of their coverage:
 The **Open Systems Interconnection (OSI)** model is a conceptual framework consisting of **7-layers**, defined by the ISO (International Standards Organization) in the 1970’s. 
 Think of the OSI model as a **communication pipeline**, where **each layer has one responsibility** and only talks to the layer immediately above and below it. This is like an ideal blueprint of how a network should work.
 
-This has now been replaced by the **4-layer Internet model** also called the **TCP/IP** model which was made by the **Department of Defense (DoD)** to address real-world communication, this has modern protocols like TCP, IP and UDP. 
+OSI was a conceptual reference model; the Internet evolved around the **TCP/IP** (made by the Department of Defense) model, which better reflects real-world protocol stacks. 
 
 **"All People Seem To Need Data Processing"**
 Application → Presentation → Session → Transport → Network → Data Link → Physical
+
 ![[OSI Model Layers.png]]
 #### Explaining the 7 layers of the OSI Model:
 
 ##### 1) Physical Layer 
-This is where actual transmission happens, having devices like **Hub and Router**. It has **bits being sent physically**. Signal can be electrical, optical or radio waves, this is used to define voltage, frequency, connectors. Ex: Fiber Optic, Ethernet, Wi-fi Radio Waves.
+This is where actual transmission happens, having devices like **Hub and Repeater**. It has **bits being sent physically**. Signal can be electrical, optical or radio waves, this is used to define voltage, frequency, connectors. Ex: Fiber Optic, Ethernet, Wi-fi Radio Waves.
 ##### 2) Data Link Layer
 The data link layer is responsible for moving frames from one hop (node) to the next. Link layers can be very different in terms of how they transport information
 #### 3) Network Layer
 This is the **“where”** of the communication, it is responsible for delivery of individual packets from the source to the destination host. It sends data grams to the Link layer:
 
-   - **IP Addressing**: every device gets a logical address, eg- 192.168.1.10
-   - **Routing**: choses the best path for the communication
-   - **Packet Forwarding:** move packets hop by hop, but there is no guarantee of transportation
-#### 4) Transport Layer 
-One of the **most important layers,** this controls the mechanism of data transfer, it ensures the packets go through:
+   - [[#IP (Internet Protocol)|IP Address]]: every device gets a logical address, ex- 192.168.1.10 
+   - **Forwarding**: 
+   - **Routing**: When a packet arrives, the router sees the most matching path and forwards there. 
+   - **Distance Vector**: 
+   - **Link State/OSPF**: 
+   - **Router Hoping**: The way packets move from one place to another is by jumping through different routers. They decide this using something called the "forwarding table"
+   - **ARP**: 
+   - **NAT** (Network Address Translation): is a networking technique used by routers to modify IP addresses while data is in transit. It allows multiple devices within a private local network to share a single, publicly routable IP address when accessing the internet. It was primarily designed for the IPv4 technology
 
-1. Segmentation: large data is broken down into smaller chunks
-2. Reliability:
-3. Ordering:
-4. Flow Control:
-5. Port Numbers:
+==A hop is just: Router A sends packet to Router B over **some physical communication link**.==
+#### 4) Transport Layer
+The Transport Layer provides **end-to-end communication between processes (applications)** running on different hosts. While the Network Layer moves packets between machines, the Transport Layer ensures all data in communicated. Its major responsibilities include:
 
-Transport Layer in practice (beyond the OSI model) has two ways to accomplish it's job; TCP or UDP:
+- **Segmentation:** Large application data is broken into smaller segments for transmission.
+- **Reliability:** Lost data can be detected and retransmitted.
+- **Ordering:** Segments arriving out of order can be reordered correctly.
+- **Flow/Congestion Control:** Prevents a fast sender from overwhelming a slow receiver/congested network.
+- **Multiplexing / Port Numbers:** Allows multiple applications (browser, Discord, game) to use the network simultaneously.
 
- - **TCP (Transmission Control Protocol)** makes sure the data delivered from end is correctly received on the other end, if the network layers drops datagrams or mis-orders them, TCP corrects it by sending again.
-- Some applications which do not need every byte (say a video) to be resent, they can use a simpler method, **UDP (User Datagram Protocol)**. It offers no delivery guarantee.
+Two main transport protocols:
+
+1. **TCP (Transmission Control Protocol)**: is a **connection-oriented, reliable byte-stream protocol**. It guarantees reliable and ordered delivery, retransmission of lost packets, & flow and congestion control.
+   
+2. **UDP (User Datagram Protocol)**: UDP is **connectionless and lightweight**. It provides no reliability, no ordering guarantees, no retransmissions, and minimal overhead. UDP is used when **low latency matters more than perfect delivery**, such as: gaming, voice calls, and DNS
 #### 5) Session Layer
 This layer controls the session establishment, maintenance, synchronization and termination,
 
@@ -109,9 +118,12 @@ This layer controls the session establishment, maintenance, synchronization and 
 It has 3 main jobs, **Translation, Encryption, and Compression.** These make sure the host systems are on a uniform and fast layer for all communication
 
 #### 7) Application Layer 
-This is the highest layer, closest to the end-user, what applications like Chrome, Spotify use to access the network. It defines the protocols for specific services, ex: HTTP, SMTP, DNS, SSH
+This is the highest layer, closest to the end-user, what applications like Chrome, Spotify use to access the network. It defines the protocols for specific services such as:
 
-- HTTP - a client opens a connection to a server and sends requests, like **GET /index.html** request, which asks for the page. The server responds to the request with a numeric code (200, 400) about the status of the request and the linking information. It is all ascii text, used by RST APIs, MCPs.
+- HTTP: a client opens a connection to a server and sends requests, like **GET /index.html** request, which asks for the page. The server responds to the request with a numeric code (200, 400) about the status of the request and the linking information. It is all ascii text, used by RST APIs, MCPs. 
+- DNS:
+- SMTP:
+- BitTorrent: The problem this addresses is of distributing huge files efficiently without central server overload. The way this works is breaking the data into pieces and splitting the load onto many clients, this scales much better.
 
 ### 3.2) TCP/IP Protocol Suite
 
@@ -121,21 +133,18 @@ This is the highest layer, closest to the end-user, what applications like Chrom
 
 ## 4\) Devices
 
-|Device|One-Line Definition|Main Function|OSI Layer|
-|-|-|-|-|
-|**Hub**|A device that sends received data to all connected devices.|Basic LAN connection|Layer 1|
-|**Switch**|A device that forwards data to the correct device using MAC addresses.|Efficient LAN communication|Layer 2|
-|**Router**|A device that routes packets between different networks using IP addresses.|Connects networks/Internet|Layer 3|
-|**Repeater**|A device that regenerates weak signals to extend network range.|Signal strengthening|Layer 1|
-|**Bridge**|A device that connects two LAN segments and filters traffic.|Reduces network congestion|Layer 2|
-|**Modem**|A device that converts digital and analog signals for internet access.|Connects to ISP|Layer 1/2|
-|**Gateway**|A device that enables communication between different protocols/networks.|Protocol translation|Layers 4–7|
-|**Access Point (AP)**|A device that provides wireless access to a wired network.|Creates Wi-Fi network|Layer 2|
-|**Firewall**|A security device that monitors and filters network traffic.|Network protection|Layers 3–7|
-|**NIC (Network Interface Card)**|Hardware that enables a device to connect to a network.|Network connectivity|Layer 2|
-|**Server**|A computer that provides resources or services to clients.|Hosts files/websites/services|Layers 5–7|
-|**Client**|A device or software that requests services from a server.|Uses network services|Layers 5–7|
-
+| Device                           | One-Line Definition                                                         | Main Function                 | OSI Layer  |
+| -------------------------------- | --------------------------------------------------------------------------- | ----------------------------- | ---------- |
+| **Hub**                          | A device that sends received data to all connected devices.                 | Basic LAN connection          | Layer 1    |
+| **Switch**                       | A device that forwards data to the correct device using MAC addresses.      | Efficient LAN communication   | Layer 2    |
+| **Router**                       | A device that routes packets between different networks using IP addresses. | Connects networks/Internet    | Layer 3    |
+| **Repeater**                     | A device that regenerates weak signals to extend network range.             | Signal strengthening          | Layer 1    |
+| **Bridge**                       | A device that connects two LAN segments and filters traffic.                | Reduces network congestion    | Layer 2    |
+| **Modem**                        | A device that converts digital and analog signals for internet access.      | Connects to ISP               | Layer 1/2  |
+| **Gateway**                      | A device that enables communication between different protocols/networks.   | Protocol translation          | Layers 4–7 |
+| **Access Point (AP)**            | A device that provides wireless access to a wired network.                  | Creates Wi-Fi network         | Layer 2    |
+| **Firewall**                     | A security device that monitors and filters network traffic.                | Network protection            | Layers 3–7 |
+| **NIC (Network Interface Card)** | Hardware that enables a device to connect to a network.                     | Network connectivity          | Layer 2    |
 ## 5) Error Detection
 ### Parity Check:
 
@@ -164,21 +173,28 @@ This is the most powerful error *detector*. It's based on **binary division** �
 * Receiver divides received message by same divisor — if remainder is **0**, no error
 
 ## 6) Protocol Deep Dives
-### IP (Internet Protocol)
-IP Datagram has some **header (address of source and destination) and data (the actual message)**, when the transport layer has data to send, it hands a transport segment to the layer below (Network Layer) and this layer puts the data into a new IP Datagram, IP's job is to ensure the delivery to the other corner of the internet. Before that it transfers the data to the Link Layer.
 
-IP is however unreliable, like there is possibility of dropping packet incase of high traffic, it does not even try sending the dropped packets again. It works on any link layer since it makes very few assumptions about the link layer and is extremely light and simple.
+### MAC Address
+Media Access Control (MAC) address is a link-layer hardware identifier used for communication within a local network. MAC identifies the specific device/interface on a local link. Switches use MAC addresses to forward Ethernet frames inside LANs. IP helps reach the correct network; MAC helps reach the correct device within that network.
 
-TTL Field - Is a layer in IP that prevents packets from looping forever.
-Header Checksum - 
-Fragmentation - 
+If two devices are on the same Wi-Fi (common router, different IPs) and exchange information, the packet does not travel through the internet, rather it checks for the same subnet using IP + subnet mask, then uses MAC for delivery.
+### IP (Internet Protocol) 
+IP is the core protocol of the Internet (Network Layer) responsible for moving packets across multiple interconnected networks using **logical addressing and routing**. When the Transport Layer (TCP/UDP) has data to send, *it passes a transport segment to IP, which encapsulates it inside an **IP datagram** containing an IP header and payload (`IP Header | Transport Segment`)*. 
 
-There are two commonly used types of IPs used, IPv4 (32 bit) and IPv6 (128 bit)
-### BitTorrent
-The problem this addresses is of distributing huge files efficiently without central server overload. The way this works is breaking the data into pieces and splitting the load onto many clients, this scales much better.
-### NAT
-Network Address Translation (NAT) is a networking technique used by routers to modify IP addresses while data is in transit. It allows multiple devices within a private local network to share a single, publicly routable IP address when accessing the internet. It was primarily desgined for the IPv4 technology
+The header typically contains the source IP, destination IP, TTL, protocol type (TCP/UDP), checksum, and fragmentation metadata. IP then passes the datagram to the Link Layer for local transmission.
 
+IP provides **best-effort delivery**, meaning it attempts to deliver packets but guarantees **neither delivery, ordering, latency, nor duplicate prevention**. Packets may be dropped, delayed, duplicated, or arrive out of order; reliability is usually handled by higher-layer protocols like TCP. A major strength of IP is that it is **link-layer agnostic**—it works over Ethernet, Wi-Fi, fiber, 5G, satellite, etc., making the Internet highly interoperable.
+
+Important fields:
+- **TTL (Time To Live):** Prevents infinite routing loops by decrementing at every router; packet is discarded at 0.
+- **Header Checksum:** Detects corruption in the IP header (not payload).
+- **Fragmentation:** Splits large packets when the next link’s MTU is smaller; fragments are reassembled at the destination (less common in modern networks).
+
+There are two commonly used types of IPs used, IPv4 (32 bit) and IPv6 (128 bit).
+### TCP (Transport Layer Protocol)
+TCP is used when **every byte matters**, like websites (HTTP/1, HTTP/2), databases, APIs, file transfer. Before sending data, TCP establishes a connection using a **3-way handshake** to ensure both sides can send and receive, and to synchronize sequence numbers. 
+
+A 2-way handshake is insufficient because the server cannot know whether the client successfully received the server’s response. The third ACK confirms bidirectional readiness and synchronizes connection state.
 ## 7) Real Packet Journey
 
 1. Browser checks cache

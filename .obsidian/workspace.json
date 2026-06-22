@@ -82,7 +82,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#IP",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -103,11 +103,13 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "989493f5aa1001c6",
@@ -209,7 +211,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 275.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -226,15 +228,15 @@
   "active": "7f9fb06210b638ae",
   "lastOpenFiles": [
     "Core-Concepts/Data-Communications-&-Computer-Netwoking/OSI Model Layers.png",
-    "Core-Concepts/Operating-Systems.md",
     "Core-Concepts/Data-Communications-&-Computer-Netwoking/Data-Communications-&-Networking.md",
+    "To Do (summer break).md",
+    "Core-Concepts/Operating-Systems.md",
     "Core-Concepts/Data-Communications-&-Computer-Netwoking",
     "Core-Concepts/Database-Management.md",
     "README.md",
     "Android-Application-Development.md",
     "Pasted image 20260622190223.png",
     "Artificial-Intelligence/Machine-Learning.md",
-    "To Do (summer break).md",
     "Data-Structures-&-Algo/Data-Strucutres.md",
     "Data-Structures-&-Algo/Algorithms.md",
     "Artificial-Intelligence/Knowledge-Representation.md",
