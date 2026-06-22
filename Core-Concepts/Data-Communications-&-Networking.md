@@ -78,24 +78,26 @@ Application → Presentation → Session → Transport → Network → Data Link
 This is where actual transmission happens, having devices like **Hub and Router**. It has **bits being sent physically**. Signal can be electrical, optical or radio waves, this is used to define voltage, frequency, connectors. Ex: Fiber Optic, Ethernet, Wi-fi Radio Waves.
 ##### 2) Data Link Layer
 The data link layer is responsible for moving frames from one hop (node) to the next.
-
-3. **Network Layer -** This is the **“where”** of the communication, it is responsible for delivery of individual packets from the source to the destination host:
+#### 3) Network Layer
+This is the **“where”** of the communication, it is responsible for delivery of individual packets from the source to the destination host:
    - IP Addressing: every device gets a logical address, eg- 192.168.1.10
    - Routing: choses the best path for the communication
    - Packet Forwarding: move packets hop by hop
-1. **Transport Layer -** one of the **most important layers,** this controls the mechanism of data transfer:
+#### 4) Transport Layer 
+One of the **most important layers,** this controls the mechanism of data transfer:
 
-   2. Segmentation: large data is broken down into smaller chunks
-   3. Reliability:
-   4. Ordering:
-   5. Flow Control:
-   6. Port Numbers:
+1. Segmentation: large data is broken down into smaller chunks
+2. Reliability:
+3. Ordering:
+4. Flow Control:
+5. Port Numbers:
+#### 5) Session Layer
+This layer controls the session establishment, maintenance, synchronization and termination,
 
-7. **Session Layer -** This layer controls the session establishment, maintenance, synchronization and termination,
+#### 6) Presentation Layer
+It has 3 main jobs, **Translation, Encryption, and Compression.** These make sure the host systems are on a uniform and fast layer for all communication
 
-8. **Presentation Layer -** It has 3 main jobs, **Translation, Encryption, and Compression.** These make sure the host systems are on a uniform and fast layer for all communication
-
-9. **Application Layer -** This is the highest layer, closest to the end-user, what applications like Chrome, Spotify use to access the network. It defines the protocols for specific services, ex: HTTP, SMTP, DNS, SSH
+7. **Application Layer -** This is the highest layer, closest to the end-user, what applications like Chrome, Spotify use to access the network. It defines the protocols for specific services, ex: HTTP, SMTP, DNS, SSH
 
 ### 3.2) TCP/IP Protocol Suite
 
