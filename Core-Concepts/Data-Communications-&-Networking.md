@@ -153,7 +153,7 @@ This is the most powerful error *detector*. It's based on **binary division** â€
 Breaks files into pieces and clients joins the server and leave dynamically. 
 ### TCP
 #### Byte Stream Model:
-TCP does not preserve message with boundaries, it only keeps the sequence of the digits and their delivery. So the spacing might get mismatched.
+is a communication abstraction where the network treats **data as a continuous, unstructured sequence of bytes** rather than distinct messages. It acts as a continuous conduit between the sender and receiver, leaving the application responsible for packaging and interpreting the data.
 ### HTTP
 a client opens a connection to a server and sends requests, like get request, which asks for the page. The server responds to the request with a numeric code (200, 400) about the status of the request and the linking information. It is all ascii text.
 
