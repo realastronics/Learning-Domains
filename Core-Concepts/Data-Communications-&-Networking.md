@@ -67,35 +67,41 @@ Networks can be classified into types based on the area of their coverage:
 ## 3\) Layers
 
 ### 3.1) OSI Model
-
 The **Open Systems Interconnection (OSI)** model is a conceptual framework, defined by the ISO (International Standards Organization) in the 1970’s. Think of it as a **communication pipeline**, where **each layer has one responsibility** and only talks to the layer immediately above and below it.
 
 **"All People Seem To Need Data Processing"**
 Application → Presentation → Session → Transport → Network → Data Link → Physical
 ![[Pasted image 20260622190223.png]]
-#### Explaining these 7 layers of the OSI Model:
+#### Explaining the 7 layers of the OSI Model:
 
-1. **Physical Layer** - This is where actual transmission happens, having devices like **Hub and Repater**. It has **bits being sent physcially**. Singnal can be electrical, optical or radio waves, this is used to define voltage, frequency, connectors. Eg: Fibre Optic, Ethernet, Wifi Radio Waves.
-2. **Data Link Layer -** The data link layer is responsible for moving frames from one hop (node) to the next.
+##### 1) Physical Layer 
+This is where actual transmission happens, having devices like **Hub and Router**. It has **bits being sent physically**. Signal can be electrical, optical or radio waves, this is used to define voltage, frequency, connectors. Ex: Fiber Optic, Ethernet, Wi-fi Radio Waves.
+##### 2) Data Link Layer
+The data link layer is responsible for moving frames from one hop (node) to the next.
+
 3. **Network Layer -** This is the **“where”** of the communication, it is responsible for delivery of individual packets from the source to the destination host:
+   - IP Addressing: every device gets a logical address, eg- 192.168.1.10
+   - Routing: choses the best path for the communication
+   - Packet Forwarding: move packets hop by hop
+1. **Transport Layer -** one of the **most important layers,** this controls the mechanism of data transfer:
 
-   1. IP Addressing: every device gets a logical address, eg- 192.168.1.10
-   2. Routing: choses the best path for the communication
-   3. Packet Forwarding: move packets hop by hop
-4. **Transport Layer -** one of the **most important layers,** this controls the mechanism of data transfer:
+   2. Segmentation: large data is broken down into smaller chunks
+   3. Reliability:
+   4. Ordering:
+   5. Flow Control:
+   6. Port Numbers:
 
-   1. Segmentation: large data is broken down into smaller chunks
-   2. Reliability:
-   3. Ordering:
-   4. Flow Control:
-   5. Port Numbers:
-5. **Session Layer -** This layer controls the session establishment, maintainence, synchronization and termination,
-6. **Presentaiton Layer -** It has 3 main jobs, **Translation, Encryption, and Compression.** These make sure the host systems are on a uniform and fast layer for all commuicatoin
-7. **Applicatoin Layer -** This is the highest layer, closest to the end-user, what applications like Chrome, Spotify use to access the network. It defines the protocols for specific services, eg: HTTP, SMTP, DNS, SSH
+7. **Session Layer -** This layer controls the session establishment, maintainence, synchronization and termination,
+
+8. **Presentation Layer -** It has 3 main jobs, **Translation, Encryption, and Compression.** These make sure the host systems are on a uniform and fast layer for all communication
+
+9. **Application Layer -** This is the highest layer, closest to the end-user, what applications like Chrome, Spotify use to access the network. It defines the protocols for specific services, ex: HTTP, SMTP, DNS, SSH
 
 ### 3.2) TCP/IP Protocol Suite
 
 #### Addresses in TCP/IP protocols
+
+### 3.3) Encapsulation
 
 ## 4\) Devices
 
@@ -137,7 +143,23 @@ This is the most powerful error *detector*. It's based on **binary division** �
 
 ## 6) Protocol Dives
 
+### TCP
+#### Byte Stream Model:
+TCP does not preserve message with boundaries, it only keeps the sequence of the digits and their delivery. So the spacing might get mismatched.
+
 ## 7) Real Packet Journey
+
+1. Browser checks cache
+2. DNS resolves domain → IP
+3. OS determines route
+4. ARP finds router MAC
+5. Packet leaves machine
+6. Routers forward packet
+7. Connection established (TCP / QUIC)
+8. TLS handshake
+9. HTTP request
+10. Response returns
+11. Browser renders page`
 
 ### The concept first:
 
