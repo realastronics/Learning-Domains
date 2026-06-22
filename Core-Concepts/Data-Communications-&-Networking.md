@@ -1,5 +1,15 @@
 # Data Communications \& Computer Networks
 
+## 0) Fundamental Model
+### Key Metrics:
+
+- Bandwidth - it is the maximum capacity of a link it terms of bits/sec.
+- Throughput - this is the actual achieved transfer rate of bits/sec
+- Latency - is the delay until data reaches the destination
+- Jitter - is the variation in latency
+- Loss - is the packets dropped
+### Core Issues:
+The key issue with networking is physical constrains like Bandwidth limit, the speed of light, congestion, noise and failures.
 #### What is the internet?
 The Internet is a globally distributed *packet-switched system* connecting billions of end systems through routers, links, and protocols. Data is broken into packets, routed hop-by-hop across multiple autonomous networks using IP, while higher-level protocols like TCP and HTTP provide reliable application communication.
 ## 1\) Communication
@@ -62,12 +72,10 @@ The **Open Systems Interconnection (OSI)** model is a conceptual framework, defi
 
 **"All People Seem To Need Data Processing"**
 Application → Presentation → Session → Transport → Network → Data Link → Physical
+![[Pasted image 20260622190223.png]]
+#### Explaining these 7 layers of the OSI Model:
 
-!\[image.png](b3f70486-edd7-4e78-8e69-e484dd85a956.png)
-
-#### Explaning these 7 layers of the OSI Model:
-
-1. **Physical Layer** - This is where actual transmission happens, having devices like **Hub and Rpeater**. It has **bits being sent physcially**. Singnal can be electrical, optical or radio waves, this is used to define voltage, frequency, connectors. Eg: Fibre Optic, Ethernet, Wifi Radio Waves.
+1. **Physical Layer** - This is where actual transmission happens, having devices like **Hub and Repater**. It has **bits being sent physcially**. Singnal can be electrical, optical or radio waves, this is used to define voltage, frequency, connectors. Eg: Fibre Optic, Ethernet, Wifi Radio Waves.
 2. **Data Link Layer -** The data link layer is responsible for moving frames from one hop (node) to the next.
 3. **Network Layer -** This is the **“where”** of the communication, it is responsible for delivery of individual packets from the source to the destination host:
 
@@ -106,6 +114,7 @@ Application → Presentation → Session → Transport → Network → Data Link
 |**Server**|A computer that provides resources or services to clients.|Hosts files/websites/services|Layers 5–7|
 |**Client**|A device or software that requests services from a server.|Uses network services|Layers 5–7|
 
+## 5) Error Detection
 ### Parity Check:
 
 Even parity, the number of one’s must be even in the message, and for odd they must be odd. The idea is we add an additional number, (1 when we need to change the parity, 0 when the parity is matching) to the message.
@@ -125,6 +134,10 @@ add image
 ### Cyclic Redundancy Check
 
 This is the most powerful error *detector*. It's based on **binary division** — specifically, division using **XOR** (no carries, no borrows — just XOR each bit).
+
+## 6) Protocol Dives
+
+## 7) Real Packet Journey
 
 ### The concept first:
 

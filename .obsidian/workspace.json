@@ -49,7 +49,8 @@
               "title": "To Do (summer break)"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -223,8 +224,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "ae3587e57824e8ba",
+  "active": "7f9fb06210b638ae",
   "lastOpenFiles": [
+    "Pasted image 20260622190223.png",
+    "Artificial-Intelligence/Machine-Learning.md",
     "Core-Concepts/Data-Communications-&-Networking.md",
     "To Do (summer break).md",
     "Core-Concepts/Database-Management.md",
@@ -232,7 +235,6 @@
     "Data-Structures-&-Algo/Algorithms.md",
     "Android-Application-Development.md",
     "README.md",
-    "Artificial-Intelligence/Machine-Learning.md",
     "Core-Concepts/Operating-Systems.md",
     "Artificial-Intelligence/Knowledge-Representation.md",
     "Languages/JAVA.md",
