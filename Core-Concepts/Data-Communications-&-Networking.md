@@ -100,7 +100,7 @@ It has 3 main jobs, **Translation, Encryption, and Compression.** These make sur
 #### 7) Application Layer 
 This is the highest layer, closest to the end-user, what applications like Chrome, Spotify use to access the network. It defines the protocols for specific services, ex: HTTP, SMTP, DNS, SSH
 
-- HTTP - a client opens a connection to a server and sends requests, like get request, which asks for the page. The server responds to the request with a numeric code (200, 400) about the status of the request and the linking information. It is all ascii text.
+- HTTP - a client opens a connection to a server and sends requests, like **GET /index.html** request, which asks for the page. The server responds to the request with a numeric code (200, 400) about the status of the request and the linking information. It is all ascii text, used by RST APIs, MCPs.
 
 ### 3.2) TCP/IP Protocol Suite
 
@@ -154,8 +154,7 @@ This is the most powerful error *detector*. It's based on **binary division** â€
 
 ## 6) Protocol Dives
 ### BitTorrent
-
-Breaks files into pieces and clients joins the server and leave dynamically. 
+The problem this addresses is of distributing huge files efficiently without central server overload. The way this works is breaking the data into pieces and splitting the load onto many clients, this scales much better.
 ### TCP
 #### Byte Stream Model:
 is a communication abstraction where the network treats **data as a continuous, unstructured sequence of bytes** rather than distinct messages. It acts as a continuous conduit between the sender and receiver, leaving the application responsible for packaging and interpreting the data.
