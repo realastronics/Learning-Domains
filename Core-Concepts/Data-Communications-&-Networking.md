@@ -96,9 +96,9 @@ One of the **most important layers,** this controls the mechanism of data transf
 4. Flow Control:
 5. Port Numbers:
 
-Transport Layer has two ways to accomplish it's job; TCP or UDP.
-TCP (Transmission Control Protocol) makes sure the data delivered from end is correctly received on the other end, if the network layers drops datagrams or mis-orders them, TCP corrects it by sending again.
-Some applications which do not need every byte (say a video) to be resent, they can use a simpler method, UDP (user Datagram Protocol). It offers no delivery guarantee.
+Transport Layer has two ways to accomplish it's job; TCP or UDP:
+ - **TCP (Transmission Control Protocol)** makes sure the data delivered from end is correctly received on the other end, if the network layers drops datagrams or mis-orders them, TCP corrects it by sending again.
+- Some applications which do not need every byte (say a video) to be resent, they can use a simpler method, **UDP (User Datagram Protocol)**. It offers no delivery guarantee.
 #### 5) Session Layer
 This layer controls the session establishment, maintenance, synchronization and termination,
 
