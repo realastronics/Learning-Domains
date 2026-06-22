@@ -69,7 +69,8 @@ Networks can be classified into types based on the area of their coverage:
 ## 3\) Layers
 
 ### 3.1) OSI Model
-The **Open Systems Interconnection (OSI)** model is a conceptual framework, defined by the ISO (International Standards Organization) in the 1970’s. Think of it as a **communication pipeline**, where **each layer has one responsibility** and only talks to the layer immediately above and below it.
+The **Open Systems Interconnection (OSI)** model is a conceptual framework consisting of **7-layers**, defined by the ISO (International Standards Organization) in the 1970’s. This has now been replaced by the **4-layer Internet model**. 
+Think of the OSI model as a **communication pipeline**, where **each layer has one responsibility** and only talks to the layer immediately above and below it.
 
 **"All People Seem To Need Data Processing"**
 Application → Presentation → Session → Transport → Network → Data Link → Physical
@@ -84,7 +85,7 @@ The data link layer is responsible for moving frames from one hop (node) to the 
 This is the **“where”** of the communication, it is responsible for delivery of individual packets from the source to the destination host. It sends data grams to the Link layer:
 
    - **IP Addressing**: every device gets a logical address, eg- 192.168.1.10
-   - Routing: choses the best path for the communication
+   - **Routing**: choses the best path for the communication
    - **Packet Forwarding:** move packets hop by hop, but there is no guarantee of transportation
 #### 4) Transport Layer 
 One of the **most important layers,** this controls the mechanism of data transfer, it ensures the packets go through:
