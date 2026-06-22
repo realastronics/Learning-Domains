@@ -91,7 +91,7 @@ The data link layer is responsible for moving frames from one hop (node) to the 
    5. Flow Control:
    6. Port Numbers:
 
-7. **Session Layer -** This layer controls the session establishment, maintainence, synchronization and termination,
+7. **Session Layer -** This layer controls the session establishment, maintenance, synchronization and termination,
 
 8. **Presentation Layer -** It has 3 main jobs, **Translation, Encryption, and Compression.** These make sure the host systems are on a uniform and fast layer for all communication
 
