@@ -161,6 +161,8 @@ This is the most powerful error *detector*. It's based on **binary division** â€
 * Receiver divides received message by same divisor â€” if remainder is **0**, no error
 
 ## 6) Protocol Deep Dives
+### IP
+
 ### BitTorrent
 The problem this addresses is of distributing huge files efficiently without central server overload. The way this works is breaking the data into pieces and splitting the load onto many clients, this scales much better.
 ### NAT
