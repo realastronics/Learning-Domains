@@ -97,7 +97,10 @@ This layer controls the session establishment, maintenance, synchronization and 
 #### 6) Presentation Layer
 It has 3 main jobs, **Translation, Encryption, and Compression.** These make sure the host systems are on a uniform and fast layer for all communication
 
-7. **Application Layer -** This is the highest layer, closest to the end-user, what applications like Chrome, Spotify use to access the network. It defines the protocols for specific services, ex: HTTP, SMTP, DNS, SSH
+#### 7) Application Layer 
+This is the highest layer, closest to the end-user, what applications like Chrome, Spotify use to access the network. It defines the protocols for specific services, ex: HTTP, SMTP, DNS, SSH
+
+- HTTP - a client opens a connection to a server and sends requests, like get request, which asks for the page. The server responds to the request with a numeric code (200, 400) about the status of the request and the linking information. It is all ascii text.
 
 ### 3.2) TCP/IP Protocol Suite
 
@@ -156,9 +159,6 @@ Breaks files into pieces and clients joins the server and leave dynamically.
 ### TCP
 #### Byte Stream Model:
 is a communication abstraction where the network treats **data as a continuous, unstructured sequence of bytes** rather than distinct messages. It acts as a continuous conduit between the sender and receiver, leaving the application responsible for packaging and interpreting the data.
-### HTTP
-a client opens a connection to a server and sends requests, like get request, which asks for the page. The server responds to the request with a numeric code (200, 400) about the status of the request and the linking information. It is all ascii text.
-
 ## 7) Real Packet Journey
 
 1. Browser checks cache
