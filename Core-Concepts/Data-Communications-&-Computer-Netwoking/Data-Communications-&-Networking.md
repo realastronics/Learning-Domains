@@ -1,19 +1,21 @@
 # Data Communications \& Computer Networks
 
 ## 0) Fundamental Model
-### Key Metrics:
+#### Key Metrics:
 
 - Bandwidth - it is the maximum capacity of a link it terms of bits/sec.
 - Throughput - this is the actual achieved transfer rate of bits/sec
 - Latency - is the delay until data reaches the destination
 - Jitter - is the variation in latency
 - Loss - is the packets dropped
-### Core Issues:
+#### Core Issues:
 The key issue with networking is physical constrains like Bandwidth limit, the speed of light, congestion, noise and failures.
 #### Byte Stream Model:
 is a communication abstraction where the network treats **data as a continuous, unstructured sequence of bytes** rather than distinct messages. It acts as a continuous conduit between the sender and receiver, leaving the application responsible for packaging and interpreting the data.
 #### What is the internet?
 The Internet is a globally distributed *packet-switched system* connecting billions of end systems through routers, links, and protocols. Data is broken into packets, routed hop-by-hop across multiple autonomous networks using IP, while higher-level protocols like TCP and HTTP provide reliable application communication.
+#### Packet Switching
+Instead of reserving a dedicated communication path, data is broken into self contained packets and each packet is routed independently through the network. This allows efficient sharing of network resources, better fault tolerance, and scalable communication.
 ## 1\) Communication
 
 Data Communication is the exchange of data between two devices via some transmission medium with a **protocol,** that is a set of rules that govern data communications. It represents an
@@ -21,10 +23,10 @@ agreement between the communicating devices.
 
 #### Communication b/w two devices can be:
 
-1. **Simplex** - unidirectional communication only, one receiver and one sender, eg: Keyboard and traditional monitor. (When you "click" something in a program, it is usually a **mouse** sending data about a screen position, not the monitor itself. The computer uses the mouse's input to determine what object is being clicked and acts accordingly.)
+1. **Simplex** - unidirectional communication only, one receiver and one sender, ex: Keyboard and traditional monitor. (When you "click" something in a program, it is usually a **mouse** sending data about a screen position, not the monitor itself. The computer uses the mouse's input to determine what object is being clicked and acts accordingly.)
 2. **Half Duplex** - each station can both transmit and receive, but not at the same
-time, eg: one way lane, walkie talkie
-3. **Full Duplex** - both stations can transmit and receive simultaneously, eg: telephone
+time, ex: one way lane, walkie talkie
+3. **Full Duplex** - both stations can transmit and receive simultaneously, ex: telephone
 
 ## 2\) Networks:
 
@@ -67,7 +69,8 @@ Networks can be classified into types based on the area of their coverage:
 | **Broadcast / Multipoint** | One-to-many communication | Shared communication channel  | Wi-Fi, radio transmission   |
 
 ## 3\) Layers
-
+#### Layering Principle
+Networking is divided into layers where each layer solves a specific problem and provides services to the layer above. This enables abstraction, modularity, easier debugging, and interoperability across different hardware and protocols.
 ### 3.1) OSI Model
 The **Open Systems Interconnection (OSI)** model is a conceptual framework consisting of **7-layers**, defined by the ISO (International Standards Organization) in the 1970’s. 
 Think of the OSI model as a **communication pipeline**, where **each layer has one responsibility** and only talks to the layer immediately above and below it. This is like an ideal blueprint of how a network should work.
@@ -130,6 +133,16 @@ This is the highest layer, closest to the end-user, what applications like Chrom
 #### Addresses in TCP/IP protocols
 
 ### 3.3) Encapsulation
+Encapsulation is the process where *each layer adds its own header (and sometimes trailer)* to data from the layer above before passing it downward.
+
+Example:
+Application Data
+→ TCP Segment
+→ IP Datagram
+→ Ethernet Frame
+→ Bits on wire
+
+At the receiver, the reverse process happens: Decapsulation.
 
 ## 4\) Devices
 
@@ -150,7 +163,7 @@ This is the highest layer, closest to the end-user, what applications like Chrom
 
 Even parity, the number of one’s must be even in the message, and for odd they must be odd. The idea is we add an additional number, (1 when we need to change the parity, 0 when the parity is matching) to the message.
 
-eg - in the number 110010, the odd parity bit would be 0 since the number of 1’s present is already odd, and if we were asking the event parity bit that would be 1.
+ex - in the number 110010, the odd parity bit would be 0 since the number of 1’s present is already odd, and if we were asking the event parity bit that would be 1.
 
 The main flaw with parity bit check is if two bits flip in an even parity bit check we would never know.
 
