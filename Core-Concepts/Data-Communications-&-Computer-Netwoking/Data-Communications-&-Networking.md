@@ -75,14 +75,13 @@ Networks can be classified into types based on the area of their coverage:
 Networking is divided into layers where each layer solves a specific problem and provides services to the layer above. This enables abstraction, modularity, easier debugging, and interoperability across different hardware and protocols.
 ### 3.1) OSI Model
 The **Open Systems Interconnection (OSI)** model is a conceptual framework consisting of **7-layers**, defined by the ISO (International Standards Organization) in the 1970’s. 
-Think of the OSI model as a **communication pipeline**, where **each layer has one responsibility** and only talks to the layer immediately above and below it. This is like an ideal blueprint of how a network should work.
 
-OSI was a conceptual reference model; the Internet evolved around the **TCP/IP** (made by the Department of Defense) model, which better reflects real-world protocol stacks. 
+Think of the OSI model as a **communication pipeline**, where **each layer has one responsibility** and only talks to the layer immediately above and below it. This is like an ideal blueprint of how a network should work. OSI was a conceptual reference model; the Internet evolved around the **TCP/IP** (made by the Department of Defense) model, which better reflects real-world protocol stacks. 
 
 **"All People Seem To Need Data Processing"**
 Application → Presentation → Session → Transport → Network → Data Link → Physical
 
-![[OSI Model Layers.png]]
+![[OSI Model Layers.png|350]]
 #### Explaining the 7 layers of the OSI Model:
 
 #### 1) Physical Layer 
@@ -257,5 +256,5 @@ A 2-way handshake is insufficient because the server cannot know whether the cli
 
 This learning is being accompanies by practical expose to linux commands and lab experience, using oracle virtualbox VM on Ubuntu distro.
 
-![[DCCN Mind Map.png]]
+![[DCCN Mind Map.png|700]]
 
