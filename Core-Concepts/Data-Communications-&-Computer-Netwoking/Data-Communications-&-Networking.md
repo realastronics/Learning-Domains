@@ -108,24 +108,36 @@ Is simply the unwanted signal interfering with desired signal, it's commonly cau
 Is the measure of how useful is the signal compared to noise, the higher our SNR the more clarity we will have.
 $SNR = Signal Power / Noise Power$
 #### 2) Data Link Layer
-The data link layer is responsible for moving frames from one hop (node) to the next. Link layers can be very different in terms of how they transport information
+The Data Link Layer provides **node-to-node delivery** over a single physical link. Its purpose is to convert an unreliable raw bit pipe into a usable communication channel between directly connected devices. 
+
+The core problem is that physical channels are noisy, shared, and imperfect. Data Link Layer solves these problems using framing, addressing, error detection, flow control, and medium access control.
 ##### a) Framing
-  
-##### b) Error Detection
+Framing is the process of dividing a continuous bit stream into manageable units called **frames** by adding headers and trailers.  
+
+Purpose:  
+- Define frame boundaries  
+- Carry MAC addresses  
+- Add error detection information
+##### b) Addressing (MAC)
+MAC (Media Access Control) address is a unique identifier assigned to a network interface for communication on a local network.  
+
+	IP decides -> which network; MAC decides -> which device on that network
+##### c) Error Detection
 	1. Parity
 	2. Checksum
 	3. CRC
 	4. Hamming Code
-	   
-##### c) Flow Control
+##### d) Flow Control
 	1. Stop and Wait
 	2. ARQ
-	   
-##### d) Multiple Access
-	1. CSMA
-	2. CD
-	3. CD
-	4. Token Passing
+	3. Go-Back-N
+	4. Selective Repeat
+##### e) Multiple Access
+	1. ALOHA
+	2. CSMA
+	3. CSMA/CD
+	4. CSMA/CA
+	5. Token Passing
 #### 3) Network Layer
 This is the **“where”** of the communication, it is responsible for delivery of individual packets from the source to the destination host. It sends data grams to the Link layer:
 
