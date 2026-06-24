@@ -88,10 +88,13 @@ Application → Presentation → Session → Transport → Network → Data Link
 This is where actual transmission happens, having devices like **Hub and Repeater**. It has **bits being sent physically**. Signal can be electrical, optical or radio waves, this is used to define voltage, frequency, connectors. Ex: Fiber Optic, Ethernet, Wi-fi Radio Waves.
 #### a) Transmission Delay
 It is the measure of how long it takes to push all the bits into the wire. 
+
 	$TransmissionDelay = Packet Size ( in bits ) / Bandwidth ( bits/second )$`
 ##### b) Propagation Delay
 Is the measure of how long until the bits reach the physical destination.
+
 	$Propagation Delay = Distance / Propagation Speed$
+
 The propagation speed depends on the material of the wire, like $copper = 2 * 10^8 m/s$
 
 ==for numerical questions, always remember to convert kbps, Mbps into bps.==
@@ -99,8 +102,10 @@ The propagation speed depends on the material of the wire, like $copper = 2 * 10
 	$1 Kbps = 10^3 bps, 1 Mbps = 10^6 bps$
 ##### c) Attenuation
 Is the measure of loss of signal power during travel. 
+
 	$dB = 10 log_{10} ( P2 / P1 )$
-	where P1 = Original Power, P2 = Received Power
+
+where P1 = Original Power, P2 = Received Power
 To fix attenuation, amplifiers and repeaters are used.
 ##### d) Noise
 Is simply the unwanted signal interfering with desired signal, it's commonly caused by electrical interference, thermal noise, Wi-Fi interference.
