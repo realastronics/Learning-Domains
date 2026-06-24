@@ -103,13 +103,11 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "989493f5aa1001c6",
@@ -227,6 +225,7 @@
   },
   "active": "7f9fb06210b638ae",
   "lastOpenFiles": [
+    "Core-Concepts/Data-Communications-&-Computer-Netwoking/DCCN Mind Map.png",
     "Core-Concepts/Data-Communications-&-Computer-Netwoking/OSI Model Layers.png",
     "Core-Concepts/Data-Communications-&-Computer-Netwoking/Data-Communications-&-Networking.md",
     "To Do (summer break).md",
