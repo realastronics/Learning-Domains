@@ -86,12 +86,14 @@ Application → Presentation → Session → Transport → Network → Data Link
 
 #### 1) Physical Layer 
 This is where actual transmission happens, having devices like **Hub and Repeater**. It has **bits being sent physically**. Signal can be electrical, optical or radio waves, this is used to define voltage, frequency, connectors. Ex: Fiber Optic, Ethernet, Wi-fi Radio Waves.
-
-- Transmission Delay
-  
-- Propagation Delay
-  
-- Attenuation
+#### a) Transmission Delay
+It is the measure of how long it takes to push all the bits into the wire. 
+`Transmission Delay = Packet Size (in bits)/Bandwidth (bits/second)`
+##### b) Propagation Delay
+Is the measure of how long until the bits reach the physical destination.
+`Propagation Delay = Distance/Propagation Speed`
+The propagation speed depends on the material of the wire, like $copper = 2 * 10^8 m/s$
+##### c) Attenuation
   
 - Noise
   
