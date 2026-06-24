@@ -224,5 +224,7 @@ A 2-way handshake is insufficient because the server cannot know whether the cli
 10. Response returns
 11. Browser renders page
 
-This learning is being accompanies by practical expose to linux commands and lab experience, using oracle virtualbox VM on Ubuntu distro. 
+This learning is being accompanies by practical expose to linux commands and lab experience, using oracle virtualbox VM on Ubuntu distro.
+
+[[DCCN Mind Map.png]]
 

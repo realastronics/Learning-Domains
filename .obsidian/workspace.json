@@ -107,7 +107,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "989493f5aa1001c6",
@@ -223,7 +224,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "7f9fb06210b638ae",
+  "active": "71272a4ad810c193",
   "lastOpenFiles": [
     "Core-Concepts/Data-Communications-&-Computer-Netwoking/DCCN Mind Map.png",
     "Core-Concepts/Data-Communications-&-Computer-Netwoking/OSI Model Layers.png",
