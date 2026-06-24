@@ -88,16 +88,17 @@ Application → Presentation → Session → Transport → Network → Data Link
 This is where actual transmission happens, having devices like **Hub and Repeater**. It has **bits being sent physically**. Signal can be electrical, optical or radio waves, this is used to define voltage, frequency, connectors. Ex: Fiber Optic, Ethernet, Wi-fi Radio Waves.
 #### a) Transmission Delay
 It is the measure of how long it takes to push all the bits into the wire. 
-`Transmission Delay = Packet Size (in bits)/Bandwidth (bits/second)`
+	$Transmission Delay = Packet Size (in bits)/Bandwidth (bits/second)$`
 ##### b) Propagation Delay
 Is the measure of how long until the bits reach the physical destination.
-`Propagation Delay = Distance/Propagation Speed`
+	$Propagation Delay = Distance/Propagation Speed$
 The propagation speed depends on the material of the wire, like $copper = 2 * 10^8 m/s$
 ##### c) Attenuation
-  
-- Noise
-  
-- SNR
+Is the measure of loss of signal power during travel. 
+	$dB = 10log_{10}(P2/P1)$
+##### d) Noise
+
+##### e) SNR
   
 #### 2) Data Link Layer
 The data link layer is responsible for moving frames from one hop (node) to the next. Link layers can be very different in terms of how they transport information
