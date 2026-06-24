@@ -96,26 +96,28 @@ The propagation speed depends on the material of the wire, like $copper = 2 * 10
 ##### c) Attenuation
 Is the measure of loss of signal power during travel. 
 	$dB = 10log_{10}(P2/P1)$
+	where P1 = Original Power, P2 = Received Power
+To fix attenuation, amplifiers and repeaters are used.
 ##### d) Noise
-
+Is simply the unwanted signal interfering with desired signal
 ##### e) SNR
+Is the measure of how useful is the signal compared to noise, the higher our SNR the more clarity we will have.
   
 #### 2) Data Link Layer
 The data link layer is responsible for moving frames from one hop (node) to the next. Link layers can be very different in terms of how they transport information
-
-- Framing
+##### a) Framing
   
-- Error Detection
+##### b) Error Detection
 	1. Parity
 	2. Checksum
 	3. CRC
 	4. Hamming Code
 	   
-- Flow Control
+##### c) Flow Control
 	1. Stop and Wait
 	2. ARQ
 	   
-- Multiple Access
+##### d) Multiple Access
 	1. CSMA
 	2. CD
 	3. CD
