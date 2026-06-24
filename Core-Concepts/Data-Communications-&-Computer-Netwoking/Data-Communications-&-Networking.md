@@ -85,10 +85,39 @@ Application → Presentation → Session → Transport → Network → Data Link
 ![[OSI Model Layers.png]]
 #### Explaining the 7 layers of the OSI Model:
 
-##### 1) Physical Layer 
+#### 1) Physical Layer 
 This is where actual transmission happens, having devices like **Hub and Repeater**. It has **bits being sent physically**. Signal can be electrical, optical or radio waves, this is used to define voltage, frequency, connectors. Ex: Fiber Optic, Ethernet, Wi-fi Radio Waves.
-##### 2) Data Link Layer
+
+- Transmission Delay
+  
+- Propagation Delay
+  
+- Attenuation
+  
+- Noise
+  
+- SNR
+  
+#### 2) Data Link Layer
 The data link layer is responsible for moving frames from one hop (node) to the next. Link layers can be very different in terms of how they transport information
+
+- Framing
+  
+- Error Detection
+	1. Parity
+	2. Checksum
+	3. CRC
+	4. Hamming Code
+	   
+- Flow Control
+	1. Stop and Wait
+	2. ARQ
+	   
+- Multiple Access
+	1. CSMA
+	2. CD
+	3. CD
+	4. Token Passing
 #### 3) Network Layer
 This is the **“where”** of the communication, it is responsible for delivery of individual packets from the source to the destination host. It sends data grams to the Link layer:
 
@@ -130,7 +159,9 @@ This is the highest layer, closest to the end-user, what applications like Chrom
 - SMTP:
 - BitTorrent: The problem this addresses is of distributing huge files efficiently without central server overload. The way this works is breaking the data into pieces and splitting the load onto many clients, this scales much better.
 
-### 3.2) TCP/IP Protocol Suite
+### 3.2) TCP/IP Model
+
+
 
 #### Addresses in TCP/IP protocols
 
@@ -226,5 +257,5 @@ A 2-way handshake is insufficient because the server cannot know whether the cli
 
 This learning is being accompanies by practical expose to linux commands and lab experience, using oracle virtualbox VM on Ubuntu distro.
 
-[[DCCN Mind Map.png]]
+![[DCCN Mind Map.png]]
 
