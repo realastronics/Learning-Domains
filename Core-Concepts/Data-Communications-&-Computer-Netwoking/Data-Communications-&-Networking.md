@@ -138,7 +138,9 @@ Bits commonly flip due to thermal noise, interference, attenuation
 	3. CRC - most important, 
 	4. Hamming Code
 ##### d) Flow Control
-This is there to prevent a faster sender from overwhelming a slow receiver, it limits the amount of data that can be sent. ARQ ensures reliable transmission using acknowledgements (ACK), timers, and retransmissions. 
+This is there to prevent a faster sender from overwhelming a slow receiver, it limits the amount of data that can be sent. ARQ is  a family of protocols used to ensures reliable transmission using acknowledgements (ACK), timers, and retransmissions. 
+
+ARQ works on a three 3 step idea, sender sends fame -> receiver sends ACK -> if ACK not received before timeout, resend.
 
 	1. Stop-and-Wait ARQ – send one frame and wait for ACK.
 	2. Go-Back-N ARQ – send multiple frames; if one fails, retransmit it and all subsequent frames.
@@ -155,18 +157,23 @@ Medium Access Control decides which device gets permission to transmit on a shar
 
 ==Wi-Fi cannot use Collision Detection because while transmitting, a wireless device’s own signal overwhelms incoming signals, so it cannot reliably listen to the channel at the same time.==
 #### 3) Network Layer
-This is the **“where”** of the communication, it is responsible for delivery of individual packets from the source to the destination host. It sends data grams to the Link layer:
+This is the **“where”** of the communication, it is responsible for delivery from the **source to the destination** host. It handles logical addressing, routing, forwarding, fragmentation, and internetworking.
 
-   - [[#IP (Internet Protocol)|IP Address]]: every device gets a logical address, ex- 192.168.1.10 
-   - **Forwarding**: 
-   - **Routing**: When a packet arrives, the router sees the most matching path and forwards there. 
-   - **Distance Vector**: 
-   - **Link State/OSPF**: 
-   - **Router Hoping**: The way packets move from one place to another is by jumping through different routers. They decide this using something called the "forwarding table"
-   - **ARP**: 
-   - **NAT** (Network Address Translation): is a networking technique used by routers to modify IP addresses while data is in transit. It allows multiple devices within a private local network to share a single, publicly routable IP address when accessing the internet. It was primarily designed for the IPv4 technology
+The core responsibilities for it are:
 
-==A hop is just: Router A sends packet to Router B over **some physical communication link**.==
+	1. Logical Addressing (IP) - IP addresses uniquely identify devices on a network at the logical level. They allow routers to route packets between different networks.
+	2. Routing - deides which path to take, it runs algorithms like Distance Vectors, Link State, OSPF, RIP, and BGP to deicde this.
+	3. Forwarding - is local, it recevies the packet, checks the forwarding table and sends the packet to the next loop
+	4. Fragmentation - is the process of dividing a large IP packet into smaller fragments when the next network link supports a smaller maximum transmission unit (MTU).
+	5. Congestion Awareness`
+ 
+**NAT** (Network Address Translation): is a networking technique used by routers to modify IP addresses while data is in transit. It allows multiple devices within a private local network to share a single, publicly routable IP address when accessing the internet. It was primarily designed for the IPv4 technology
+
+**Subnetting**
+
+##### *Routing Algorithms
+
+A hop is just: Router A sends packet to Router B over **some physical communication link**.
 #### 4) Transport Layer
 The Transport Layer provides **end-to-end communication between processes (applications)** running on different hosts. While the Network Layer moves packets between machines, the Transport Layer ensures all data in communicated. Its major responsibilities include:
 
