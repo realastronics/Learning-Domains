@@ -11,6 +11,18 @@
             "id": "1903e642a60cb0df",
             "type": "leaf",
             "state": {
+              "type": "image",
+              "state": {
+                "file": "Core-Concepts/Data-Communications-&-Computer-Netwoking/ipv4_packet_structure.webp"
+              },
+              "icon": "lucide-image",
+              "title": "ipv4_packet_structure"
+            }
+          },
+          {
+            "id": "e2a1cd8e98d248b0",
+            "type": "leaf",
+            "state": {
               "type": "markdown",
               "state": {
                 "file": "Core-Concepts/Data-Communications-&-Computer-Netwoking/Data-Communications-&-Networking.md",
@@ -45,7 +57,8 @@
               "title": "OSI Model Layers"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -219,11 +232,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "1903e642a60cb0df",
+  "active": "e2a1cd8e98d248b0",
   "lastOpenFiles": [
-    "Core-Concepts/Data-Communications-&-Computer-Netwoking/DCCN Mind Map.png",
-    "Core-Concepts/Data-Communications-&-Computer-Netwoking/OSI Model Layers.png",
+    "Core-Concepts/Data-Communications-&-Computer-Netwoking/ipv4_packet_structure.webp",
     "Core-Concepts/Data-Communications-&-Computer-Netwoking/Data-Communications-&-Networking.md",
+    "Core-Concepts/Data-Communications-&-Computer-Netwoking/OSI Model Layers.png",
+    "Core-Concepts/Data-Communications-&-Computer-Netwoking/Unconfirmed 47478.crdownload",
+    "Pasted image 20260626044844.png",
+    "Core-Concepts/Data-Communications-&-Computer-Netwoking/DCCN Mind Map.png",
     "To Do (summer break).md",
     "Artificial-Intelligence/Machine-Learning.md",
     "Core-Concepts/Operating-Systems.md",

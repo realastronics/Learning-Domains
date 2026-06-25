@@ -157,23 +157,39 @@ Medium Access Control decides which device gets permission to transmit on a shar
 
 ==Wi-Fi cannot use Collision Detection because while transmitting, a wireless device’s own signal overwhelms incoming signals, so it cannot reliably listen to the channel at the same time.==
 #### 3) Network Layer
-This is the **“where”** of the communication, it is responsible for delivery from the **source to the destination** host. It handles logical addressing, routing, forwarding, fragmentation, and internetworking.
+This is the **“where”** of the communication, it is responsible for delivery from the **source to the destination** host it does this across multiple interconnected networks, unlike Data Link Layer that just handles one-hop communication. 
 
 The core responsibilities for it are:
 
 	1. Logical Addressing (IP) - IP addresses uniquely identify devices on a network at the logical level. They allow routers to route packets between different networks.
 	2. Routing - deides which path to take, it runs algorithms like Distance Vectors, Link State, OSPF, RIP, and BGP to deicde this.
-	3. Forwarding - is local, it recevies the packet, checks the forwarding table and sends the packet to the next loop
+	3. Forwarding - is local, it recevies the packet, checks the forwarding table and sends the packet to the next hop
 	4. Fragmentation - is the process of dividing a large IP packet into smaller fragments when the next network link supports a smaller maximum transmission unit (MTU).
-	5. Congestion Awareness`
- 
-**NAT** (Network Address Translation): is a networking technique used by routers to modify IP addresses while data is in transit. It allows multiple devices within a private local network to share a single, publicly routable IP address when accessing the internet. It was primarily designed for the IPv4 technology
+	5. Congestion Awareness - This layer must handle situations where packet arriva rate exceeds orwarding capacity, causing latency and queue. Congestion may be managed using buffering, packet dropping, and congestion control mechanisms (part of TCP).
+##### IPv4 Datagram
+An IPv4 datagram is the packet format used by the Internet Protocol to transmit data across multiple interconnected networks. It consists of an IP header and payload, where the payload usually contains a TCP or UDP segment.
+ ![[ipv4_packet_structure.webp| 500]]
+##### ARP
 
-**Subnetting**
+NAT (Network Address Translation): is a networking technique used by routers to modify IP addresses while data is in transit. It allows multiple devices within a private local network to share a single, publicly routable IP address when accessing the internet. It was primarily designed for the IPv4 technology
+##### Subnetting
+##### Routing vs Forwarding
+Routing is a global decision making and runs relatively infrequently, like when topology changes, link fails, or router joins. It outputs a Routing/Forwarding Table. Forwarding is a per-packet local action, the moment router receives packet, the table is checked and the packet is send to the next hop.
+##### *Routing Algorithms*
 
-##### *Routing Algorithms
+1. **Distance Vector Algorithm** - each router knows only it's neighbors, so it periodically tells it's **distance to every destination**. This is a simple and easy algorithm, however suffers from slow convergence, routing loops, and count-to-infinity problems. 
+   
+   RIP (Routing Information Protocol) is a protocol implementing Distance Vector, with a max hop limit = 15
+   
+2. **Link State Routing** - every router builds a complete map of the network topology and computes the shortest path to all destinations using shortest path algorithms such as Dijkstra’s algorithm. It has fast convergence, better scalability and fewer loops, however suffers from higher memory and CPU usage.
+   
+   OSPF (Open Shortest Path First) - It is a Link State routing protocol that computes shortest paths using Dijkstra’s algorithm. Unlike RIP, it uses path cost instead of hop count and converges faster, making it more scalable for large networks.
+   
+1. **Path Vector** - routers advertise the complete path to a destination instead of only cost. This prevents routing loops and allows policy-based routing decisions.
+   
+   BGP (Broad Gateway Protocol) - It is the routing protocol used to exchange routing information between autonomous systems on the Internet. It is policy-based and enables global Internet routing.
 
-A hop is just: Router A sends packet to Router B over **some physical communication link**.
+==A hop is just: Router A sends packet to Router B over **some physical communication link**==.
 #### 4) Transport Layer
 The Transport Layer provides **end-to-end communication between processes (applications)** running on different hosts. While the Network Layer moves packets between machines, the Transport Layer ensures all data in communicated. Its major responsibilities include:
 
