@@ -111,13 +111,16 @@ To fix attenuation, amplifiers and repeaters are used.
 Is simply the unwanted signal interfering with desired signal, it's commonly caused by electrical interference, thermal noise, Wi-Fi interference.
 ##### e) SNR
 Is the measure of how useful is the signal compared to noise, the higher our SNR the more clarity we will have.
-$SNR = Signal Power / Noise Power$
+
+	$SNR = Signal Power / Noise Power$
+#### Transmission Media
+Transmission media is the physical path through which signals travel from sender to receiver. It is of two types: **guided media** (twisted pair, coaxial, fiber optic) where signals travel through cables, and **unguided media** (radio, microwave, infrared) where signals propagate through free space.
 #### 2) Data Link Layer
-The Data Link Layer provides **node-to-node delivery** over a single physical link. Its purpose is to convert an unreliable raw bit pipe into a usable communication channel between directly connected devices. 
+The Data Link Layer provides **node-to-node delivery** over a single physical link. Its purpose is to convert an unreliable raw bit pipe into a usable communication channel between directly connected devices. ex- communication between laptop-router, switch-server, router-router.
 
 The core problem is that physical channels are noisy, shared, and imperfect. Data Link Layer solves these problems using framing, addressing, error detection, flow control, and medium access control.
 ##### a) Framing
-Framing is the process of dividing a continuous bit stream into manageable units called **frames** by adding headers and trailers.  
+Framing is the process of dividing a continuous bit stream into manageable units called **frames** by adding **headers and trailers**.  
 
 Purpose:  
 - Define frame boundaries  
@@ -128,21 +131,29 @@ MAC (Media Access Control) address is a unique identifier assigned to a network 
 
 	IP decides -> which network; MAC decides -> which device on that network
 ##### c) Error Detection
+Bits commonly flip due to thermal noise, interference, attenuation
+
 	1. Parity
 	2. Checksum
-	3. CRC
+	3. CRC - most important, 
 	4. Hamming Code
 ##### d) Flow Control
-	1. Stop and Wait
-	2. ARQ
-	3. Go-Back-N
-	4. Selective Repeat
+This is there to prevent a faster sender from overwhelming a slow receiver, it limits the amount of data that can be sent. ARQ ensures reliable transmission using acknowledgements (ACK), timers, and retransmissions. 
+
+	1. Stop-and-Wait ARQ – send one frame and wait for ACK.
+	2. Go-Back-N ARQ – send multiple frames; if one fails, retransmit it and all subsequent frames.
+	3. Selective Repeat ARQ – retransmit only the lost/corrupted frames.
+	
 ##### e) Multiple Access
-	1. ALOHA
-	2. CSMA
-	3. CSMA/CD
-	4. CSMA/CA
-	5. Token Passing
+Medium Access Control decides which device gets permission to transmit on a shared communication medium.
+
+	1. ALOHA - simplest. transmit whenever, retry randomly. horrible efficiency.
+	2. CSMA - Carrier Sense Multiple Access. Listen-if idle, send-otherwise wait.
+	3. CSMA/CD - Collision Detection, used in old Ethernet Cables. Process was listen-transmit-detect-stop-backoff-retry.
+	4. CSMA/CA - Collision Avoidance, this is used in Wi-Fi. It's needed because wireless device cannot reliably listen while transmitting. It uses random backoff and RTS/CTS.
+	5. Token Passing - only node with token may transmit, token circulates randomly between transmitting devices.
+
+==Wi-Fi cannot use Collision Detection because while transmitting, a wireless device’s own signal overwhelms incoming signals, so it cannot reliably listen to the channel at the same time.==
 #### 3) Network Layer
 This is the **“where”** of the communication, it is responsible for delivery of individual packets from the source to the destination host. It sends data grams to the Link layer:
 
@@ -183,6 +194,14 @@ This is the highest layer, closest to the end-user, what applications like Chrom
 - DNS:
 - SMTP:
 - BitTorrent: The problem this addresses is of distributing huge files efficiently without central server overload. The way this works is breaking the data into pieces and splitting the load onto many clients, this scales much better.
+##### DHCP (Dynamic Host Configuration Protocol)
+DHCP automatically assigns network configuration to devices joining a network, including IP address, subnet mask, default gateway, and DNS server.
+
+DHCP follows DORA process:
+1. Discover
+2. Offer
+3. Request
+4. Acknowledge
 
 ### 3.2) TCP/IP Model
 
