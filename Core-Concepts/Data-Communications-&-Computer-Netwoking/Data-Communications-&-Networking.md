@@ -165,7 +165,7 @@ The core responsibilities for it are:
 	2. Routing - deides which path to take, it runs algorithms like Distance Vectors, Link State, OSPF, RIP, and BGP to deicde this.
 	3. Forwarding - is local, it recevies the packet, checks the forwarding table and sends the packet to the next hop
 	4. Fragmentation - is the process of dividing a large IP packet into smaller fragments when the next network link supports a smaller maximum transmission unit (MTU).
-	5. Congestion Awareness - This layer must handle situations where packet arriva rate exceeds orwarding capacity, causing latency and queue. Congestion may be managed using buffering, packet dropping, and congestion control mechanisms (part of TCP).
+	5. Congestion Awareness - This layer must handle situations where packet arriva rate exceeds orwarding capacity, causing latency and queue. Congestion may be managed using buffering, packet dropping, and congestion control mechanisms (part of TCP). Actual congestion is handled by the Transport Layer.
 ##### IPv4 Datagram
 An IPv4 datagram is the packet format used by the Internet Protocol to transmit data across multiple interconnected networks. It consists of an IP header and payload, where the payload usually contains a TCP or UDP segment.
  ![[ipv4_packet_structure.webp| 500]]
@@ -175,7 +175,8 @@ Its main goals are better IP utilization, reduced broadcast traffic, improved se
 
 IPv4 addresses are **32 bits** long and consist of two parts: the **Network Portion**, which identifies the subnet, and the **Host Portion**, which identifies a device within that subnet.
 
-**CIDR (Classless Inter-Domain Routing)** notation specifies how many bits belong to the network portion. For example, in `/24`, the first 24 bits are network bits and the remaining 8 bits are host bits.
+##### CIDR (Classless Inter-Domain Routing)
+This notation specifies how many bits belong to the network portion. For example, in `/24`, the first 24 bits are network bits and the remaining 8 bits are host bits.
 
 Example:  
 `/24 = 255.255.255.0`
@@ -193,6 +194,10 @@ Working:
 4. Sender stores the mapping in ARP cache for future use.
 
 If destination is outside the local subnet, ARP is used to obtain the MAC address of the default gateway instead of the final destination.
+##### Packet Traversal Across Routers (Hop-by-Hop Forwarding)
+When a packet travels across multiple routers, the **IP packet survives end-to-end**, but the **Data Link frame changes at every hop**. This is because MAC addresses are only meaningful on a **local link (one hop)**, while IP addresses identify the original source and final destination across the entire Internet.
+
+At each router, the incoming **frame header is stripped**, exposing the IP datagram inside. The router reads the **destination IP address**, consults its forwarding table to determine the next hop, decrements the **TTL**, recalculates the IP header checksum, and then encapsulates the same IP packet inside a **new frame** with new source and destination MAC addresses for the next link. Thus, **MAC addresses change hop-by-hop**, while **source and destination IP usually remain unchanged throughout the journey**.
 
 **NAT (Network Address Translation)**: is a networking technique used by routers to modify IP addresses while data is in transit. It allows multiple devices within a private local network to share a single, publicly routable IP address when accessing the internet. It was primarily designed for the IPv4 technology
 ##### Routing vs Forwarding
@@ -321,8 +326,11 @@ The header typically contains the source IP, destination IP, TTL, protocol type 
 IP provides **best-effort delivery**, meaning it attempts to deliver packets but guarantees **neither delivery, ordering, latency, nor duplicate prevention**. Packets may be dropped, delayed, duplicated, or arrive out of order; reliability is usually handled by higher-layer protocols like TCP. A major strength of IP is that it is **link-layer agnostic**—it works over Ethernet, Wi-Fi, fiber, 5G, satellite, etc., making the Internet highly interoperable.
 
 Important fields:
-- **TTL (Time To Live):** Prevents infinite routing loops by decrementing at every router; packet is discarded at 0.
+
+- **TTL (Time To Live):** Prevents infinite routing loops by decrementing at every router; packet is discarded at 0. It gives every packet a "life" and incase of a network error with self routing, the life would send. This saves endless memory occupancy.
+  
 - **Header Checksum:** Detects corruption in the IP header (not payload).
+  
 - **Fragmentation:** Splits large packets when the next link’s MTU is smaller; fragments are reassembled at the destination (less common in modern networks).
 
 There are two commonly used types of IPs used, IPv4 (32 bit) and IPv6 (128 bit).
