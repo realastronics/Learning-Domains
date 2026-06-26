@@ -131,7 +131,8 @@ MAC (Media Access Control) address is a unique identifier assigned to a network 
 
 	IP decides -> which network; MAC decides -> which device on that network
 ##### c) Error Detection
-Bits commonly flip due to thermal noise, interference, attenuation
+Bits commonly flip due to thermal noise, interference, attenuation, etc. 
+Covered in detail [[#5) Error Detection|here]]
 
 	1. Parity
 	2. Checksum
@@ -217,7 +218,7 @@ Routing is a global decision making and runs relatively infrequently, like when 
    
    OSPF (Open Shortest Path First) - It is a Link State routing protocol that computes shortest paths using Dijkstra’s algorithm. Unlike RIP, it uses path cost instead of hop count and converges faster, making it more scalable for large networks.
    
- - **Path Vector** - routers advertise the complete path to a destination instead of only cost. This prevents routing loops and allows policy-based routing decisions.
+ - **Path Vector** - routers advertise the **entire path (sequence of autonomous systems)** to a destination instead of just distance or topology, enabling **loop prevention** and **policy-based routing** across the Internet.
    
    BGP (Broad Gateway Protocol) - It is the routing protocol used to exchange routing information between autonomous systems on the Internet. It is policy-based and enables global Internet routing.
 
@@ -291,32 +292,34 @@ At the receiver, the reverse process happens: Decapsulation.
 | **Firewall**                     | A security device that monitors and filters network traffic.                | Network protection            | Layers 3–7 |
 | **NIC (Network Interface Card)** | Hardware that enables a device to connect to a network.                     | Network connectivity          | Layer 2    |
 ## 5) Error Detection
-### Parity Check:
+Physical channels are noisy due to attenuation, interference, thermal noise, and signal distortion, causing bits to flip during transmission. Error control techniques are used to **detect** or **correct** corrupted data.
 
-Even parity, the number of one’s must be even in the message, and for odd they must be odd. The idea is we add an additional number, (1 when we need to change the parity, 0 when the parity is matching) to the message.
+Error techniques are of two types:
+- **Error Detection** → detects if corruption happened (Parity, Checksum, CRC)
+- **Error Correction** → detects and fixes errors (Hamming Code)
+Errors are commonly:
+- **Single-bit error** → only one bit changes
+- **Burst error** → multiple consecutive bits change (more common in real networks)
+### 1. Parity Check:
+Parity check is the simplest error detection technique where an extra bit called the **parity bit** is added to the data to make the total number of 1s either even or odd.  
 
-ex - in the number 110010, the odd parity bit would be 0 since the number of 1’s present is already odd, and if we were asking the event parity bit that would be 1.
+Types:  
+- **Even Parity** → total number of 1s must be even, ex- 110110 will have an even parity, since it has four number of 1s.
+- **Odd Parity** → total number of 1s must be odd
 
-The main flaw with parity bit check is if two bits flip in an even parity bit check we would never know.
-
-### Checksum
-
+However this check is very limited as any if two bits flip the error goes undetected.
+### 2. Checksum
 You break data into equal chunks **add them all up**, take the **complement** (flip all bits), and send that complement as the checksum. The receiver adds everything including the checksum — if the result is all 1s, no error.
 
-(when adding binary strings and you see 1+1/a carry, you wrap it around and add to the result, like 1+1 = 10, you retain the 0 at the origional place and add the one to the last place)
-
-add image
-
-### Cyclic Redundancy Check
-
+(when adding binary strings and you see 1+1/a carry, you wrap it around and add to the result, like 1+1 = 10, you retain the 0 at the original place and add the one to the last place)
+### 3. Cyclic Redundancy Check
 This is the most powerful error *detector*. It's based on **binary division** — specifically, division using **XOR** (no carries, no borrows — just XOR each bit).
-
-#### The concept first:
-
+#### The concept:
 * Sender takes the data, **appends zeros** (as many zeros as degree of divisor), divides by a **generator/divisor**, and the **remainder** becomes the CRC
 * Sender transmits: **data + CRC**
 * Receiver divides received message by same divisor — if remainder is **0**, no error
-
+### 4. Hamming Code
+Hamming Code is an error correction technique that can detect and correct single-bit errors by inserting parity bits at positions that are powers of 2.
 ## 6) Protocol Deep Dives
 
 ### MAC Address
