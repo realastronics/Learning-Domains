@@ -155,6 +155,11 @@ Medium Access Control decides which device gets permission to transmit on a shar
 	4. CSMA/CA - Collision Avoidance, this is used in Wi-Fi. It's needed because wireless device cannot reliably listen while transmitting. It uses random backoff and RTS/CTS.
 	5. Token Passing - only node with token may transmit, token circulates randomly between transmitting devices.
 
+**CSMA Variants:**
+- **1-Persistent CSMA**: Station transmits immediately when channel becomes idle; high collision probability.
+- **Non-Persistent CSMA**: If channel is busy, station waits for a random time before retrying; reduces collisions but increases delay.
+- **p-Persistent CSMA**: In slotted channels, station transmits with probability `p` when channel becomes idle and waits with probability `1-p`.
+
 ==Wi-Fi cannot use Collision Detection because while transmitting, a wireless device’s own signal overwhelms incoming signals, so it cannot reliably listen to the channel at the same time.==
 #### 3) Network Layer
 This is the **“where”** of the communication, it is responsible for delivery from the **source to the destination** host it does this across multiple interconnected networks, unlike Data Link Layer that just handles one-hop communication. 
