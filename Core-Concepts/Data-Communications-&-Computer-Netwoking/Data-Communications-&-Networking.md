@@ -169,8 +169,22 @@ The core responsibilities for it are:
 ##### IPv4 Datagram
 An IPv4 datagram is the packet format used by the Internet Protocol to transmit data across multiple interconnected networks. It consists of an IP header and payload, where the payload usually contains a TCP or UDP segment.
  ![[ipv4_packet_structure.webp| 500]]
+##### Subnetting
+A **subnet (subnetwork)** is a group of devices that can communicate directly at Layer 2 without requiring a router. **Subnetting** is the process of dividing a large IP network into smaller logical subnetworks by borrowing bits from the host portion and converting them into additional network bits.
+Its main goals are better IP utilization, reduced broadcast traffic, improved security, and easier routing/network management.
+
+IPv4 addresses are **32 bits** long and consist of two parts: the **Network Portion**, which identifies the subnet, and the **Host Portion**, which identifies a device within that subnet.
+
+**CIDR (Classless Inter-Domain Routing)** notation specifies how many bits belong to the network portion. For example, in `/24`, the first 24 bits are network bits and the remaining 8 bits are host bits.
+
+Example:  
+`/24 = 255.255.255.0`
+
+Usable hosts in a subnet are calculated as:
+`2^n - 2`
+where `n` is the number of host bits. The `-2` accounts for the reserved **network address** and **broadcast address**.
 ##### ARP (Address Resolution Protocol)
-ARP maps an IPv4 address to a MAC address within a local network so data link layer frames can be delivered correctly. It acts as a bridge between the Network Layer (IP addressing) and Data Link Layer (MAC addressing).
+Is a protocol that maps an IPv4 address to a MAC address within a local network so data link layer frames can be delivered correctly. It acts as a bridge between the Network Layer (IP addressing) and Data Link Layer (MAC addressing).
 
 Working:
 1. Sender knows destination IP but not MAC.
@@ -179,28 +193,8 @@ Working:
 4. Sender stores the mapping in ARP cache for future use.
 
 If destination is outside the local subnet, ARP is used to obtain the MAC address of the default gateway instead of the final destination.
-NAT (Network Address Translation): is a networking technique used by routers to modify IP addresses while data is in transit. It allows multiple devices within a private local network to share a single, publicly routable IP address when accessing the internet. It was primarily designed for the IPv4 technology
-##### Subnetting
-Subnetting is the process of dividing a large IP network into smaller subnetworks (subnets) by borrowing bits from the host portion and using them as network bits.
 
-Purpose:
-- Better IP utilization
-- Reduced broadcast traffic
-- Improved security
-- Easier network management
-
-IPv4 addresses are 32 bits and consist of:
-- Network Portion
-- Host Portion
-
-CIDR notation such as `/24` indicates how many bits belong to the network.
-
-Subnet Mask Example:
-`/24 = 255.255.255.0`
-
-Usable hosts formula:
-`2^n - 2`
-where `n` is number of host bits.
+**NAT (Network Address Translation)**: is a networking technique used by routers to modify IP addresses while data is in transit. It allows multiple devices within a private local network to share a single, publicly routable IP address when accessing the internet. It was primarily designed for the IPv4 technology
 ##### Routing vs Forwarding
 Routing is a global decision making and runs relatively infrequently, like when topology changes, link fails, or router joins. It outputs a Routing/Forwarding Table. Forwarding is a per-packet local action, the moment router receives packet, the table is checked and the packet is send to the next hop.
 ##### *Routing Algorithms*
