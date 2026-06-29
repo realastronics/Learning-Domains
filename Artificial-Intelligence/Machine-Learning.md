@@ -19,13 +19,14 @@ A regression model predicts a **numeric value**. For example, a weather model 
 
 $f_{w,b}(x^{(i)})$ | The result of the model evaluation at $x^{(i)}$ parameterized by $w,b$: $f_{w,b}(x^{(i)}) = wx^{(i)}+b$. Where $w$ = weight, $b$ = bias of the model.
 
-- **Cost Function** - takes the prediction by the model $\hat{y}$  and compares it with the the expected output $y$ by subtracting them. This measure is called the **error = $(\hat{y}-y)^2$. 
+##### Cost Function (J)
+  Takes the prediction by the model $\hat{y}$  and compares it with the the expected output $y$ by subtracting them. This measure is called the **error = $(\hat{y}-y)^2$. 
   
   $1/2m\sum_{i=1}^{m}(\hat{y}-y)^2$ 
   
   This is the entire cost function used commonly in linear regression models, every model may have a different cost function based on the needs. Here m is the number of total examples in the dataset, this is called square-error cost function.
   
-  The purpose of the model is to find such values of $w$ and $b$ such that the cost function reduces.
+  The purpose of the model is to find such values of $w$ and $b$ such that the cost function reduces. Commonly we can ignore $b$ and then the **Cost Function (J) becomes a function of $w$ (the weight)**, and now we can simply focus on finding the value of $w$ for which the Cost Function in minimal.
 #### ii) Classification:
 Classification models output a value that states whether or not something belongs to a particular category. Ex: classification models are used to predict if an email is spam or if a photo contains a cat.
 
@@ -34,7 +35,7 @@ They are further of two major types:
 - **Multiclass Classification -**  output a value from a class that contains more than two values, for example, a model that can output either **`rain`**, **`hail`**, **`snow`**, or **`sleet`**.
 ### 2. Unsupervised learning
 Unsupervised learning aims to identify meaningful patterns in any given dataset without output labels being provided. They rely on a technique called **clustering** where similar data is organized into groups. **This is particularly useful when humans do not know the patterns in the data, and the model can help identify them.**
-#### => Clustering 
+#### Clustering 
 differs from classification as these categories aren’t defined by the user. Common examples of where clustering is used are: google news, DNA microarray. Other examples of unsupervised learning are anomaly detection and dimensionality reduction.
 ### 3. Reinforcement learning
 These models make predicts by being rewarded or penalized based on their actions performed within an environment.
