@@ -42,13 +42,12 @@ For networks there are two kind of **links** possible:
 
 ### 2.1) Topology of Networks
 Topology refers to the way in which a network is laid out physically, it’s a geometrical representation. The 4 main types are:
-
-!\[image.png](image.png)
+![[network-topologies.png|470]]
 
 1. **Mesh Topology** - every device is connected to every other device using a **point-to-point** link, **n(n-1)/2** is the total number of Full Duplex channels.
-2. Star Topology - It has a central dedicated device connected to all hosts with point-to-point connection, called “**The Hub”.**
-3. Bus Topolgy - It is a multipoint network with one long cable acts as a backbone.
-4. Ring Topology - Each device has dedicated point-to-point connection with only the two
+2. **Star Topology** - It has a central dedicated device connected to all hosts with point-to-point connection, called “**The Hub”.**
+3. **Bus Topology** - It is a multipoint network with one long cable acts as a backbone.
+4. **Ring Topology** - Each device has dedicated point-to-point connection with only the two
 devices on either side of it forming a loop
 
 ### 2.2) Types of Networks
@@ -82,17 +81,17 @@ This is where actual transmission happens, having devices like **Hub and Repeate
 #### a) Transmission Delay
 It is the measure of how long it takes to push all the bits into the wire. 
 
-	$TransmissionDelay = Packet Size ( in bits ) / Bandwidth ( bits/second )$`
+$TransmissionDelay = Packet Size ( in bits ) / Bandwidth ( bits/second )$`
 ##### b) Propagation Delay
 Is the measure of how long until the bits reach the physical destination.
 
-	$Propagation Delay = Distance / Propagation Speed$
+$Propagation Delay = Distance / Propagation Speed$
 
 The propagation speed depends on the material of the wire, like $copper = 2 * 10^8 m/s$
 
 ==for numerical questions, always remember to convert kbps, Mbps into bps.==
 
-	$1 Kbps = 10^3 bps, 1 Mbps = 10^6 bps$
+$1 Kbps = 10^3 bps, 1 Mbps = 10^6 bps$
 ##### c) Attenuation
 Is the measure of loss of signal power during travel. 
 

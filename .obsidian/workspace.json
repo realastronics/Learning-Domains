@@ -93,8 +93,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "989493f5aa1001c6",
@@ -212,14 +211,17 @@
   },
   "active": "aa54b2c8a6de2518",
   "lastOpenFiles": [
-    "Core-Concepts/Data-Structures-&-Algo/Data-Strucutres.md",
-    "Core-Concepts/Data-Structures-&-Algo/Algorithms.md",
-    "Core-Concepts/Data-Communications-&-Computer-Netwoking/Data-Communications-&-Networking.md",
-    "Artificial-Intelligence/Machine-Learning.md",
-    "Artificial-Intelligence/Natural-Language-Processing.md",
+    "Core-Concepts/Data-Communications-&-Computer-Netwoking/network-topologies.png",
+    "Core-Concepts/Data-Communications-&-Computer-Netwoking/Unconfirmed 411092.crdownload",
+    "Core-Concepts/Data-Communications-&-Computer-Netwoking/DCCN Mind Map.png",
     "Core-Concepts/Data-Communications-&-Computer-Netwoking/ipv4_packet_structure.webp",
     "Core-Concepts/Data-Communications-&-Computer-Netwoking/OSI Model Layers.png",
-    "Core-Concepts/Data-Communications-&-Computer-Netwoking/DCCN Mind Map.png",
+    "Core-Concepts/Data-Communications-&-Computer-Netwoking/Data-Communications-&-Networking.md",
+    "Untitled.md",
+    "Core-Concepts/Data-Structures-&-Algo/Data-Strucutres.md",
+    "Core-Concepts/Data-Structures-&-Algo/Algorithms.md",
+    "Artificial-Intelligence/Machine-Learning.md",
+    "Artificial-Intelligence/Natural-Language-Processing.md",
     "To Do (summer break).md",
     "Core-Concepts/Data-Communications-&-Computer-Netwoking/Unconfirmed 47478.crdownload",
     "Pasted image 20260626044844.png",
