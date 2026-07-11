@@ -130,7 +130,7 @@ Covered in detail [[#5) Error Detection|here]]
 	3. CRC - most important, 
 	4. Hamming Code
 ##### d) Flow Control
-This is there to prevent a faster sender from overwhelming a slow receiver, it limits the amount of data that can be sent. ARQ is a family of protocols used to ensures reliable transmission using acknowledgements (ACK), timers, and retransmissions. 
+This is there to prevent a faster sender from overwhelming a slow receiver, it limits the amount of data that can be sent. **ARQ (Automatic Repeat Request)** is a family of protocols used to ensures reliable transmission using acknowledgements (ACK), timers, and retransmissions. 
 
 ARQ works on a three 3 step idea, sender sends fame -> receiver sends ACK -> if ACK not received before timeout, resend.
 
@@ -140,18 +140,35 @@ ARQ works on a three 3 step idea, sender sends fame -> receiver sends ACK -> if 
 ##### e) Multiple Access
 Medium Access Control decides which device gets permission to transmit on a shared communication medium.
 
-	1. ALOHA - simplest. transmit whenever, retry randomly. horrible efficiency.
-	2. CSMA - Carrier Sense Multiple Access. Listen-if idle, send-otherwise wait.
-	3. CSMA/CD - Collision Detection, used in old Ethernet Cables. Process was listen-transmit-detect-stop-backoff-retry.
-	4. CSMA/CA - Collision Avoidance, this is used in Wi-Fi. It's needed because wireless device cannot reliably listen while transmitting. It uses random backoff and RTS/CTS.
-	5. Token Passing - only node with token may transmit, token circulates randomly between transmitting devices.
+**Random Access:**
+1. ALOHA - simplest. transmit whenever, retry randomly. horrible efficiency.
+2. CSMA - Carrier Sense Multiple Access. Listen-if idle, send-otherwise wait.
+3. CSMA/CD - Collision Detection, used in old Ethernet Cables. Process was listen-transmit-detect-stop-backoff-retry.
+4. CSMA/CA - Collision Avoidance, this is used in Wi-Fi. It's needed because wireless device cannot reliably listen while transmitting. It uses random backoff and RTS/CTS.
+5. CSMA Variants:
+	1. 1-Persistent CSMA: Station transmits immediately when channel becomes idle; high collision probability.
+	2. Non-Persistent CSMA: If channel is busy, station waits for a random time before retrying; reduces collisions but increases delay.
+	3. p-Persistent CSMA: In slotted channels, station transmits with probability p when channel becomes idle and waits with probability 1-p.
 
-**CSMA Variants:**
-- **1-Persistent CSMA**: Station transmits immediately when channel becomes idle; high collision probability.
-- **Non-Persistent CSMA**: If channel is busy, station waits for a random time before retrying; reduces collisions but increases delay.
-- **p-Persistent CSMA**: In slotted channels, station transmits with probability `p` when channel becomes idle and waits with probability `1-p`.
+**Controlled Access:**
+Token Passing - only node with token may transmit, token circulates randomly between transmitting devices.
+
+###### Channelization
+- **FDMA (Frequency Division Multiple Access)** – Divides the communication channel into separate **frequency bands**, allowing multiple users to transmit simultaneously on different frequencies.
+- **TDMA (Time Division Multiple Access)** – Allows users to share the same frequency by assigning each user a dedicated **time slot** for transmission.
+- **CDMA (Code Division Multiple Access)** – Allows all users to transmit simultaneously on the same frequency and time by assigning each user a unique **orthogonal code** that separates their signals mathematically.
 
 ==Wi-Fi cannot use Collision Detection because while transmitting, a wireless device’s own signal overwhelms incoming signals, so it cannot reliably listen to the channel at the same time.==
+##### ARP (Address Resolution Protocol)
+Is a protocol that maps an IPv4 address to a MAC address within a local network so data link layer frames can be delivered correctly. It acts as a bridge between the Network Layer (IP addressing) and Data Link Layer (MAC addressing).
+
+Working:
+1. Sender knows destination IP but not MAC.
+2. Sender broadcasts ARP request asking “Who has this IP?”
+3. Target device replies with its MAC address.
+4. Sender stores the mapping in ARP cache for future use.
+
+If destination is outside the local subnet, ARP is used to obtain the MAC address of the default gateway instead of the final destination.
 #### 3.1.3) Network Layer
 This is the **“where”** of the communication, it is responsible for delivery from the **source to the destination** host it does this across multiple interconnected networks, unlike Data Link Layer that just handles one-hop communication. 
 
@@ -166,7 +183,7 @@ The core responsibilities for it are:
 An IPv4 datagram is the packet format used by the Internet Protocol to transmit data across multiple interconnected networks. It consists of an IP header and payload, where the payload usually contains a TCP or UDP segment.
  ![[ipv4_packet_structure.webp| 500]]
 ##### Subnetting
-A **subnet (subnetwork)** is a group of devices that can communicate directly at Layer 2 without requiring a router. **Subnetting** is the process of dividing a large IP network into smaller logical subnetworks by borrowing bits from the host portion and converting them into additional network bits.
+A **subnet (subnetwork)** is a group of devices that can communicate directly at Layer 2 (Data Link Layer) without requiring a router. **Subnetting** is the process of dividing a large IP network into smaller logical subnetworks by borrowing bits from the host portion and converting them into additional network bits.
 Its main goals are better IP utilization, reduced broadcast traffic, improved security, and easier routing/network management.
 
 IPv4 addresses are **32 bits** long and consist of two parts: the **Network Portion**, which identifies the subnet, and the **Host Portion**, which identifies a device within that subnet.
@@ -179,22 +196,13 @@ Example:
 Usable hosts in a subnet are calculated as:
 `2^n - 2`
 where `n` is the number of host bits. The `-2` accounts for the reserved **network address** and **broadcast address**.
-##### ARP (Address Resolution Protocol)
-Is a protocol that maps an IPv4 address to a MAC address within a local network so data link layer frames can be delivered correctly. It acts as a bridge between the Network Layer (IP addressing) and Data Link Layer (MAC addressing).
-
-Working:
-1. Sender knows destination IP but not MAC.
-2. Sender broadcasts ARP request asking “Who has this IP?”
-3. Target device replies with its MAC address.
-4. Sender stores the mapping in ARP cache for future use.
-
-If destination is outside the local subnet, ARP is used to obtain the MAC address of the default gateway instead of the final destination.
 ##### Packet Traversal Across Routers (Hop-by-Hop Forwarding)
 When a packet travels across multiple routers, the **IP packet survives end-to-end**, but the **Data Link frame changes at every hop**. This is because MAC addresses are only meaningful on a **local link (one hop)**, while IP addresses identify the original source and final destination across the entire Internet.
 
 At each router, the incoming **frame header is stripped**, exposing the IP datagram inside. The router reads the **destination IP address**, consults its forwarding table to determine the next hop, decrements the **TTL**, recalculates the IP header checksum, and then encapsulates the same IP packet inside a **new frame** with new source and destination MAC addresses for the next link. Thus, **MAC addresses change hop-by-hop**, while **source and destination IP usually remain unchanged throughout the journey**.
 
-**NAT (Network Address Translation)**: is a networking technique used by routers to modify IP addresses while data is in transit. It allows multiple devices within a private local network to share a single, publicly routable IP address when accessing the internet. It was primarily designed for the IPv4 technology
+##### NAT (Network Address Translation): 
+is a networking technique used by routers to modify IP addresses while data is in transit. It allows multiple devices within a private local network to share a single, publicly routable IP address when accessing the internet. It was primarily designed for the IPv4 technology
 ##### Routing vs Forwarding
 Routing is a global decision making and runs relatively infrequently, like when topology changes, link fails, or router joins. It outputs a Routing/Forwarding Table. Forwarding is a per-packet local action, the moment router receives packet, the table is checked and the packet is send to the next hop.
 ##### *Routing Algorithms*
@@ -283,7 +291,7 @@ Error techniques are of two types:
 Errors are commonly:
 - **Single-bit error** → only one bit changes
 - **Burst error** → multiple consecutive bits change (more common in real networks)
-### 1. Parity Check:
+### 5.1 Parity Check:
 Parity check is the simplest error detection technique where an extra bit called the **parity bit** is added to the data to make the total number of 1s either even or odd.  
 
 Types:  
@@ -291,17 +299,17 @@ Types:
 - **Odd Parity** → total number of 1s must be odd
 
 However this check is very limited as any if two bits flip the error goes undetected.
-### 2. Checksum
+### 5.2 Checksum
 You break data into equal chunks **add them all up**, take the **complement** (flip all bits), and send that complement as the checksum. The receiver adds everything including the checksum — if the result is all 1s, no error.
 
 (when adding binary strings and you see 1+1/a carry, you wrap it around and add to the result, like 1+1 = 10, you retain the 0 at the original place and add the one to the last place)
-### 3. Cyclic Redundancy Check
+### 5.3 Cyclic Redundancy Check
 This is the most powerful error *detector*. It's based on **binary division** — specifically, division using **XOR** (no carries, no borrows — just XOR each bit).
 #### The concept:
 * Sender takes the data, **appends zeros** (as many zeros as degree of divisor), divides by a **generator/divisor**, and the **remainder** becomes the CRC
 * Sender transmits: **data + CRC**
 * Receiver divides received message by same divisor — if remainder is **0**, no error
-### 4. Hamming Code
+### 5.4 Hamming Code
 Hamming Code is an error correction technique that can detect and correct single-bit errors by inserting parity bits at positions that are powers of 2.
 ## 6) Protocol Deep Dives
 
