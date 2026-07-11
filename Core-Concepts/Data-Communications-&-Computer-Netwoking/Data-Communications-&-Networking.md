@@ -116,12 +116,12 @@ Framing is the process of dividing a continuous bit stream into manageable units
 
 Purpose:  
 - Define frame boundaries  
-- Carry MAC addresses  
+- Carry [[#MAC Address|MAC addresses]]  
 - Add error detection information
 ##### b) Addressing (MAC)
 MAC (Media Access Control) address is a unique identifier assigned to a network interface for communication on a local network.  
 
-	IP decides -> which network; MAC decides -> which device on that network
+`IP decides -> which network; MAC decides -> which device on that network`
 ##### c) Error Detection
 Bits commonly flip due to thermal noise, interference, attenuation, etc. 
 Covered in detail [[#5) Error Detection|here]]
