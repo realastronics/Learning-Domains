@@ -120,7 +120,6 @@ Purpose:
 - Add error detection information
 ##### b) Addressing (MAC)
 MAC (Media Access Control) address is a unique identifier assigned to a network interface for communication on a local network.  
-
 `IP decides -> which network; MAC decides -> which device on that network`
 ##### c) Error Detection
 Bits commonly flip due to thermal noise, interference, attenuation, etc. 
@@ -131,14 +130,13 @@ Covered in detail [[#5) Error Detection|here]]
 	3. CRC - most important, 
 	4. Hamming Code
 ##### d) Flow Control
-This is there to prevent a faster sender from overwhelming a slow receiver, it limits the amount of data that can be sent. ARQ is  a family of protocols used to ensures reliable transmission using acknowledgements (ACK), timers, and retransmissions. 
+This is there to prevent a faster sender from overwhelming a slow receiver, it limits the amount of data that can be sent. ARQ is a family of protocols used to ensures reliable transmission using acknowledgements (ACK), timers, and retransmissions. 
 
 ARQ works on a three 3 step idea, sender sends fame -> receiver sends ACK -> if ACK not received before timeout, resend.
 
 	1. Stop-and-Wait ARQ – send one frame and wait for ACK.
 	2. Go-Back-N ARQ – send multiple frames; if one fails, retransmit it and all subsequent frames.
 	3. Selective Repeat ARQ – retransmit only the lost/corrupted frames.
-	
 ##### e) Multiple Access
 Medium Access Control decides which device gets permission to transmit on a shared communication medium.
 
