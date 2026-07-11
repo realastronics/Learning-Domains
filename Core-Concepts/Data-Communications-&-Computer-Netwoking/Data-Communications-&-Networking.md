@@ -11,7 +11,7 @@
 #### Core Issues:
 The key issue with networking is physical constrains like Bandwidth limit, the speed of light, congestion, noise and failures.
 #### Byte Stream Model:
-is a communication abstraction where the network treats **data as a continuous, unstructured sequence of bytes** rather than distinct messages. It acts as a continuous conduit between the sender and receiver, leaving the application responsible for packaging and interpreting the data.
+The byte stream model treats **data as a continuous, unstructured sequence of bytes.** While it is simple and universally applicable, it **lacks built-in awareness of boundaries**. This requires applications to manage framing, handle multithreaded stream access, and navigate complex character encoding boundaries manually. 
 #### What is the internet?
 The Internet is a globally distributed *packet-switched system* connecting billions of end systems through routers, links, and protocols. Data is broken into packets, routed hop-by-hop across multiple autonomous networks using IP, while higher-level protocols like TCP and HTTP provide reliable application communication.
 #### Packet Switching
