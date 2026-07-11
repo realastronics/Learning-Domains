@@ -22,18 +22,14 @@ In **circuit switching**, the communication channel becomes reserved (physically
 
 Data Communication is the exchange of data between two devices via some transmission medium with a **protocol,** that is a set of rules that govern data communications. It represents an
 agreement between the communicating devices.
-
 #### Communication b/w two devices can be:
 
 1. **Simplex** - unidirectional communication only, one receiver and one sender, ex: Keyboard and traditional monitor. (When you "click" something in a program, it is usually a **mouse** sending data about a screen position, not the monitor itself. The computer uses the mouse's input to determine what object is being clicked and acts accordingly.)
 2. **Half Duplex** - each station can both transmit and receive, but not at the same
 time, ex: one way lane, walkie talkie
 3. **Full Duplex** - both stations can transmit and receive simultaneously, ex: telephone
-
 ## 2\) Networks:
-
 A network is the interconnection of a set of devices capable of communication. A device can be a host/end-system (like Computer) or a connecting device like Modem.
-
 #### A network has must be able to meet these 3 criteria:
 
 1. **Performance** - is usually measured in by transit time, response time, **throughput** (bits/second going through the network), and **delay** (duration it takes a bit to travel through the network).
@@ -46,7 +42,6 @@ For networks there are two kind of **links** possible:
 2. **multipoint** - link is shared by more than two devices, if all users are able to share it simultaneously then it’s a spatially shared connection, and if the users need to take turns then it’s a timeshared connection.
 
 ### 2.1) Topology of Networks
-
 Topology refers to the way in which a network is laid out physically, it’s a geometrical representation. The 4 main types are:
 
 !\[image.png](image.png)
@@ -58,7 +53,6 @@ Topology refers to the way in which a network is laid out physically, it’s a g
 devices on either side of it forming a loop
 
 ### 2.2) Types of Networks
-
 Networks can be classified into types based on the area of their coverage:
 
 | Type                       | Full Form / Meaning       | Range / Structure             | Example                     |
@@ -180,7 +174,6 @@ A **subnet (subnetwork)** is a group of devices that can communicate directly at
 Its main goals are better IP utilization, reduced broadcast traffic, improved security, and easier routing/network management.
 
 IPv4 addresses are **32 bits** long and consist of two parts: the **Network Portion**, which identifies the subnet, and the **Host Portion**, which identifies a device within that subnet.
-
 ##### CIDR (Classless Inter-Domain Routing)
 This notation specifies how many bits belong to the network portion. For example, in `/24`, the first 24 bits are network bits and the remaining 8 bits are host bits.
 
@@ -209,7 +202,6 @@ At each router, the incoming **frame header is stripped**, exposing the IP datag
 ##### Routing vs Forwarding
 Routing is a global decision making and runs relatively infrequently, like when topology changes, link fails, or router joins. It outputs a Routing/Forwarding Table. Forwarding is a per-packet local action, the moment router receives packet, the table is checked and the packet is send to the next hop.
 ##### *Routing Algorithms*
-
 - **Distance Vector Algorithm** - each router knows only it's neighbors, so it periodically tells it's **distance to every destination**. This is a simple and easy algorithm, however suffers from slow convergence, routing loops, and count-to-infinity problems. 
    
    RIP (Routing Information Protocol) is a protocol implementing Distance Vector, with a max hop limit = 15
@@ -233,16 +225,13 @@ The Transport Layer provides **end-to-end communication between processes (appli
 - **Multiplexing / Port Numbers:** Allows multiple applications (browser, Discord, game) to use the network simultaneously.
 
 Two main transport protocols:
-
 1. **TCP (Transmission Control Protocol)**: is a **connection-oriented, reliable byte-stream protocol**. It guarantees reliable and ordered delivery, retransmission of lost packets, & flow and congestion control.
    
 2. **UDP (User Datagram Protocol)**: UDP is **connectionless and lightweight**. It provides no reliability, no ordering guarantees, no retransmissions, and minimal overhead. UDP is used when **low latency matters more than perfect delivery**, such as: gaming, voice calls, and DNS
 #### 5) Session Layer
 This layer controls the session establishment, maintenance, synchronization and termination,
-
 #### 6) Presentation Layer
 It has 3 main jobs, **Translation, Encryption, and Compression.** These make sure the host systems are on a uniform and fast layer for all communication
-
 #### 7) Application Layer 
 This is the highest layer, closest to the end-user, what applications like Chrome, Spotify use to access the network. It defines the protocols for specific services such as:
 
@@ -258,7 +247,6 @@ DHCP follows DORA process:
 2. Offer
 3. Request
 4. Acknowledge
-
 ### 3.2) TCP/IP Model
 
 
@@ -276,7 +264,6 @@ Application Data
 → Bits on wire
 
 At the receiver, the reverse process happens: Decapsulation.
-
 ## 4\) Devices
 
 | Device                           | One-Line Definition                                                         | Main Function                 | OSI Layer  |
