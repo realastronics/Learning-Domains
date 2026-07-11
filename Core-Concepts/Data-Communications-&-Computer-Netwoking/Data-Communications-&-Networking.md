@@ -19,7 +19,6 @@ Instead of reserving a dedicated communication path, data is broken into self co
 
 In **circuit switching**, the communication channel becomes reserved (physically) and there is only one direct path between the sender and receiver, this is a faster method but much more resource intensive and inefficient, it will waste the bandwidth during a low traffic time. ex- Telephone Network, ISDN 
 ## 1\) Communication
-
 Data Communication is the exchange of data between two devices via some transmission medium with a **protocol,** that is a set of rules that govern data communications. It represents an
 agreement between the communicating devices.
 #### Communication b/w two devices can be:
@@ -78,7 +77,7 @@ Application → Presentation → Session → Transport → Network → Data Link
 ![[OSI Model Layers.png|350]]
 #### Explaining the 7 layers of the OSI Model:
 
-#### 1) Physical Layer 
+#### 3.1.1) Physical Layer 
 This is where actual transmission happens, having devices like **Hub and Repeater**. It has **bits being sent physically**. Signal can be electrical, optical or radio waves, this is used to define voltage, frequency, connectors. Ex: Fiber Optic, Ethernet, Wi-fi Radio Waves.
 #### a) Transmission Delay
 It is the measure of how long it takes to push all the bits into the wire. 
@@ -109,7 +108,7 @@ Is the measure of how useful is the signal compared to noise, the higher our SNR
 	$SNR = Signal Power / Noise Power$
 #### Transmission Media
 Transmission media is the physical path through which signals travel from sender to receiver. It is of two types: **guided media** (twisted pair, coaxial, fiber optic) where signals travel through cables, and **unguided media** (radio, microwave, infrared) where signals propagate through free space.
-#### 2) Data Link Layer
+#### 3.1.2) Data Link Layer
 The Data Link Layer provides **node-to-node delivery** over a single physical link. Its purpose is to convert an unreliable raw bit pipe into a usable communication channel between directly connected devices. ex- communication between laptop-router, switch-server, router-router.
 
 The core problem is that physical channels are noisy, shared, and imperfect. Data Link Layer solves these problems using framing, addressing, error detection, flow control, and medium access control.
@@ -156,7 +155,7 @@ Medium Access Control decides which device gets permission to transmit on a shar
 - **p-Persistent CSMA**: In slotted channels, station transmits with probability `p` when channel becomes idle and waits with probability `1-p`.
 
 ==Wi-Fi cannot use Collision Detection because while transmitting, a wireless device’s own signal overwhelms incoming signals, so it cannot reliably listen to the channel at the same time.==
-#### 3) Network Layer
+#### 3.1.3) Network Layer
 This is the **“where”** of the communication, it is responsible for delivery from the **source to the destination** host it does this across multiple interconnected networks, unlike Data Link Layer that just handles one-hop communication. 
 
 The core responsibilities for it are:
@@ -215,7 +214,7 @@ Routing is a global decision making and runs relatively infrequently, like when 
    BGP (Broad Gateway Protocol) - It is the routing protocol used to exchange routing information between autonomous systems on the Internet. It is policy-based and enables global Internet routing.
 
 ==A hop is just: Router A sends packet to Router B over **some physical communication link**==.
-#### 4) Transport Layer
+#### 3.1.4) Transport Layer
 The Transport Layer provides **end-to-end communication between processes (applications)** running on different hosts. While the Network Layer moves packets between machines, the Transport Layer ensures all data in communicated. Its major responsibilities include:
 
 - **Segmentation:** Large application data is broken into smaller segments for transmission.
@@ -228,11 +227,11 @@ Two main transport protocols:
 1. **TCP (Transmission Control Protocol)**: is a **connection-oriented, reliable byte-stream protocol**. It guarantees reliable and ordered delivery, retransmission of lost packets, & flow and congestion control.
    
 2. **UDP (User Datagram Protocol)**: UDP is **connectionless and lightweight**. It provides no reliability, no ordering guarantees, no retransmissions, and minimal overhead. UDP is used when **low latency matters more than perfect delivery**, such as: gaming, voice calls, and DNS
-#### 5) Session Layer
+#### 3.1.5) Session Layer
 This layer controls the session establishment, maintenance, synchronization and termination,
-#### 6) Presentation Layer
+#### 3.1.6) Presentation Layer
 It has 3 main jobs, **Translation, Encryption, and Compression.** These make sure the host systems are on a uniform and fast layer for all communication
-#### 7) Application Layer 
+#### 3.1.7) Application Layer 
 This is the highest layer, closest to the end-user, what applications like Chrome, Spotify use to access the network. It defines the protocols for specific services such as:
 
 - HTTP: a client opens a connection to a server and sends requests, like **GET /index.html** request, which asks for the page. The server responds to the request with a numeric code (200, 400) about the status of the request and the linking information. It is all ascii text, used by RST APIs, MCPs. 
