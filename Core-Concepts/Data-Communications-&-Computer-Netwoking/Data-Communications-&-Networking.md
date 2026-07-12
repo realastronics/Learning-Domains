@@ -153,7 +153,7 @@ Medium Access Control decides which device gets permission to transmit on a shar
 **Controlled Access:**
 Token Passing - only node with token may transmit, token circulates randomly between transmitting devices.
 
-###### Channelization
+**Channelization**
 - **FDMA (Frequency Division Multiple Access)** – Divides the communication channel into separate **frequency bands**, allowing multiple users to transmit simultaneously on different frequencies.
 - **TDMA (Time Division Multiple Access)** – Allows users to share the same frequency by assigning each user a dedicated **time slot** for transmission.
 - **CDMA (Code Division Multiple Access)** – Allows all users to transmit simultaneously on the same frequency and time by assigning each user a unique **orthogonal code** that separates their signals mathematically.
