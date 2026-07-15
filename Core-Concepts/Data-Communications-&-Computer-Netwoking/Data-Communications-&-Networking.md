@@ -333,6 +333,8 @@ Important fields:
 - **Fragmentation:** Splits large packets when the next link’s MTU is smaller; fragments are reassembled at the destination (less common in modern networks).
 
 There are two commonly used types of IPs used, IPv4 (32 bit) and IPv6 (128 bit).
+
+==If the internet were built using **Media Access Control (MAC)** addresses instead of IP addresses for global routing, it would simply break. Because MAC addresses are flat and lack geographical or hierarchical structure, routers would have to test every single device on earth to find a destination, causing routing tables to explode and the internet to become instantly unscalable.==
 ### TCP (Transport Layer Protocol)
 TCP is used when **every byte matters**, like websites (HTTP/1, HTTP/2), databases, APIs, file transfer. Before sending data, TCP establishes a connection using a **3-way handshake** to ensure both sides can send and receive, and to synchronize sequence numbers. 
 
