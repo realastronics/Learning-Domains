@@ -181,6 +181,8 @@ The core responsibilities for it are:
 	5. Congestion Awareness - This layer must handle situations where packet arriva rate exceeds orwarding capacity, causing latency and queue. Congestion may be managed using buffering, packet dropping, and congestion control mechanisms (part of TCP). Actual congestion is handled by the Transport Layer.
 ##### IPv4 Datagram
 An IPv4 datagram is the packet format used by the Internet Protocol to transmit data across multiple interconnected networks. It consists of an IP header and payload, where the payload usually contains a TCP or UDP segment.
+
+The minimum size of IPv4 header is 20 bytes (since each layer must be 4 bytes) and maximum can be 60 bytes. Both the source IP and Destination IP are 4 bytes (32 bits) each. 
  ![[ipv4_packet_structure.webp| 500]]
 ##### Subnetting
 A **subnet (subnetwork)** is a group of devices that can communicate directly at Layer 2 (Data Link Layer) without requiring a router. **Subnetting** is the process of dividing a large IP network into smaller logical subnetworks by borrowing bits from the host portion and converting them into additional network bits.
@@ -325,11 +327,8 @@ The header typically contains the source IP, destination IP, TTL, protocol type 
 IP provides **best-effort delivery**, meaning it attempts to deliver packets but guarantees **neither delivery, ordering, latency, nor duplicate prevention**. Packets may be dropped, delayed, duplicated, or arrive out of order; reliability is usually handled by higher-layer protocols like TCP. A major strength of IP is that it is **link-layer agnostic**—it works over Ethernet, Wi-Fi, fiber, 5G, satellite, etc., making the Internet highly interoperable.
 
 Important fields:
-
 - **TTL (Time To Live):** Prevents infinite routing loops by decrementing at every router; packet is discarded at 0. It gives every packet a "life" and incase of a network error with self routing, the life would send. This saves endless memory occupancy.
-  
 - **Header Checksum:** Detects corruption in the IP header (not payload).
-  
 - **Fragmentation:** Splits large packets when the next link’s MTU is smaller; fragments are reassembled at the destination (less common in modern networks).
 
 There are two commonly used types of IPs used, IPv4 (32 bit) and IPv6 (128 bit).
