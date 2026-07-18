@@ -65,6 +65,39 @@ Networks can be classified into types based on the area of their coverage:
 ## 3\) Layers
 #### Layering Principle
 Networking is divided into layers where each layer solves a specific problem and provides services to the layer above. This enables abstraction, modularity, easier debugging, and interoperability across different hardware and protocols.
+#### Encapsulation
+Encapsulation is the process of wrapping application data with protocol-specific headers (and trailers) as it moves down the network stack. Each layer adds information required for communication with its corresponding layer on the receiving device.
+At the destination, the reverse process is called **Decapsulation**, where each layer removes its own header before passing the data to the layer above.
+
+                `Encapsulation`
+
+`Application        Data`
+        `↓`
+`Transport          Segment`
+        `↓`
+`Network            Datagram`
+        `↓`
+`Data Link          Frame`
+        `↓`
+`Physical           Bits`
+
+                `↓↓↓↓↓`
+
+             `Transmission`
+
+                `↑↑↑↑↑`
+
+             `Decapsulation`
+
+`Bits`
+        `↑`
+`Frame`
+        `↑`
+`Datagram`
+        `↑`
+`Segment`
+        `↑`
+`Data`
 ### 3.1) OSI Model
 The **Open Systems Interconnection (OSI)** model is a conceptual framework consisting of **7-layers**, defined by the ISO (International Standards Organization) in the 1970’s. 
 
@@ -343,9 +376,8 @@ There are two commonly used types of IPs used, IPv4 (32 bit) and IPv6 (128 bit).
 TCP is used when **every byte matters**, like websites (HTTP/1, HTTP/2), databases, APIs, file transfer. Before sending data, TCP establishes a connection using a **3-way handshake** to ensure both sides can send and receive, and to synchronize sequence numbers. 
 
 A 2-way handshake is insufficient because the server cannot know whether the client successfully received the server’s response. The third ACK confirms bidirectional readiness and synchronizes connection state.
-
-### PDU (Protocol Data Unit)
-A Protocol Data Unit (PDU) is ==the specific block of data transferred between communicating devices across a computer network==. Its exact structure and name change as it moves through each layer of the OSI or TCP/IP model, as each layer appends its own headers or trailers. 
+### Protocol Data Unit (PDU)
+A **Protocol Data Unit (PDU)** is the unit of data exchanged at a particular layer of the OSI or TCP/IP model. As data moves down the network stack, each layer encapsulates it by adding its own header (and sometimes a trailer), creating a new PDU specific to that layer.
 
 How PDU moves from the Browser to the bits:
 `Browser`
@@ -363,31 +395,35 @@ How PDU moves from the Browser to the bits:
 `↓`
 `Physical Layer`
 `= Bits`
-## 7) Real Packet Journey
+## Real Packet Journey
 
-1. Browser checks cache
-2. DNS resolves domain → IP
-3. OS determines route
-4. ARP finds router MAC
-5. Packet leaves machine
-6. Routers forward packet
-7. Connection established (TCP / QUIC)
-8. TLS handshake
-9. HTTP request
-10. Response returns
-11. Browser renders page
+1. User enters a URL in the browser.
+2. Browser checks cache for the requested resource.
+3. DNS resolves the domain name to an IP address.
+4. Operating System determines the best route.
+5. ARP resolves the next-hop MAC address (usually the default gateway).
+6. Data is encapsulated into a Frame and transmitted.
+7. Routers forward the packet across networks.
+8. Destination establishes a connection (TCP or QUIC).
+9. TLS handshake establishes encryption (HTTPS).
+10. HTTP request and response are exchanged.
+11. Browser receives the response, renders the webpage, and displays it to the user.
 
-DNS
-↓
-TCP
-↓
-TLS
-↓
-HTTP
-↓
-IP
-↓
-Ethernet/Wi-Fi
+`User enters URL`
+        `↓`
+`DNS Lookup`
+        `↓`
+`TCP Connection (or QUIC)`
+        `↓`
+`TLS Handshake (HTTPS)`
+        `↓`
+`HTTP Request`
+        `↓`
+`IP`
+        `↓`
+`Ethernet/Wi-Fi`
+        `↓`
+`Bits`
 
 This learning is being accompanies by practical expose to linux commands and lab experience, using oracle virtualbox VM on Ubuntu distro.
 
