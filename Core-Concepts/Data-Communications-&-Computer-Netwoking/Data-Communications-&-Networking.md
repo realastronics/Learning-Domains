@@ -315,6 +315,11 @@ This is the most powerful error *detector*. It's based on **binary division** �
 Hamming Code is an error correction technique that can detect and correct single-bit errors by inserting parity bits at positions that are powers of 2.
 ## 6) Protocol Deep Dives
 
+### Ethernet Cable vs Ethernet Protocol
+**Ethernet Cable** is the physical medium (e.g., Cat5e, Cat6, Cat7) that carries electrical signals between devices. It belongs to the **Physical Layer**.
+
+**Ethernet Protocol (IEEE 802.3)** is the set of rules governing communication over a wired LAN. It defines frame format, MAC addressing, error detection (CRC), and medium access (CSMA/CD). It belongs primarily to the **Data Link Layer**. 
+A cable without Ethernet is just a wire. Ethernet without a cable can even run over **fiber optics**.
 ### MAC Address
 Media Access Control (MAC) address is a link-layer hardware identifier used for communication within a local network. MAC identifies the specific device/interface on a local link. Switches use MAC addresses to forward Ethernet frames inside LANs. IP helps reach the correct network; MAC helps reach the correct device within that network.
 
@@ -371,6 +376,18 @@ How PDU moves from the Browser to the bits:
 9. HTTP request
 10. Response returns
 11. Browser renders page
+
+DNS
+↓
+TCP
+↓
+TLS
+↓
+HTTP
+↓
+IP
+↓
+Ethernet/Wi-Fi
 
 This learning is being accompanies by practical expose to linux commands and lab experience, using oracle virtualbox VM on Ubuntu distro.
 
