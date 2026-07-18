@@ -338,12 +338,49 @@ However this check is very limited as any if two bits flip the error goes undete
 You break data into equal chunks **add them all up**, take the **complement** (flip all bits), and send that complement as the checksum. The receiver adds everything including the checksum — if the result is all 1s, no error.
 
 (when adding binary strings and you see 1+1/a carry, you wrap it around and add to the result, like 1+1 = 10, you retain the 0 at the original place and add the one to the last place)
-### 5.3 Cyclic Redundancy Check
-This is the most powerful error *detector*. It's based on **binary division** — specifically, division using **XOR** (no carries, no borrows — just XOR each bit).
-#### The concept:
-* Sender takes the data, **appends zeros** (as many zeros as degree of divisor), divides by a **generator/divisor**, and the **remainder** becomes the CRC
-* Sender transmits: **data + CRC**
-* Receiver divides received message by same divisor — if remainder is **0**, no error
+### 5.3 Cyclic Redundancy Check (CRC)
+**Cyclic Redundancy Check (CRC)** detects transmission errors by performing **binary polynomial division using XOR instead of subtraction**.
+#### The Concept
+The sender and receiver agree on a fixed **generator (divisor)** beforehand.
+1. The sender appends **(generator length − 1)** zeros to the original data. These zeros act as placeholders for the CRC bits.
+2. The sender divides the modified data by the generator using **XOR division** (no carries or borrows).
+3. The **remainder** obtained from the division is called the **CRC**.
+4. The sender replaces the appended zeros with the CRC bits and transmits **Data + CRC**.
+5. The receiver divides the received message by the **same generator**.
+6. If the remainder is **0**, the message is assumed to be error-free. Otherwise, an error is detected.
+
+> **Key Idea:** The sender constructs the transmitted message so that it is **exactly divisible** by the agreed generator. If even a single bit changes during transmission, this divisibility is usually lost, resulting in a non-zero remainder.
+
+#### Example
+Suppose:
+
+Data = `101100`
+Generator = `1101`
+Generator length = **4**
+
+Step 1: Append **( G - 1 ) zeros:** (`4−1=3`)
+```
+101100000
+```
+Step 2: Divide using XOR.
+Suppose the remainder is:
+```
+101
+```
+Step 3: Replace the appended zeros with the remainder.
+```
+101100101
+```
+The transmitted message becomes:
+```
+Data + CRC = 101100101
+```
+At the receiver:
+```
+101100101 ÷ 1101
+```
+- Remainder = `000` → Accept the data.
+- Non-zero remainder → Error detected.
 ### 5.4 Hamming Code
 Hamming Code is an error correction technique that can detect and correct single-bit errors by inserting parity bits at positions that are powers of 2.
 ## 6) Protocol Deep Dives
@@ -380,21 +417,23 @@ A 2-way handshake is insufficient because the server cannot know whether the cli
 A **Protocol Data Unit (PDU)** is the unit of data exchanged at a particular layer of the OSI or TCP/IP model. As data moves down the network stack, each layer encapsulates it by adding its own header (and sometimes a trailer), creating a new PDU specific to that layer.
 
 How PDU moves from the Browser to the bits:
-`Browser`
-`↓`
-`HTTP Request (Application Data)`
-`↓`
-`TCP adds TCP Header`
-`= TCP Segment`
-`↓`
-`IP adds IP Header`
-`= IP Datagram`
-`↓`
-`Ethernet/Wi-Fi adds Frame Header + Trailer`
-`= Frame`
-`↓`
-`Physical Layer`
-`= Bits`
+```
+Browser
+↓
+HTTP Request (Application Data)
+↓
+TCP adds TCP Header
+= TCP Segment
+↓
+IP adds IP Header
+= IP Datagram
+↓
+Ethernet/Wi-Fi adds Frame Header + Trailer
+= Frame
+↓
+Physical Layer
+= Bits
+```
 ## Real Packet Journey
 
 1. User enters a URL in the browser.
@@ -409,22 +448,23 @@ How PDU moves from the Browser to the bits:
 10. HTTP request and response are exchanged.
 11. Browser receives the response, renders the webpage, and displays it to the user.
 
-`User enters URL`
-        `↓`
-`DNS Lookup`
-        `↓`
-`TCP Connection (or QUIC)`
-        `↓`
-`TLS Handshake (HTTPS)`
-        `↓`
-`HTTP Request`
-        `↓`
-`IP`
-        `↓`
-`Ethernet/Wi-Fi`
-        `↓`
-`Bits`
-
+```
+User enters URL
+        ↓
+DNS Lookup
+        ↓
+TCP Connection (or QUIC)
+        ↓
+TLS Handshake (HTTPS)
+        ↓
+HTTP Request
+        ↓
+IP
+        ↓
+Ethernet/Wi-Fi
+        ↓
+Bits
+```
 This learning is being accompanies by practical expose to linux commands and lab experience, using oracle virtualbox VM on Ubuntu distro.
 
 ![[DCCN Mind Map.png|700]]
