@@ -134,7 +134,7 @@ This is there to prevent a faster sender from overwhelming a slow receiver, it l
 
 ARQ works on a three 3 step idea, sender sends fame -> receiver sends ACK -> if ACK not received before timeout, resend.
 
-	1. Stop-and-Wait ARQ – send one frame and wait for ACK.
+	1. Stop-and-Wait ARQ – send one frame and wait for ACK, if no ack that means package lost, and re-transmit that one.
 	2. Go-Back-N ARQ – send multiple frames; if one fails, retransmit it and all subsequent frames.
 	3. Selective Repeat ARQ – retransmit only the lost/corrupted frames.
 ##### e) Multiple Access
@@ -338,6 +338,26 @@ There are two commonly used types of IPs used, IPv4 (32 bit) and IPv6 (128 bit).
 TCP is used when **every byte matters**, like websites (HTTP/1, HTTP/2), databases, APIs, file transfer. Before sending data, TCP establishes a connection using a **3-way handshake** to ensure both sides can send and receive, and to synchronize sequence numbers. 
 
 A 2-way handshake is insufficient because the server cannot know whether the client successfully received the server’s response. The third ACK confirms bidirectional readiness and synchronizes connection state.
+
+### PDU (Protocol Data Unit)
+A Protocol Data Unit (PDU) is ==the specific block of data transferred between communicating devices across a computer network==. Its exact structure and name change as it moves through each layer of the OSI or TCP/IP model, as each layer appends its own headers or trailers. 
+
+How PDU moves from the Browser to the bits:
+`Browser`
+`↓`
+`HTTP Request (Application Data)`
+`↓`
+`TCP adds TCP Header`
+`= TCP Segment`
+`↓`
+`IP adds IP Header`
+`= IP Datagram`
+`↓`
+`Ethernet/Wi-Fi adds Frame Header + Trailer`
+`= Frame`
+`↓`
+`Physical Layer`
+`= Bits`
 ## 7) Real Packet Journey
 
 1. Browser checks cache
