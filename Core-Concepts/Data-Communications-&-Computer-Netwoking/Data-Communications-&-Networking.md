@@ -235,7 +235,6 @@ where `n` is the number of host bits. The `-2` accounts for the reserved **netwo
 When a packet travels across multiple routers, the **IP packet survives end-to-end**, but the **Data Link frame changes at every hop**. This is because MAC addresses are only meaningful on a **local link (one hop)**, while IP addresses identify the original source and final destination across the entire Internet.
 
 At each router, the incoming **frame header is stripped**, exposing the IP datagram inside. The router reads the **destination IP address**, consults its forwarding table to determine the next hop, decrements the **TTL**, recalculates the IP header checksum, and then encapsulates the same IP packet inside a **new frame** with new source and destination MAC addresses for the next link. Thus, **MAC addresses change hop-by-hop**, while **source and destination IP usually remain unchanged throughout the journey**.
-
 ##### NAT (Network Address Translation): 
 is a networking technique used by routers to modify IP addresses while data is in transit. It allows multiple devices within a private local network to share a single, publicly routable IP address when accessing the internet. It was primarily designed for the IPv4 technology
 ##### Routing vs Forwarding
@@ -260,10 +259,21 @@ The Transport Layer provides **end-to-end communication between processes (appli
 - **Segmentation:** Large application data is broken into smaller segments for transmission.
 - **Reliability:** Lost data can be detected and retransmitted.
 - **Ordering:** Segments arriving out of order can be reordered correctly.
-- **Flow/Congestion Control:** Prevents a fast sender from overwhelming a slow receiver/congested network.
-- **Multiplexing / Port Numbers:** Allows multiple applications (browser, Discord, game) to use the network simultaneously.
+- **Flow/Congestion Control:** mechanism that prevents a fast sender from overwhelming a slow receiver by regulating the amount of data that can be transmitted before receiving an acknowledgment.
+- **Multiplexing / Port Numbers:** the process of combining data from multiple applications into a single outgoing data stream for transmission over the network, allows multiple applications to run simultaneously.
 
-Two main transport protocols:
+|Flow Control|Congestion Control|
+|---|---|
+|Protects the **receiver**|Protects the **network**|
+|Receiver is slow|Routers are overloaded|
+|Uses Receive Window|Uses Congestion Window|
+|End-to-end|Network-wide|
+
+**Port Numbers -** A **port number** is a logical identifier that uniquely identifies a running application or service on a host, allowing multiple network applications to communicate simultaneously over the same IP address. ex: Port 51023 - Chrome
+
+**Socket -** A socket is an endpoint of communication between two applications and is uniquely identified by the combination of an IP address and a port number.
+
+**Transport protocols:**
 1. **TCP (Transmission Control Protocol)**: is a **connection-oriented, reliable byte-stream protocol**. It guarantees reliable and ordered delivery, retransmission of lost packets, & flow and congestion control.
    
 2. **UDP (User Datagram Protocol)**: UDP is **connectionless and lightweight**. It provides no reliability, no ordering guarantees, no retransmissions, and minimal overhead. UDP is used when **low latency matters more than perfect delivery**, such as: gaming, voice calls, and DNS
@@ -371,6 +381,7 @@ Step 3: Replace the appended zeros with the remainder.
 ```
 101100101
 ```
+
 The transmitted message becomes:
 ```
 Data + CRC = 101100101
