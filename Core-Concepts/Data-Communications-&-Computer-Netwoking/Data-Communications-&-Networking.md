@@ -1,24 +1,24 @@
 # Data Communications \& Computer Networks
 
-## 0) Fundamental Model
-#### Key Metrics:
+# 0) Fundamental Model
+### Key Metrics:
 
 - Bandwidth - it is the maximum capacity of a link it terms of bits/sec.
 - Throughput - this is the actual achieved transfer rate of bits/sec
 - Latency - is the delay until data reaches the destination
 - Jitter - is the variation in latency
 - Loss - is the packets dropped
-#### Core Issues:
+### Core Issues:
 The key issue with networking is physical constrains like Bandwidth limit, the speed of light, congestion, noise and failures.
-#### Byte Stream Model:
+### Byte Stream Model:
 The byte stream model treats **data as a continuous, unstructured sequence of bytes.** While it is simple and universally applicable, it **lacks built-in awareness of boundaries**. This requires applications to manage framing, handle multithreaded stream access, and navigate complex character encoding boundaries manually. 
-#### What is the internet?
+### What is the internet?
 The Internet is a globally distributed *packet-switched system* connecting billions of end systems through routers, links, and protocols. Data is broken into packets, routed hop-by-hop across multiple autonomous networks using IP, while higher-level protocols like TCP and HTTP provide reliable application communication.
-#### Packet Switching
+### Packet Switching
 Instead of reserving a dedicated communication path, data is broken into self contained packets and each packet is routed independently through the network. This allows efficient sharing of network resources, better fault tolerance, and scalable communication.
 
 In **circuit switching**, the communication channel becomes reserved (physically) and there is only one direct path between the sender and receiver, this is a faster method but much more resource intensive and inefficient, it will waste the bandwidth during a low traffic time. ex- Telephone Network, ISDN 
-## 1\) Communication
+# 1\) Communication
 Data Communication is the exchange of data between two devices via some transmission medium with a **protocol,** that is a set of rules that govern data communications. It represents an
 agreement between the communicating devices.
 #### Communication b/w two devices can be:
@@ -27,7 +27,7 @@ agreement between the communicating devices.
 2. **Half Duplex** - each station can both transmit and receive, but not at the same
 time, ex: one way lane, walkie talkie
 3. **Full Duplex** - both stations can transmit and receive simultaneously, ex: telephone
-## 2\) Networks:
+# 2\) Networks:
 A network is the interconnection of a set of devices capable of communication. A device can be a host/end-system (like Computer) or a connecting device like Modem.
 #### A network has must be able to meet these 3 criteria:
 
@@ -40,7 +40,7 @@ For networks there are two kind of **links** possible:
 1. **point-to-point** - exclusive link shared by two devices (eg: infrared, satellite)
 2. **multipoint** - link is shared by more than two devices, if all users are able to share it simultaneously then it’s a spatially shared connection, and if the users need to take turns then it’s a timeshared connection.
 
-### 2.1) Topology of Networks
+## 2.1) Topology of Networks
 Topology refers to the way in which a network is laid out physically, it’s a geometrical representation. The 4 main types are:
 ![[network-topologies.png|470]]
 
@@ -50,7 +50,7 @@ Topology refers to the way in which a network is laid out physically, it’s a g
 4. **Ring Topology** - Each device has dedicated point-to-point connection with only the two
 devices on either side of it forming a loop
 
-### 2.2) Types of Networks
+## 2.2) Types of Networks
 Networks can be classified into types based on the area of their coverage:
 
 | Type                       | Full Form / Meaning       | Range / Structure             | Example                     |
@@ -62,7 +62,7 @@ Networks can be classified into types based on the area of their coverage:
 | **P2P**                    | Peer-to-Peer              | Devices communicate directly  | Torrent sharing             |
 | **Broadcast / Multipoint** | One-to-many communication | Shared communication channel  | Wi-Fi, radio transmission   |
 
-## 3\) Layers
+# 3\) Layers
 #### Layering Principle
 Networking is divided into layers where each layer solves a specific problem and provides services to the layer above. This enables abstraction, modularity, easier debugging, and interoperability across different hardware and protocols.
 #### Encapsulation
@@ -98,7 +98,7 @@ At the destination, the reverse process is called **Decapsulation**, where each 
 `Segment`
         `↑`
 `Data`
-### 3.1) OSI Model
+## 3.1) OSI Model
 The **Open Systems Interconnection (OSI)** model is a conceptual framework consisting of **7-layers**, defined by the ISO (International Standards Organization) in the 1970’s. 
 
 Think of the OSI model as a **communication pipeline**, where **each layer has one responsibility** and only talks to the layer immediately above and below it. This is like an ideal blueprint of how a network should work. OSI was a conceptual reference model; the Internet evolved around the **TCP/IP** (made by the Department of Defense) model, which better reflects real-world protocol stacks. 
@@ -162,6 +162,9 @@ Covered in detail [[#5) Error Detection|here]]
 	2. Checksum
 	3. CRC - most important, 
 	4. Hamming Code
+
+#### Sliding Window Protocol
+The Sliding Window Protocol is a flow control mechanism in which the sender is allowed to transmit multiple packets before receiving acknowledgments, improving network utilization by keeping the communication channel continuously busy.
 ##### d) Flow Control
 This is there to prevent a faster sender from overwhelming a slow receiver, it limits the amount of data that can be sent. **ARQ (Automatic Repeat Request)** is a family of protocols used to ensures reliable transmission using acknowledgements (ACK), timers, and retransmissions. 
 
@@ -192,7 +195,7 @@ Token Passing - only node with token may transmit, token circulates randomly bet
 - **CDMA (Code Division Multiple Access)** – Allows all users to transmit simultaneously on the same frequency and time by assigning each user a unique **orthogonal code** that separates their signals mathematically.
 
 ==Wi-Fi cannot use Collision Detection because while transmitting, a wireless device’s own signal overwhelms incoming signals, so it cannot reliably listen to the channel at the same time.==
-##### ARP (Address Resolution Protocol)
+#### ARP (Address Resolution Protocol)
 Is a protocol that maps an IPv4 address to a MAC address within a local network so data link layer frames can be delivered correctly. It acts as a bridge between the Network Layer (IP addressing) and Data Link Layer (MAC addressing).
 
 Working:
@@ -202,7 +205,7 @@ Working:
 4. Sender stores the mapping in ARP cache for future use.
 
 If destination is outside the local subnet, ARP is used to obtain the MAC address of the default gateway instead of the final destination.
-#### 3.1.3) Network Layer
+### 3.1.3) Network Layer
 This is the **“where”** of the communication, it is responsible for delivery from the **source to the destination** host it does this across multiple interconnected networks, unlike Data Link Layer that just handles one-hop communication. 
 
 The core responsibilities for it are:
@@ -212,17 +215,17 @@ The core responsibilities for it are:
 	3. Forwarding - is local, it recevies the packet, checks the forwarding table and sends the packet to the next hop
 	4. Fragmentation - is the process of dividing a large IP packet into smaller fragments when the next network link supports a smaller maximum transmission unit (MTU).
 	5. Congestion Awareness - This layer must handle situations where packet arriva rate exceeds orwarding capacity, causing latency and queue. Congestion may be managed using buffering, packet dropping, and congestion control mechanisms (part of TCP). Actual congestion is handled by the Transport Layer.
-##### IPv4 Datagram
+#### IPv4 Datagram
 An IPv4 datagram is the packet format used by the Internet Protocol to transmit data across multiple interconnected networks. It consists of an IP header and payload, where the payload usually contains a TCP or UDP segment.
 
 The minimum size of IPv4 header is 20 bytes (since each layer must be 4 bytes) and maximum can be 60 bytes. Both the source IP and Destination IP are 4 bytes (32 bits) each. 
  ![[ipv4_packet_structure.webp| 500]]
-##### Subnetting
+#### Subnetting
 A **subnet (subnetwork)** is a group of devices that can communicate directly at Layer 2 (Data Link Layer) without requiring a router. **Subnetting** is the process of dividing a large IP network into smaller logical subnetworks by borrowing bits from the host portion and converting them into additional network bits.
 Its main goals are better IP utilization, reduced broadcast traffic, improved security, and easier routing/network management.
 
 IPv4 addresses are **32 bits** long and consist of two parts: the **Network Portion**, which identifies the subnet, and the **Host Portion**, which identifies a device within that subnet.
-##### CIDR (Classless Inter-Domain Routing)
+#### CIDR (Classless Inter-Domain Routing)
 This notation specifies how many bits belong to the network portion. For example, in `/24`, the first 24 bits are network bits and the remaining 8 bits are host bits.
 
 Example:  
@@ -253,7 +256,7 @@ Routing is a global decision making and runs relatively infrequently, like when 
    BGP (Broad Gateway Protocol) - It is the routing protocol used to exchange routing information between autonomous systems on the Internet. It is policy-based and enables global Internet routing.
 
 ==A hop is just: Router A sends packet to Router B over **some physical communication link**==.
-#### 3.1.4) Transport Layer
+### 3.1.4) Transport Layer
 The Transport Layer provides **end-to-end communication between processes (applications)** running on different hosts. While the Network Layer moves packets between machines, the Transport Layer ensures all data in communicated. Its major responsibilities include:
 
 - **Segmentation:** Large application data is broken into smaller segments for transmission.
@@ -277,9 +280,9 @@ The Transport Layer provides **end-to-end communication between processes (appli
 1. **TCP (Transmission Control Protocol)**: is a **connection-oriented, reliable byte-stream protocol**. It guarantees reliable and ordered delivery, retransmission of lost packets, & flow and congestion control.
    
 2. **UDP (User Datagram Protocol)**: UDP is **connectionless and lightweight**. It provides no reliability, no ordering guarantees, no retransmissions, and minimal overhead. UDP is used when **low latency matters more than perfect delivery**, such as: gaming, voice calls, and DNS
-#### 3.1.5) Session Layer
+### 3.1.5) Session Layer
 This layer controls the session establishment, maintenance, synchronization and termination,
-#### 3.1.6) Presentation Layer
+### 3.1.6) Presentation Layer
 It has 3 main jobs, **Translation, Encryption, and Compression.** These make sure the host systems are on a uniform and fast layer for all communication
 #### 3.1.7) Application Layer 
 This is the highest layer, closest to the end-user, what applications like Chrome, Spotify use to access the network. It defines the protocols for specific services such as:
@@ -288,7 +291,7 @@ This is the highest layer, closest to the end-user, what applications like Chrom
 - DNS:
 - SMTP:
 - BitTorrent: The problem this addresses is of distributing huge files efficiently without central server overload. The way this works is breaking the data into pieces and splitting the load onto many clients, this scales much better.
-##### DHCP (Dynamic Host Configuration Protocol)
+#### DHCP (Dynamic Host Configuration Protocol)
 DHCP automatically assigns network configuration to devices joining a network, including IP address, subnet mask, default gateway, and DNS server.
 
 DHCP follows DORA process:
@@ -296,7 +299,7 @@ DHCP follows DORA process:
 2. Offer
 3. Request
 4. Acknowledge
-### 3.2) TCP/IP Model
+## 3.2) TCP/IP Model
 
 
 
