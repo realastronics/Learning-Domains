@@ -140,21 +140,21 @@ Is the measure of how useful is the signal compared to noise, the higher our SNR
 	$SNR = Signal Power / Noise Power$
 #### Transmission Media
 Transmission media is the physical path through which signals travel from sender to receiver. It is of two types: **guided media** (twisted pair, coaxial, fiber optic) where signals travel through cables, and **unguided media** (radio, microwave, infrared) where signals propagate through free space.
-#### 3.1.2) Data Link Layer
+### 3.1.2) Data Link Layer
 The Data Link Layer provides **node-to-node delivery** over a single physical link. Its purpose is to convert an unreliable raw bit pipe into a usable communication channel between directly connected devices. ex- communication between laptop-router, switch-server, router-router.
 
 The core problem is that physical channels are noisy, shared, and imperfect. Data Link Layer solves these problems using framing, addressing, error detection, flow control, and medium access control.
-##### a) Framing
+#### a) Framing
 Framing is the process of dividing a continuous bit stream into manageable units called **frames** by adding **headers and trailers**.  
 
 Purpose:  
 - Define frame boundaries  
 - Carry [[#MAC Address|MAC addresses]]  
 - Add error detection information
-##### b) Addressing (MAC)
+#### b) Addressing (MAC)
 MAC (Media Access Control) address is a unique identifier assigned to a network interface for communication on a local network.  
 `IP decides -> which network; MAC decides -> which device on that network`
-##### c) Error Detection
+#### c) Error Detection
 Bits commonly flip due to thermal noise, interference, attenuation, etc. 
 Covered in detail [[#5) Error Detection|here]]
 
@@ -162,10 +162,7 @@ Covered in detail [[#5) Error Detection|here]]
 	2. Checksum
 	3. CRC - most important, 
 	4. Hamming Code
-
-#### Sliding Window Protocol
-The Sliding Window Protocol is a flow control mechanism in which the sender is allowed to transmit multiple packets before receiving acknowledgments, improving network utilization by keeping the communication channel continuously busy.
-##### d) Flow Control
+#### d) Flow Control
 This is there to prevent a faster sender from overwhelming a slow receiver, it limits the amount of data that can be sent. **ARQ (Automatic Repeat Request)** is a family of protocols used to ensures reliable transmission using acknowledgements (ACK), timers, and retransmissions. 
 
 ARQ works on a three 3 step idea, sender sends fame -> receiver sends ACK -> if ACK not received before timeout, resend.
@@ -173,7 +170,10 @@ ARQ works on a three 3 step idea, sender sends fame -> receiver sends ACK -> if 
 	1. Stop-and-Wait ARQ – send one frame and wait for ACK, if no ack that means package lost, and re-transmit that one.
 	2. Go-Back-N ARQ – send multiple frames; if one fails, retransmit it and all subsequent frames.
 	3. Selective Repeat ARQ – retransmit only the lost/corrupted frames.
-##### e) Multiple Access
+
+**Sliding Window Protocol**
+The Sliding Window Protocol is a flow control mechanism in which the sender is allowed to transmit multiple packets before receiving acknowledgments, improving network utilization by keeping the communication channel continuously busy.
+#### e) Multiple Access
 Medium Access Control decides which device gets permission to transmit on a shared communication medium.
 
 **Random Access:**
