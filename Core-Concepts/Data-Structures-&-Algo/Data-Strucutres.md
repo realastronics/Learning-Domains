@@ -106,16 +106,288 @@ it is a linear data structure. Continuous memory allocation. O(1) time indexing.
 Continuous memory allocation, size of array = [number of those data * size of data type]. When the array
 
 There are compile time errors which get identified before the program runs, things to the left of the = sing.
+### Pattern: Running Extremes
+Maintain one or more "best-so-far" values while traversing an array exactly once.
+#### State
+- largest
+- secondLargest
+#### Update Rules
+1. If current element becomes the new largest:
+    - old largest → second largest
+    - current → largest
+2. Else if current element is between largest and second largest:
+    - current → second largest
+#### Complexity
+- Time: O(n)
+- Space: O(1)
+#### Problems
+- Largest Element
+- Second Largest
+- Third Largest
+### Pattern: Binary Search
+Use When:
+• Search space is ordered
+• Looking for one answer
+• Can eliminate half every step
 
+Time:
+O(log n)
+
+Examples:
+• Binary Search
+• Search Insert Position
+• Perfect Square
 ## 5) Strings
 
 
 
-## 6) HashMaps & HashSets
+## 6) HashMaps, HashSets & Hash Arrays
 
-Hashmaps store data in key value pairs
+### HashMap
+A **HashMap** stores data as **Key → Value** pairs and provides **average O(1)** insertion, lookup, and deletion.
+Unlike arrays, which use **integer indices**, a HashMap allows almost any object (Integer, String, Character, etc.) to be used as the key.
 
-## 7) LinkedLists
+```
+Key  ─────► Value
+
+Number ───► Index
+Word ─────► Frequency
+StudentID ─► Name
+```
+
+Internally, a **hash function** converts a key into a bucket/index, allowing direct lookup instead of linear searching.
+### Why HashMap?
+Without a HashMap, searching an unsorted array requires **O(n)** time.
+```text
+nums = [3,2,4]
+Need 2
+Search → 3 → 2 ✓
+```
+
+With a HashMap:
+```text
+3 → 0
+2 → 1
+4 → 2
+```
+
+Lookup becomes approximately **O(1)**.
+### Java Syntax
+```java
+HashMap<Integer, Integer> map = new HashMap<>();
+```
+
+Common methods:
+```java
+map.put(key, value);      // Insert
+map.get(key);             // Retrieve value
+map.containsKey(key);     // Check existence
+map.remove(key);          // Remove
+map.size();               // Number of entries
+```
+### HashSet
+A **HashSet** stores **only unique values** (no key-value pairs).
+```java
+HashSet<Integer> set = new HashSet<>();
+
+set.add(x);
+set.contains(x);
+set.remove(x);
+```
+
+Use when checking:
+- Duplicate elements
+- Element existence
+- "Have I seen this before?"
+### Hash Array (Frequency Array)
+A **Hash Array** is an array used to count frequencies of **small-range integer values**.
+```text
+arr = [1,2,2,4,1]
+freq[]
+
+Index : 0 1 2 3 4
+Value : 0 2 2 0 1
+```
+
+Meaning:
+- 1 appears 2 times
+- 2 appears 2 times
+- 4 appears 1 time
+
+Use only when the value range is known and small.
+### HashMap vs Hash Array
+
+| HashMap                | Hash Array                        |
+| ---------------------- | --------------------------------- |
+| Any key type           | Integer keys only                 |
+| Dynamic size           | Fixed size                        |
+| Higher memory overhead | Memory efficient for small ranges |
+| O(1) average lookup    | O(1) lookup                       |
+### Two Sum (Pattern)
+Store:
+```text
+Number → Index
+```
+
+For every element:
+1. Compute `need = target - current`
+2. Check `map.containsKey(need)`
+3. If found → return stored index and current index
+4. Otherwise store `current → index`
+
+Example:
+```text
+nums = [2,7,11,15]
+target = 9
+
+i=0
+need=7
+store 2→0
+
+i=1
+need=2
+found 2→0
+
+Answer = [0,1]
+```
+Time: **O(n)**  
+Space: **O(n)**
+### Complexity
+
+| Structure       | Search | Insert | Delete |
+| --------------- | :----: | :----: | :----: |
+| Array           |  O(n)  |  O(n)  |  O(n)  |
+| HashMap         | O(1)*  | O(1)*  | O(1)*  |
+| HashSet         | O(1)*  | O(1)*  | O(1)*  |
+| Frequency Array |  O(1)  |  O(1)  |  O(1)  |
+*/*Average case.*
+## 7) Linked Lists
+A **Linked List** is a dynamic linear data structure consisting of **nodes**, where each node stores data and a reference to the next node. Nodes are **not stored contiguously** in memory and are accessed sequentially through references.
+
+```
+Head
+ ↓
+[10|•] → [20|•] → [30|null]
+```
+### Node
+A node is the fundamental unit of a linked list.
+```java
+class ListNode {
+    int val;
+    ListNode next;
+}
+```
+- `val` stores the data.
+- `next` stores a reference to the next node.
+- The final node stores `next = null`.
+### Head
+The **head** is a reference to the first node. Every traversal begins from the head. Losing the head reference makes the list inaccessible.
+### Characteristics
+- Dynamic size
+- Non-contiguous memory allocation
+- Sequential access only
+- No direct indexing (`list[i]` is impossible)
+- Extra memory required for references
+### Types of Linked Lists
+#### Singly Linked List
+Each node points to the next node.
+```
+10 → 20 → 30 → null
+```
+#### Doubly Linked List
+Each node stores references to both previous and next nodes.
+```
+null ← 10 ⇄ 20 ⇄ 30 → null
+```
+#### Circular Linked List
+The last node points back to the head.
+```
+10 → 20 → 30
+↑         ↓
+└─────────┘
+```
+### Traversal
+Traversal starts from the head and repeatedly follows the `next` reference until `null`.
+```java
+ListNode current = head;
+
+while(current != null){
+    current = current.next;
+}
+```
+Traversal Complexity: **O(n)**
+### Insertion
+At Beginning
+- `newNode.next = head`
+- `head = newNode`
+Time: **O(1)**
+
+At End
+- Traverse to last node.
+- Update last node's `next`.
+Time: **O(n)**
+
+After Known Node
+- `newNode.next = current.next`
+- `current.next = newNode`
+Time: **O(1)**
+### Deletion
+Beginning
+- `head = head.next`
+Time: **O(1)**
+
+End
+- Traverse to second-last node.
+- Set `next = null`.
+Time: **O(n)**
+### Arrays vs Linked Lists
+
+| Property                  | Array      | Linked List    |
+| ------------------------- | ---------- | -------------- |
+| Memory                    | Contiguous | Non-contiguous |
+| Size                      | Fixed      | Dynamic        |
+| Random Access             | O(1)       | O(n)           |
+| Traversal                 | O(n)       | O(n)           |
+| Insert/Delete (Beginning) | O(n)       | O(1)           |
+| Insert/Delete (Middle)*   | O(n)       | O(1)           |
+| Memory Overhead           | Low        | Higher         |
+
+\*Assuming a reference to the insertion/deletion position is already known.
+### Core Patterns
+**Traversal**
+- Visit every node from head to `null`.
+
+**Reverse Linked List**
+- Maintain `previous`, `current`, and `next`.
+- Reverse one pointer per iteration.
+- Time: **O(n)**
+
+**Slow & Fast Pointers**
+- Slow advances one node.
+- Fast advances two nodes.
+- Used for:
+  - Middle of Linked List
+  - Cycle Detection
+  - Palindrome Linked List
+
+Complexity for most operations in a Linked List is either Linear or a single operation.
+### Pattern Recognition
+
+| Requirement        | Pattern                 |
+| ------------------ | ----------------------- |
+| Visit every node   | Traversal               |
+| Reverse links      | Previous–Current–Next   |
+| Find middle        | Slow & Fast Pointers    |
+| Detect cycle       | Floyd's Cycle Detection |
+| Merge sorted lists | Two Pointers            |
+### Common Problems
+
+- Reverse Linked List
+- Middle of Linked List
+- Linked List Cycle
+- Merge Two Sorted Lists
+- Remove Nth Node From End
+- Palindrome Linked List
 
 ## 8) Stacks
 

@@ -195,7 +195,8 @@ Token Passing - only node with token may transmit, token circulates randomly bet
 - **CDMA (Code Division Multiple Access)** – Allows all users to transmit simultaneously on the same frequency and time by assigning each user a unique **orthogonal code** that separates their signals mathematically.
 
 ==Wi-Fi cannot use Collision Detection because while transmitting, a wireless device’s own signal overwhelms incoming signals, so it cannot reliably listen to the channel at the same time.==
-#### ARP (Address Resolution Protocol)
+
+**ARP (Address Resolution Protocol)**
 Is a protocol that maps an IPv4 address to a MAC address within a local network so data link layer frames can be delivered correctly. It acts as a bridge between the Network Layer (IP addressing) and Data Link Layer (MAC addressing).
 
 Working:
@@ -205,6 +206,10 @@ Working:
 4. Sender stores the mapping in ARP cache for future use.
 
 If destination is outside the local subnet, ARP is used to obtain the MAC address of the default gateway instead of the final destination.
+#### Three-Way Handshake
+The Three-Way Handshake is the process used by TCP to establish a reliable connection between two hosts before data transmission begins.
+#### Four-Way Handshake
+The Four-Way Handshake is the TCP connection termination process in which both communicating hosts independently close their sending channels using FIN and ACK packets.
 ### 3.1.3) Network Layer
 This is the **“where”** of the communication, it is responsible for delivery from the **source to the destination** host it does this across multiple interconnected networks, unlike Data Link Layer that just handles one-hop communication. 
 
