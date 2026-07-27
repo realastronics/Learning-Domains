@@ -371,7 +371,6 @@ Complexity for most operations in a Linked List is either Linear or a single ope
 | Detect cycle       | Floyd's Cycle Detection |
 | Merge sorted lists | Two Pointers            |
 ### Common Problems
-
 - Reverse Linked List
 - Middle of Linked List
 - Linked List Cycle
@@ -380,10 +379,12 @@ Complexity for most operations in a Linked List is either Linear or a single ope
 - Palindrome Linked List
 ## 8) Stacks
 
-## Qeues
+## 9) Queues
 
-## Trees
+## 10) Trees
+**Binary Tree** is a non-linear and hierarchical data structure where each node has **at most two children** referred to as the left child and the right child.  The topmost node in a binary tree is called the root, and the bottom-most nodes(having no children) are called leaves.
 
+![[tree.webp]]
 ## Graphs
 
 ## 5) Matrices
