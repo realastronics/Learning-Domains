@@ -388,7 +388,6 @@ Complexity for most operations in a Linked List is either Linear or a single ope
 - Merge Two Sorted Lists
 - Remove Nth Node From End
 - Palindrome Linked List
-
 ## 8) Stacks
 
 ## Qeues
