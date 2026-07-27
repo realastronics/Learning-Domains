@@ -382,7 +382,169 @@ Complexity for most operations in a Linked List is either Linear or a single ope
 ## 9) Queues
 
 ## 10) Trees
-**Binary Tree** is a non-linear and hierarchical data structure where each node has **at most two children** referred to as the left child and the right child.  The topmost node in a binary tree is called the root, and the bottom-most nodes(having no children) are called leaves.
+A **Tree** is a **non-linear hierarchical data structure** consisting of **nodes** connected by **edges**. A tree is an **acyclic connected graph**, i.e., there exists exactly one simple path between any two nodes.
+
+Unlike arrays and linked lists (linear structures), trees represent **hierarchical relationships**.
+### Terminology
+```
+        A
+      /   \
+     B     C
+    / \
+   D   E
+```
+- **Node** – Fundamental unit storing data.
+- **Root** – Topmost node with no parent (`A`).
+- **Parent** – Node with one or more children.
+- **Child** – Direct descendant of a parent.
+- **Sibling** – Nodes sharing the same parent (`B`, `C`).
+- **Leaf (External Node)** – Node with no children (`C`, `D`, `E`).
+- **Internal Node** – Node having at least one child.
+- **Edge** – Connection between two nodes.
+- **Subtree** – Tree rooted at any child node.
+- **Ancestor** – Any node on the path from the root to a node.
+- **Descendant** – Any node reachable below a node.
+- **Degree of Node** – Number of children.
+- **Depth** – Number of edges from the root to a node.
+- **Height of Node** – Number of edges on the longest path from that node to a leaf.
+- **Height of Tree** – Height of the root (longest root-to-leaf path).
+### Why Trees?
+Trees model naturally hierarchical data. They have various applications such as:
+- File systems
+- HTML/XML DOM
+- Organization hierarchies
+- Expression parsing
+- Databases (B-Trees)
+- Binary Search Trees
+- Heaps
+- Tries
+### Binary Tree
+A **Binary Tree** is a tree in which every node has **at most two children**, referred to as the **left** and **right** child.
+```java
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+}
+```
+A Binary Tree does **not** imply ordering.
+### Binary Search Tree (BST)
+A **Binary Search Tree** is a Binary Tree satisfying the ordering property:
+```
+Left Subtree < Root < Right Subtree
+```
+This property holds recursively for every subtree.
+
+Consequences:
+- Inorder traversal produces sorted order.
+- Search, insertion and deletion take **O(log n)** on average.
+- Worst case (skewed tree): **O(n)**.
+### Types of Binary Trees
+**Full Binary Tree**
+- Every node has either 0 or 2 children.
+
+**Complete Binary Tree**
+- Every level is completely filled except possibly the last.
+- Last level is filled from left to right.
+
+**Perfect Binary Tree**
+- Every internal node has exactly two children.
+- All leaves are at the same depth.
+
+**Balanced Binary Tree**
+- Height remains approximately `O(log n)`.
+
+**Degenerate (Skewed) Tree**
+- Every node has only one child.
+- Behaves like a linked list.
+### Tree Traversals
+Traversal is the process of visiting every node exactly once.
+#### Depth First Search (DFS)
+Uses recursion (implicit stack) or an explicit stack.
+
+**Preorder**
+```
+Root → Left → Right
+```
+Applications:
+- Tree copying
+- Serialization
+- Expression prefix notation
+
+**Inorder**
+```
+Left → Root → Right
+```
+
+Applications:
+- Sorted traversal of BST
+- Expression trees
+
+**Postorder**
+```
+Left → Right → Root
+```
+
+Applications:
+- Tree deletion
+- Expression evaluation
+#### Breadth First Search (BFS)
+Visits nodes level by level. Uses a **Queue**.
+
+Applications:
+- Level-order traversal
+- Shortest path in unweighted trees
+- Distance calculations
+### Recursive Nature
+Every subtree is itself a tree.
+
+Most tree algorithms follow:
+
+1. Solve left subtree.
+2. Solve right subtree.
+3. Combine results.
+
+This recursive structure is fundamental to almost all tree problems.
+### Complexity
+
+| Operation | Binary Tree | BST (Average) | BST (Worst) |
+| --------- | ----------- | ------------- | ----------- |
+| Traversal | O(n)        | O(n)          | O(n)        |
+| Search    | O(n)        | O(log n)      | O(n)        |
+| Insert    | O(n)        | O(log n)      | O(n)        |
+| Delete    | O(n)        | O(log n)      | O(n)        |
+
+### Core Interview Patterns
+
+- Recursive DFS
+- BFS using Queue
+- Height / Maximum Depth
+- Diameter
+- Lowest Common Ancestor (LCA)
+- Validate BST
+- Invert Binary Tree
+- Same Tree
+- Symmetric Tree
+- Root-to-Leaf Path Problems
+
+### Pattern Recognition
+
+| Requirement | Pattern |
+|------------|---------|
+| Visit every node | DFS / BFS |
+| Level-wise processing | BFS |
+| Height / Depth | DFS |
+| Root-to-leaf computation | DFS |
+| Ordered search | BST |
+| Shortest path (unweighted) | BFS |
+
+### Key Takeaways
+
+- Trees are hierarchical, recursive data structures.
+- Binary Trees restrict each node to at most two children.
+- BSTs introduce ordering, enabling efficient search.
+- DFS uses recursion/stack; BFS uses a queue.
+- Most tree problems are recursive divide-and-conquer problems on subtrees.
 
 ![[tree.webp]]
 ## Graphs
