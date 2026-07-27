@@ -513,33 +513,17 @@ This recursive structure is fundamental to almost all tree problems.
 | Search    | O(n)        | O(log n)      | O(n)        |
 | Insert    | O(n)        | O(log n)      | O(n)        |
 | Delete    | O(n)        | O(log n)      | O(n)        |
-
-### Core Interview Patterns
-
-- Recursive DFS
-- BFS using Queue
-- Height / Maximum Depth
-- Diameter
-- Lowest Common Ancestor (LCA)
-- Validate BST
-- Invert Binary Tree
-- Same Tree
-- Symmetric Tree
-- Root-to-Leaf Path Problems
-
 ### Pattern Recognition
 
-| Requirement | Pattern |
-|------------|---------|
-| Visit every node | DFS / BFS |
-| Level-wise processing | BFS |
-| Height / Depth | DFS |
-| Root-to-leaf computation | DFS |
-| Ordered search | BST |
-| Shortest path (unweighted) | BFS |
-
+| Requirement                | Pattern   |
+| -------------------------- | --------- |
+| Visit every node           | DFS / BFS |
+| Level-wise processing      | BFS       |
+| Height / Depth             | DFS       |
+| Root-to-leaf computation   | DFS       |
+| Ordered search             | BST       |
+| Shortest path (unweighted) | BFS       |
 ### Key Takeaways
-
 - Trees are hierarchical, recursive data structures.
 - Binary Trees restrict each node to at most two children.
 - BSTs introduce ordering, enabling efficient search.
