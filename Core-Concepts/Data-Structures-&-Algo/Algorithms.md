@@ -25,12 +25,47 @@ The above program has the time complexity of **$O(N^2)$.**
 Below is the image comparing all time complexities
 ![[timecomplexitygraph.png]]
 
-Always compute time complexity in terms of the worst case scenario, ignore constants and lower values since mathematically constants are insignificant relative to exponential terms. There are also theta() and omega() notations for average and the minimal complexities respectively.
+Always compute time complexity in terms of the worst case scenario, ignore constants and lower values since mathematically constants are insignificant relative to exponential terms. There are also theta() and omega() notations for average and the minimal complexities respectively. 
+Little Omega is used for lower bound.
 ## 2) Space Complexity
 It is the total memory space that an algorithm takes, Auxiliary Space(memory used by the algorithm to execute) and the Input Space. Also denoted by **Big-O** notation.
-
 ## 3) Recursion
-when a function calls itself until a specified condition is met. When the function goes on forever without any stop condition, it’s called infinite recursion and a stack overflow.
+When a function calls itself until a specified condition is met, it is called recursion. When the function goes on forever without any stop condition, it’s called infinite recursion and a stack overflow.
+
+Recursion is expressed in terms of recurrences, when a function calls itself it's time complexity is described
+
+```java
+// Recursive method for the Binary Search  
+class BetterBinarySearch {  
+    public static int binarySearchRecursive(int[] arr, int left, int right, int target) {  
+        if (left > right) {  
+            return -1;  
+        }  
+  
+        int mid = left + (right - left) / 2;  
+  
+        if (arr[mid] == target) {  
+            return mid;  
+        }  
+  
+        if (arr[mid] < target) {  
+            return binarySearchRecursive(arr, mid + 1, right, target);  
+        }  
+  
+        return binarySearchRecursive(arr, left, mid - 1, target);  
+    }  
+  
+    public static void main(String[] args) {  
+        int[] arr = {2, 5, 8, 12, 16, 23, 38, 56};  
+        int index = binarySearchRecursive(arr, 0, arr.length - 1, 23);  
+  
+        if (index != -1)  
+            System.out.println("Element found at index: " + index);  
+        else  
+            System.out.println("Element not found");  
+    }  
+}
+```
 ## 4) Searching
 
 ## 5) Sorting
