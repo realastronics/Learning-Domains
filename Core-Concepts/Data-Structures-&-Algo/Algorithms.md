@@ -1,43 +1,36 @@
 # Algorithms
 
 ## 1) Time Complexity
-
-It is the rate of which the execution time of an algorithm increases with respect to the input size (N). It is denoted by the **Big-O notation**, example:
-
-```cpp
+It is the rate of which the execution time of an algorithm increases with respect to the input size (N). It is denoted by the **Big-O notation**, 
+example:
+```java
 for ( int i = 1; i ≤ n; i ++ ) {
-	cout << "Parth" ;
+	System.out.println("Parth");
 	}
 // Every run of this code repeats the 3 steps; comparison, execution and increment. 
 ```
-
 The loop runs N times, so a net of 3*N steps. **O(N)** will be the time complexity of this code block since it grows **Linearly**.
 
 Nested loops multiply the growth:
-
-```cpp
+```java
 	for ( int i = 0; i <= N; i ++){
 		for (j = 0; j <= N; j ++){
-			cout << "code block";
+			System.out.println("code block");
 			}
 		}
 // the inner loop runs N times every execution of the outer loop, which also runs N times
 ```
-
 The above program has the time complexity of **$O(N^2)$.**
 
-Always compute time complexity in terms of the worst case scenario, ignore constants and lower values. There are also theta() and omega() notations for average and the minimal complexities respectively.
+Below is the image comparing all time complexities
+![[timecomplexitygraph.png]]
 
-![image.png](attachment:b122c86b-1cb2-41e5-bdaa-be1840cb64ea:image.png)
-
+Always compute time complexity in terms of the worst case scenario, ignore constants and lower values since mathematically constants are insignificant relative to exponential terms. There are also theta() and omega() notations for average and the minimal complexities respectively.
 ## 2) Space Complexity
-
 It is the total memory space that an algorithm takes, Auxiliary Space(memory used by the algorithm to execute) and the Input Space. Also denoted by **Big-O** notation.
 
 ## 3) Recursion
-
 when a function calls itself until a specified condition is met. When the function goes on forever without any stop condition, it’s called infinite recursion and a stack overflow.
-
 ## 4) Searching
 
 ## 5) Sorting

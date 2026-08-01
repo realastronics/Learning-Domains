@@ -131,12 +131,10 @@ Examples:
 • Perfect Square
 ## 5) Strings
 
-## 6) HashMaps, HashSets & Hash Arrays
+## 6) HashMap, HashSet & Hash Array
 
 ### HashMap
-A **HashMap** stores data as **Key → Value** pairs and provides **average O(1)** insertion, lookup, and deletion.
-Unlike arrays, which use **integer indices**, a HashMap allows almost any object (Integer, String, Character, etc.) to be used as the key.
-
+A **HashMap** stores data as **Key → Value** pairs and provides **average O(1)** insertion, lookup, and deletion. Unlike arrays, which use **integer indices**, a HashMap allows almost any object (Integer, String, Character, etc.) to be used as the key.
 ```
 Key  ─────► Value
 
@@ -144,7 +142,6 @@ Number ───► Index
 Word ─────► Frequency
 StudentID ─► Name
 ```
-
 Internally, a **hash function** converts a key into a bucket/index, allowing direct lookup instead of linear searching.
 ### Why HashMap?
 Without a HashMap, searching an unsorted array requires **O(n)** time.
@@ -160,7 +157,6 @@ With a HashMap:
 2 → 1
 4 → 2
 ```
-
 Lookup becomes approximately **O(1)**.
 ### Java Syntax
 ```java
