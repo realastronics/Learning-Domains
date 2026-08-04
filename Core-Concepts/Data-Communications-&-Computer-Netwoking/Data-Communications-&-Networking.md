@@ -173,6 +173,7 @@ ARQ works on a three 3 step idea, sender sends fame -> receiver sends ACK -> if 
 
 **Sliding Window Protocol**
 The Sliding Window Protocol is a flow control mechanism in which the sender is allowed to transmit multiple packets before receiving acknowledgments, improving network utilization by keeping the communication channel continuously busy.
+why "Sliding"? - Because every ACK moves ("slides") the window forward.
 #### e) Multiple Access
 Medium Access Control decides which device gets permission to transmit on a shared communication medium.
 
@@ -267,7 +268,7 @@ Routing is a global decision making and runs relatively infrequently, like when 
 ### 3.1.4) Transport Layer
 The Transport Layer provides **end-to-end communication between processes (applications)** running on different hosts. While the Network Layer moves packets between machines, the Transport Layer ensures all data in communicated. Its major responsibilities include:
 
-- **Segmentation:** Large application data is broken into smaller segments for transmission.
+- **Segmentation:** Large application data is broken into smaller segments for transmission. A segment is the data and the header of the transport layer.
 - **Reliability:** Lost data can be detected and retransmitted.
 - **Ordering:** Segments arriving out of order can be reordered correctly.
 - **Flow/Congestion Control:** mechanism that prevents a fast sender from overwhelming a slow receiver by regulating the amount of data that can be transmitted before receiving an acknowledgment.
@@ -371,10 +372,8 @@ The sender and receiver agree on a fixed **generator (divisor)** beforehand.
 6. If the remainder is **0**, the message is assumed to be error-free. Otherwise, an error is detected.
 
 > **Key Idea:** The sender constructs the transmitted message so that it is **exactly divisible** by the agreed generator. If even a single bit changes during transmission, this divisibility is usually lost, resulting in a non-zero remainder.
-
 #### Example
 Suppose:
-
 Data = `101100`
 Generator = `1101`
 Generator length = **4**
@@ -404,9 +403,26 @@ At the receiver:
 - Remainder = `000` → Accept the data.
 - Non-zero remainder → Error detected.
 ### 5.4 Hamming Code
-Hamming Code is an error correction technique that can detect and correct single-bit errors by inserting parity bits at positions that are powers of 2.
-## 6) Protocol Deep Dives
+Hamming Code is an **error detection and correction** technique that can **detect up to two-bit errors and correct one-bit errors** by inserting redundant **parity bits** into the data. Each parity bit checks a unique combination of data bits, allowing the receiver to **determine the exact position of a single-bit error** using the **syndrome**.
+#### Theory
+For `m` data bits, the number of parity bits `r` is chosen such that: 
+` 2^r ≥ m + r + 1  
+Parity bits are always placed at positions that are powers of 2: ``` 1, 2, 4, 8, 16, ... ``` All remaining positions store the actual data bits. Each parity bit checks specific positions: ``` P1 → 1,3,5,7,... P2 → 2,3,6,7,... P4 → 4,5,6,7,... P8 → 8,9,10,11,... ``` 
 
+*(General Rule: A parity bit checks every position whose binary representation contains a `1` in that parity bit's position.)*
+#### Mini Example
+Data = `101` 
+Find parity bits: ``` 2^r ≥ m+r+1 m = 3 r = 3 ``` 
+Positions: ``` 1 2 3 4 5 6 P1 P2 D1 P4 D2 D3 ``` 
+Insert data: ``` P1 P2 1 P4 0 1 ``` 
+
+After calculating even parity: ``` P1 = 0 P2 = 1 P4 = 1 ``` 
+Final Hamming Code: ``` 011101 ``` 
+Suppose the receiver gets: ``` 010101 ``` 
+Parity check gives: ``` P4 P2 P1 = 011₂ = 3₁₀ ``` 
+
+Therefore **Bit 3 is incorrect.** Flip Bit 3 to recover the original data.
+## 6) Protocol Deep Dives
 ### Ethernet Cable vs Ethernet Protocol
 **Ethernet Cable** is the physical medium (e.g., Cat5e, Cat6, Cat7) that carries electrical signals between devices. It belongs to the **Physical Layer**.
 
