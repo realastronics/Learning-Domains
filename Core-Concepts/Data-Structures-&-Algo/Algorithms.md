@@ -32,8 +32,7 @@ It is the total memory space that an algorithm takes, Auxiliary Space(memory use
 ## 3) Recursion
 When a function calls itself until a specified condition is met, it is called recursion. When the function goes on forever without any stop condition, it’s called infinite recursion and a stack overflow.
 
-Recursion is expressed in terms of recurrences, when a function calls itself it's time complexity is described
-
+Recursion is expressed in terms of recurrences, when a function calls itself it's time complexity is described in recurrences.
 ```java
 // Recursive method for the Binary Search  
 class BetterBinarySearch {  
@@ -67,7 +66,41 @@ class BetterBinarySearch {
 }
 ```
 ## 4) Searching
+### 1. Binary Search
+### 2. Linear Search
+In Linear Search, we iterate over all the elements of the array and check if it the current element is equal to the target element. If we find any element to be equal to the target element, then return the index of the current element. Otherwise, if no element is equal to the target element, then return -1 as the element is not found. Linear search is also known as ****sequential search****.
 
+Time Complexity:
+**Best Case: O(1)
+Worst Case: O(n)**
+```java
+class LinearSearch {
+    public static int search(int arr[], int N, int x)
+    {
+        // Iterate over the array in order to
+        // find the key x
+        for (int i = 0; i < N; i++) {
+            if (arr[i] == x)
+                return i;
+        }
+        return -1;
+    }
+
+    public static void main(String args[])
+    {
+        int arr[] = { 2, 3, 4, 10, 40 };
+        int x = 10;
+
+        int result = search(arr, arr.length, x);
+        if (result == -1)
+            System.out.print(
+                "Element is not present in array");
+        else
+            System.out.print("Element is present at index "
+                             + result);
+    }
+}
+```
 ## 5) Sorting
 
 |Sorting|Core Idea|Time Complexity|Space|Stable?|Best Use|

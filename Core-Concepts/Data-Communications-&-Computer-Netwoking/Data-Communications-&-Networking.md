@@ -220,6 +220,9 @@ The core responsibilities for it are:
 	3. Forwarding - is local, it recevies the packet, checks the forwarding table and sends the packet to the next hop
 	4. Fragmentation - is the process of dividing a large IP packet into smaller fragments when the next network link supports a smaller maximum transmission unit (MTU).
 	5. Congestion Awareness - This layer must handle situations where packet arriva rate exceeds orwarding capacity, causing latency and queue. Congestion may be managed using buffering, packet dropping, and congestion control mechanisms (part of TCP). Actual congestion is handled by the Transport Layer.
+
+**Maximum Transmission Unit (MTU)** 
+is the largest size of a data packet measured in bytes that can travel across a network link without being broken into smaller pieces.
 #### IPv4 Datagram
 An IPv4 datagram is the packet format used by the Internet Protocol to transmit data across multiple interconnected networks. It consists of an IP header and payload, where the payload usually contains a TCP or UDP segment.
 
