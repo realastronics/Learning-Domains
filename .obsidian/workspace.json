@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Core-Concepts/Data-Communications-&-Computer-Netwoking/Data-Communications-&-Networking.md",
+                "file": "Core-Concepts/Computer-Organization-&-Architecture/Notes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Data-Communications-&-Networking"
+              "title": "Notes"
             }
           }
         ],
@@ -227,26 +227,28 @@
   },
   "active": "fea376fc69ca54ed",
   "lastOpenFiles": [
+    "Artificial-Intelligence/Advanced Data Science.md",
+    "Core-Concepts/Computer-Organization-&-Architecture/Notes.md",
+    "Core-Concepts/Computer-Organization-&-Architecture",
+    "Core-Concepts/Operating-Systems.md",
+    "Core-Concepts/Database-Management.md",
+    "Core-Concepts/Data-Communications-&-Computer-Netwoking/OSI Model Layers.png",
+    "Core-Concepts/Data-Communications-&-Computer-Netwoking/network-topologies.png",
+    "Core-Concepts/Data-Communications-&-Computer-Netwoking/ipv4_packet_structure.webp",
+    "Core-Concepts/Data-Communications-&-Computer-Netwoking/Data-Communications-&-Networking.md",
     "Core-Concepts/Data-Structures-&-Algo/Algorithms.md",
     "Core-Concepts/Data-Structures-&-Algo/timecomplexitygraph.png",
     "Core-Concepts/Data-Structures-&-Algo/Unconfirmed 939683.crdownload",
-    "Artificial-Intelligence/Advanced Data Science.md",
     "Core-Concepts/Data-Structures-&-Algo/Data-Strucutres.md",
-    "Core-Concepts/Operating-Systems.md",
-    "Core-Concepts/Database-Management.md",
     "Core-Concepts/Design and Analysis of Algorithms.md",
     "Artificial-Intelligence/Machine-Learning.md",
-    "Core-Concepts/Data-Communications-&-Computer-Netwoking/Data-Communications-&-Networking.md",
     "Core-Concepts/Data-Structures-&-Algo/tree.webp",
     "Core-Concepts/Data-Structures-&-Algo/Unconfirmed 814797.crdownload",
     "Internet of Things.md",
     "Core-Concepts/Data-Communications-&-Computer-Netwoking/DCCN Mind Map.png",
     "To Do (summer break).md",
     "Untitled.md",
-    "Core-Concepts/Data-Communications-&-Computer-Netwoking/ipv4_packet_structure.webp",
-    "Core-Concepts/Data-Communications-&-Computer-Netwoking/network-topologies.png",
     "Core-Concepts/Data-Communications-&-Computer-Netwoking/Unconfirmed 411092.crdownload",
-    "Core-Concepts/Data-Communications-&-Computer-Netwoking/OSI Model Layers.png",
     "Artificial-Intelligence/Natural-Language-Processing.md",
     "Core-Concepts/Data-Communications-&-Computer-Netwoking/Unconfirmed 47478.crdownload",
     "Pasted image 20260626044844.png",
@@ -264,7 +266,6 @@
     "Pasted image 20260603000627.png",
     "Core-Concepts/Data-Structures-&-Algo",
     "Mobile-Application-Dev.md.md",
-    "Algorithms",
     "Untitled.canvas",
     "2026-06-02.md"
   ]
