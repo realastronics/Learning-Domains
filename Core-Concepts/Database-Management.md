@@ -1,12 +1,9 @@
 # Database Management Systems
 ## 1. Fundamentals
-
 - **Data** is defined as raw, unorganized facts, often stored as bits and bytes (integers, text, etc.). It has no inherent meaning or significance until it is processed.
 - **Information** is the result of processing or interpreting data. It provides **context** and is the foundation for **decision-making** in business and administration
 - **Database** is a digital repository for interacting with the data that is stored in a **structured** manner. DBMS is the tool that manages this Database
-
 ### **Why we use a database instead of sheets/etc?**
-
 - **Data Redundancy and Inconsistency:** Files often duplicate the same information in different places, leading to conflicting data (e.g., a student's address being updated in one file but not another).
 - **Difficulty in Accessing Data:** Retrieving specific data in a file system requires writing a new program for every unique request.
 - **Integrity Problems:** Hard-coding "constraints" (rules like a bank balance never being negative) into multiple files is difficult and prone to error.
