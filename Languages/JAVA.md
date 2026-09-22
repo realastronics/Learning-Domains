@@ -2,7 +2,6 @@
 Java is a **high-level, statically typed, object-oriented programming language** developed by Sun Microsystems (now Oracle). It is designed to be **portable, secure, and scalable**.
 
 Object-oriented programming models software as interacting objects that **encapsulate data and behavior**, improving structure, reuse, and maintainability.
-
 ### 1) Java Platform Components
 - **JVM (Java Virtual Machine)**: Executes bytecode and manages memory
 - **JRE (Java Runtime Environment)**: JVM + core libraries (for running programs)
@@ -18,7 +17,6 @@ class Main {
 ```
 
 **Explanation of syntax:**
-
 1. public - makes the method accessible from anywhere, the JVM must be able to call it outside the class. If not public, the **program** won’t run.
 2. static - belongs to the class and tells the JVM this method can be called for execution without creating an object
 3. void - is to declare the method returns nothing
@@ -38,20 +36,18 @@ When a reference variable is assigned to another, both point to the same object,
 This bytecode is executed by the **Java Virtual Machine (JVM)**. Each operating system has its own JVM, which converts bytecode into native machine instructions. Because of this, the same Java program can run on any system that has a JVM. This is called **Write Once, Run Anywhere (WORA)**.
 
 **Summary:** Java’s portability comes from bytecode + JVM, not the OS.
-
 ### 4) Data Types in JAVA
 
-|Data Type|Size|Range / Description|
-|---|---|---|
-|`byte`|1 byte|−128 to 127|
-|`short`|2 bytes|−32,768 to 32,767|
-|`int`|4 bytes|−2³¹ to 2³¹−1|
-|`long`|8 bytes|−2⁶³ to 2⁶³−1|
-|`float`|4 bytes|~6–7 decimal digits|
-|`double`|8 bytes|~15 decimal digits|
-|`char`|2 bytes|Unicode character (0–65,535)|
-|`bool`|JVM dependent|`true` or `false`|
-
+| Data Type | Size          | Range / Description          |
+| --------- | ------------- | ---------------------------- |
+| `byte`    | 1 byte        | −128 to 127                  |
+| `short`   | 2 bytes       | −32,768 to 32,767            |
+| `int`     | 4 bytes       | −2³¹ to 2³¹−1                |
+| `long`    | 8 bytes       | −2⁶³ to 2⁶³−1                |
+| `float`   | 4 bytes       | ~6–7 decimal digits          |
+| `double`  | 8 bytes       | ~15 decimal digits           |
+| `char`    | 2 bytes       | Unicode character (0–65,535) |
+| `bool`    | JVM dependent | `true` or `false`            |
 ### 5) Input in Java
 For accepting user input in java we use a class named “Scanner” which has to be imported from the util package.
 
@@ -73,12 +69,11 @@ public static void Main(Strings[] args){
 **A ‘single’ `Scanner` object can be reused to take multiple inputs; you do not need to change the object name each time.**
 ### Logical Operators
 
-|Operator|Name|Description|Example|
-|---|---|---|---|
-|&&|Logical and|Returns true if both statements are true|x < 5 &&  x < 10|
-||||Logical or|
-|!|Logical not|Reverse the result, returns false if the result is true|!(x < 5 && x < 10)|
-
+| Operator | Name        | Description                                             | Example            |
+| -------- | ----------- | ------------------------------------------------------- | ------------------ |
+| &&       | Logical and | Returns true if both statements are true                | x < 5 &&  x < 10   |
+|          |             |                                                         | Logical or         |
+| !        | Logical not | Reverse the result, returns false if the result is true | !(x < 5 && x < 10) |
 ### 6) Loops
 ```java
 // This is the syntax of a for loop in java
@@ -97,12 +92,12 @@ while (i < 5) {
 
 **Rule:** flags must be **initialized before the loop**.
 
-|Aspect|Flag|Check|
-|---|---|---|
-|What it is|Variable|Condition|
-|Purpose|Store state|Test condition|
-|Usually type|`boolean`|Expression|
-|Lifetime|Persists|Instant|
+| Aspect       | Flag        | Check          |
+| ------------ | ----------- | -------------- |
+| What it is   | Variable    | Condition      |
+| Purpose      | Store state | Test condition |
+| Usually type | `boolean`   | Expression     |
+| Lifetime     | Persists    | Instant        |
 ### **7) Switch**
 `switch` selects a code block to execute based on the value of an expression.
 
