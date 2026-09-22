@@ -29,7 +29,6 @@ class Main {
 **Non-primitive/reference variables** store a reference/address to an object in memory rather than the data itself. Examples include `String`, arrays, and objects of classes.
 
 When a reference variable is assigned to another, both point to the same object, so changes affect both references. Reference types allow Java to model complex data and support object-oriented programming. Reference variables themselves are stored on the stack, _while the objects they point to are stored on the heap_
-
 ### 3) Java Portability & WORA
 **Java is portable** because it _does not compile directly to machine code_. Instead, Java source code is compiled into **bytecode**, which is **platform-independent**.
 
@@ -115,7 +114,6 @@ switch (day) {
         System.out.println("Invalid");
 }
 ```
-
 ### 8) Arrays
 An **array** is a data structure that stores **multiple values of the same data type** in a single variable. Arrays in Java have a **fixed size.**
 ```java
