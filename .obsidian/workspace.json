@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Core-Concepts/Data-Communications-&-Computer-Netwoking/Data-Communications-&-Networking.md",
+                "file": "Languages/JAVA.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Data-Communications-&-Networking"
+              "title": "JAVA"
             }
           }
         ],
@@ -211,8 +211,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "71272a4ad810c193",
+  "active": "aa54b2c8a6de2518",
   "lastOpenFiles": [
+    "Internet of Things.md",
+    "README.md",
+    "To Do (summer break).md",
+    "Untitled.md",
+    "Core-Concepts/Data-Communications-&-Computer-Netwoking/Data-Communications-&-Networking.md",
     "Core-Concepts/Data-Structures-&-Algo/Data-Strucutres.md",
     "Core-Concepts/Data-Structures-&-Algo/Algorithms.md",
     "Core-Concepts/Data-Structures-&-Algo/timecomplexitygraph.png",
@@ -227,20 +232,15 @@
     "Core-Concepts/Data-Communications-&-Computer-Netwoking/OSI Model Layers.png",
     "Core-Concepts/Data-Communications-&-Computer-Netwoking/network-topologies.png",
     "Core-Concepts/Data-Communications-&-Computer-Netwoking/ipv4_packet_structure.webp",
-    "Core-Concepts/Data-Communications-&-Computer-Netwoking/Data-Communications-&-Networking.md",
     "Core-Concepts/Data-Structures-&-Algo/Unconfirmed 939683.crdownload",
     "Core-Concepts/Design and Analysis of Algorithms.md",
     "Core-Concepts/Data-Structures-&-Algo/tree.webp",
     "Core-Concepts/Data-Structures-&-Algo/Unconfirmed 814797.crdownload",
-    "Internet of Things.md",
     "Core-Concepts/Data-Communications-&-Computer-Netwoking/DCCN Mind Map.png",
-    "To Do (summer break).md",
-    "Untitled.md",
     "Core-Concepts/Data-Communications-&-Computer-Netwoking/Unconfirmed 411092.crdownload",
     "Core-Concepts/Data-Communications-&-Computer-Netwoking/Unconfirmed 47478.crdownload",
     "Pasted image 20260626044844.png",
     "Core-Concepts/Data-Communications-&-Computer-Netwoking",
-    "README.md",
     "Android-Application-Development.md",
     "Pasted image 20260622190223.png",
     "Languages/JAVA.md",
