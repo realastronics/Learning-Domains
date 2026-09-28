@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Languages/JAVA.md",
+                "file": "Artificial-Intelligence/Machine-Learning.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "JAVA"
+              "title": "Machine-Learning"
             }
           }
         ],
@@ -213,6 +213,15 @@
   },
   "active": "aa54b2c8a6de2518",
   "lastOpenFiles": [
+    "Artificial-Intelligence/Artificial Intelligence.md",
+    "Artificial-Intelligence/Advanced Data Science.md",
+    "Artificial-Intelligence/Machine-Learning.md",
+    "Artificial-Intelligence/basic_distincition.png",
+    "Artificial-Intelligence/Unconfirmed 678231.crdownload",
+    "Artificial-Intelligence/Knowledge-Representation.md",
+    "Core-Concepts/Computer-Architecture/Notes.md",
+    "Languages/JAVA.md",
+    "Core-Concepts/Computer-Architecture",
     "Internet of Things.md",
     "README.md",
     "To Do (summer break).md",
@@ -221,9 +230,6 @@
     "Core-Concepts/Data-Structures-&-Algo/Data-Strucutres.md",
     "Core-Concepts/Data-Structures-&-Algo/Algorithms.md",
     "Core-Concepts/Data-Structures-&-Algo/timecomplexitygraph.png",
-    "Artificial-Intelligence/Knowledge-Representation.md",
-    "Artificial-Intelligence/Advanced Data Science.md",
-    "Artificial-Intelligence/Machine-Learning.md",
     "Artificial-Intelligence/Natural-Language-Processing.md",
     "Core-Concepts/Database-Management.md",
     "Core-Concepts/Computer-Organization-&-Architecture/Notes.md",
@@ -243,14 +249,10 @@
     "Core-Concepts/Data-Communications-&-Computer-Netwoking",
     "Android-Application-Development.md",
     "Pasted image 20260622190223.png",
-    "Languages/JAVA.md",
     "Languages",
     "Languages/Go-lang.md",
     "Attachments/dbms-three-level-arch.png",
     "Attachments",
-    "Core-Concepts",
-    "Pasted image 20260603000627.png",
-    "Core-Concepts/Data-Structures-&-Algo",
     "Mobile-Application-Dev.md.md",
     "Untitled.canvas",
     "2026-06-02.md"
