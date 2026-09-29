@@ -12,7 +12,7 @@ In a machine learning model, the full dataset is typically split into three segm
 ## Types of ML Models based on their functionality
 ## 1. Supervised learning
 Supervise learning is when the model is trained on data that has it's features already been **labelled** by a human. The model simply learns the pattern and begins predicting the output (labels) from the input (unlabeled examples). There are two major types of supervised learning models:
-### i) Linear Regression:
+### 1.1 Linear Regression:
 A regression model predicts a **numeric value**. For example, a weather model that predicts the amount of rain, in inches or millimeters, is a regression model. In a Linear Regression Model, the target values (labels) are numerical values.
 
  **$x^{(i)}, y^{(i)}$ means the model input and labeled output respectively, at $i^{th}$ index in the dataset, where $\hat{y}$ would mean the model output.** The model is a mathematical function aka the **hypothesis function** that is a relationship between the input and output.
@@ -30,7 +30,10 @@ The purpose of the model is to find such values of $w$ and $b$ such that the cos
 | ------------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
 | **Scope**           | A **single** data point / observation.                                   | The **entire** dataset or training batch.                                                            |
 | **Formula Context** | Measures the penalty for one specific prediction against its true label. | Typically the **average or sum** of all individual losses, often including a regularization penalty. |
-### ii) Classification:
+### Gradient Descent
+It is an optimziation algorithm used in Linear Regression
+
+### 1.2 Classification:
 Classification models output a value that states whether or not something belongs to a particular category. Ex: classification models are used to predict if an email is spam or if a photo contains a cat.
 
 They are further of two major types:
@@ -38,7 +41,7 @@ They are further of two major types:
 - **Multiclass Classification -**  output a value from a class that contains more than two values, for example, a model that can output either **`rain`**, **`hail`**, **`snow`**, or **`sleet`**.
 ## 2. Unsupervised learning
 Unsupervised learning aims to identify meaningful patterns in any given dataset without output labels being provided. They rely on a technique called **clustering** where similar data is organized into groups. **This is particularly useful when humans do not know the patterns in the data, and the model can help identify them.**
-### Clustering 
+### 2.1 Clustering 
 differs from classification as these categories aren’t defined by the user. Common examples of where clustering is used are: google news, DNA microarray. Other examples of unsupervised learning are anomaly detection and dimensionality reduction.
 ## 3. Reinforcement learning
 These models make predicts by being rewarded or penalized based on their actions performed within an environment.
