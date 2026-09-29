@@ -12,7 +12,7 @@ In a machine learning model, the full dataset is typically split into three segm
 ## Types of ML Models based on their functionality
 ## 1. Supervised learning
 Supervise learning is when the model is trained on data that has it's features already been **labelled** by a human. The model simply learns the pattern and begins predicting the output (labels) from the input (unlabeled examples). There are two major types of supervised learning models:
-### 1.1 Linear Regression:
+## 1.1 Linear Regression:
 A regression model predicts a **numeric value**. For example, a weather model that predicts the amount of rain, in inches or millimeters, is a regression model. In a Linear Regression Model, the target values (labels) are numerical values.
 
  **$x^{(i)}, y^{(i)}$ means the model input and labeled output respectively, at $i^{th}$ index in the dataset, where $\hat{y}$ would mean the model output.** The model is a mathematical function aka the **hypothesis function** that is a relationship between the input and output.
