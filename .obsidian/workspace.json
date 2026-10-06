@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Artificial-Intelligence/Artificial Intelligence.md",
+                "file": "Core-Concepts/Computer-Architecture/Computer Organization and Architecture.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Artificial Intelligence"
+              "title": "Computer Organization and Architecture"
             }
           }
         ],
@@ -213,14 +213,14 @@
   },
   "active": "aa54b2c8a6de2518",
   "lastOpenFiles": [
-    "Artificial-Intelligence/Machine-Learning.md",
-    "Artificial-Intelligence/Artificial Intelligence.md",
+    "Core-Concepts/Data-Communications-&-Computer-Netwoking/Data-Communications-&-Networking.md",
+    "Core-Concepts/Computer-Architecture/Computer Organization and Architecture.md",
     "Artificial-Intelligence/Advanced Data Science.md",
+    "Artificial-Intelligence/Artificial Intelligence.md",
+    "Artificial-Intelligence/Machine-Learning.md",
     "Artificial-Intelligence/Knowledge-Representation.md",
     "Artificial-Intelligence/basic_distincition.png",
-    "Core-Concepts/Data-Communications-&-Computer-Netwoking/Data-Communications-&-Networking.md",
     "Artificial-Intelligence/Unconfirmed 678231.crdownload",
-    "Core-Concepts/Computer-Architecture/Notes.md",
     "Languages/JAVA.md",
     "Core-Concepts/Computer-Architecture",
     "Internet of Things.md",
