@@ -49,19 +49,16 @@ A **percept** is the information an agent receives from its environment at a par
 Percept → camera image + speed + GPS + radar + other sensor data
 Action  → accelerate / brake / steer
 ```
-### 2.1 Agent function
+
 The **agent function** describes the mapping from the agent's percept history to an action:
 ```
 f : percept sequence → action
 ```
 
-In other words:
 > **Given everything the agent has perceived so far, what should it do next?**
-
 The agent function is an abstract description of the agent's behavior. An **agent program** is the actual computational implementation of that function.
-### 2.2 Rational Agent
+### 2.1 Rational Agent
 An agent is **rational** when it chooses the action expected to maximize its performance measure, given:
-
 - the percept sequence available to it,
 - its knowledge,
 - the actions it can perform,
@@ -71,13 +68,12 @@ Rational does **not** mean always successful.
 
 A rational agent can make a wrong decision because it may have incomplete information or an imperfect model of the world.
 > **Rationality is about choosing the best action given what the agent knows, not about guaranteeing the best outcome.**
-### 2.3 PEAS
+### 2.2 PEAS
 To specify an agent's task environment, we use **PEAS**:
 - **P — Performance measure:** How is success evaluated?
 - **E — Environment:** What world does the agent operate in?
 - **A — Actuators:** What actions can it perform?
 - **S — Sensors:** What information can it perceive?
-
 **Example: Autonomous taxi**
 
 | Component   | Example                              |
@@ -91,6 +87,49 @@ The agent perspective turns AI into a very concrete question:
 > **Given what the system can perceive, what action should it take to achieve its objective?**
 
 Search, planning, reasoning, learning, and modern AI models can all be understood as different mechanisms for answering this question.
+### 2.3 Task Environments
+A **task environment** is the part of the world in which an agent operates and whose state can be affected by the agent's actions. The nature of the environment determines what kind of intelligence the agent needs.
+
+**Important properties of task environments**
+
+1. Fully observable vs. partially observable**
+   - **Fully observable:** The agent's sensors provide all information relevant to choosing an action.
+   - **Partially observable:** The agent has incomplete information about the current state.
+  Example: Chess is largely fully observable; driving is partially observable.
+
+2. **Deterministic vs. stochastic**
+   - **Deterministic:** An action has a predictable outcome given the current state.
+   - **Stochastic:** The outcome involves uncertainty.
+  Example: A calculator is deterministic; a robot moving through a crowded room is stochastic.
+
+3. **Episodic vs. sequential**
+   - **Episodic:** Each decision is largely independent of previous decisions.
+   - **Sequential:** Current actions affect future states and decisions. 
+  Example: Image classification can be episodic; chess is sequential.
+
+4. **Static vs. dynamic**
+   - **Static:** The environment does not change while the agent is deciding.
+   - **Dynamic:** The environment can change independently of the agent.
+  Example: Crossword solving is relatively static; driving is dynamic.
+
+5. **Discrete vs. continuous**
+   - **Discrete:** States, actions, or time can be represented as distinct values.
+   - **Continuous:** They vary over a continuous range. 
+  Example: Chess is discrete; vehicle steering is continuous.
+
+5. **Single-agent vs. multi-agent**
+   - **Single-agent:** The outcome depends mainly on the agent's own actions.
+   - **Multi-agent:** Other agents also influence the environment and may cooperate or compete.
+  Example: Sudoku is single-agent; poker is multi-agent.
+  
+These properties tell us **what kind of reasoning an agent requires**.
+
+A simple, fully observable, deterministic environment may need very little sophisticated intelligence. A partially observable, stochastic, dynamic, multi-agent environment requires much more.
+
+So before designing an agent, we should ask:
+> **What kind of world is the agent operating in?**
+
+That question directly influences its architecture, representation, planning, and decision-making strategy.
 ## 3. Problem Formulation
 ## 4. Search
 ## 5. Local Search & Optimization
