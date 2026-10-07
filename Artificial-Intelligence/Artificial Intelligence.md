@@ -62,7 +62,6 @@ f : percept sequence → action
 ```
 
 In other words:
-
 > **Given everything the agent has perceived so far, what should it do next?**
 
 The agent function is an abstract description of the agent's behavior. An **agent program** is the actual computational implementation of that function.

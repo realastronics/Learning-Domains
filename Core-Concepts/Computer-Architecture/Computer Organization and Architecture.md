@@ -2,10 +2,20 @@
 *The true voyage of discovery consists not of going to new places, but of having a new pair*
 *of eyes. – Marcel Proust (1871–1922)*
 # 1. Computer Organization & Performance
-**Architecture vs Organization**:
-Architecture is *what* the computer exposes to the programmer, things like the instruction set, data types, registers, I/O mechanisms. While organization is *how* those architectural features are **implemented** in hardware, like ALU implementation, memory technology, control signals, hardware implementations.
+**Computer Architecture is *what* the computer exposes** to the programmer, things like the instruction set, data types, registers, I/O mechanisms. While **computer organization is *how* those architectural features are implemented** in hardware, like ALU implementation, memory technology, control signals, hardware implementations.
 
+**CPU Performance:** measures how quickly and efficiently a central processing unit (the "brain" of a computer) processes data and executes program instructions.
+CPU Time = CPU Clock Cycles × Clock Cycle Time
+CPU Clock Cycles = Instruction Count × CPI
 
+Therefore:
+CPU Time = IC × CPI × Clock Cycle Time
+
+Since:
+Clock Cycle Time = 1 / Clock Rate
+
+Therefore:
+CPU Time = (IC × CPI) / Clock Rate
 # 2. Number Representation
 
 # 3. Floating-Point Representation
