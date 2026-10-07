@@ -130,9 +130,212 @@ So before designing an agent, we should ask:
 > **What kind of world is the agent operating in?**
 
 That question directly influences its architecture, representation, planning, and decision-making strategy.
-## 3. Problem Formulation
-## 4. Search
-## 5. Local Search & Optimization
-## 6. Adversarial Search & Games
-## 7. Constraint Satisfaction Problem
-## 8. Planning
+## Agent Architectures
+An **agent architecture** describes how an agent transforms its percepts and internal information into actions.
+
+The architectures differ mainly in **how much internal knowledge and reasoning the agent uses**.
+### 1. Simple Reflex Agent
+Acts only on the **current percept** using condition-action rules.
+
+```
+Percept → Rule → Action
+```
+Example:
+```
+If temperature < 20°C → turn heater on
+```
+
+**Strength:** Simple and fast.  
+**Limitation:** Cannot handle situations where the current percept does not contain enough information.
+### 2. Model-Based Reflex Agent
+Maintains an **internal state** that represents aspects of the world that cannot be directly observed.
+
+```
+Percept + Internal State
+          ↓
+     Update State
+          ↓
+         Rule
+          ↓
+        Action
+```
+
+The internal state acts as a **model of the world**.
+
+Example: A robot may remember that an obstacle was previously detected even though it is currently outside its sensors' view.
+
+This allows the agent to operate in **partially observable environments**.
+### 3. Goal-Based Agent
+A goal-based agent explicitly considers **what it wants to achieve** and chooses actions that help reach that goal.
+
+```
+Current State + Goal
+        ↓
+   Search / Planning
+        ↓
+      Action
+```
+
+Example:
+
+> Goal: Reach Room B.
+
+The agent considers possible paths and selects actions that eventually reach Room B.
+
+This introduces **planning and search** into the agent.
+### 4. Utility-Based Agent
+Goals alone may not be enough. Suppose two routes both reach the destination, but one is:
+- faster
+- safer
+- cheaper
+- or more comfortable.
+
+A utility-based agent uses a **utility function** to measure how desirable different outcomes are.
+```
+Possible outcomes
+       ↓
+  Utility values
+       ↓
+Choose action with
+highest expected utility
+```
+
+This becomes particularly important when there is **uncertainty or competing objectives**.
+
+> **Goal:** What outcomes are acceptable?  
+> **Utility:** How desirable is each outcome?
+### 5. Learning Agent
+A learning agent can **improve its behavior from experience** rather than relying entirely on rules designed beforehand.
+
+A standard learning-agent architecture contains:
+
+- **Performance element:** selects actions.
+- **Learning element:** improves the performance element.
+- **Critic:** evaluates how well the agent is performing.
+- **Problem generator:** suggests useful exploratory actions.
+
+```
+                 ┌──────────────┐
+Environment → Percepts → Performance Element → Actions
+                              ↑
+                        Learning Element
+                              ↑
+                           Critic
+                              ↑
+                         Feedback
+
+                     Problem Generator
+                           ↓
+                    Exploration
+```
+
+The important shift is:
+
+> **Earlier architectures are primarily designed by us; a learning agent can modify or improve its behavior through experience.**
+## The progression
+
+These architectures can be understood as increasing sophistication:
+
+```
+Simple Reflex
+      ↓
+Model-Based
+      ↓
+Goal-Based
+      ↓
+Utility-Based
+      ↓
+Learning
+```
+
+Each step addresses a limitation of the previous one:
+
+|Architecture|Adds|
+|---|---|
+|Simple Reflex|Immediate rule-based response|
+|Model-Based|Internal representation of the world|
+|Goal-Based|Explicit objectives and planning|
+|Utility-Based|Preference between possible outcomes|
+|Learning|Ability to improve from experience|
+
+The key idea is not that newer architectures always replace older ones. **Modern AI systems often combine several of these ideas.** A system may have an internal model, pursue goals, optimize utility, and learn from experience simultaneously.
+
+### Core mental model
+
+> **Agent architecture is essentially the machinery between perception and action: how an agent represents the world, evaluates possibilities, and decides what to do.
+
+### Expert Systems
+
+An **expert system** is an AI system designed to solve problems in a specific domain by combining **stored domain knowledge** with an **inference mechanism**.
+
+The central idea is:
+
+> **Separate what the system knows from how it reasons with that knowledge.**
+
+### Architecture
+
+```
+User / Environment
+        ↓
+   User Interface
+        ↓
+   Inference Engine
+        ↕
+   Knowledge Base
+        ↓
+      Output
+```
+
+**Knowledge Base**  
+Contains domain-specific knowledge, often represented as facts and rules.
+
+```
+Fact: Patient has a fever.
+Rule: IF fever AND cough → possible infection.
+```
+
+**Inference Engine**  
+Applies the rules to known facts to derive new conclusions.
+
+**User Interface**  
+Allows users to provide information and receive conclusions or recommendations.
+
+### Example
+
+A medical expert system might contain:
+
+```
+Fever + Cough → Possible respiratory infection
+Respiratory infection + Test result → Diagnosis
+```
+
+Given a patient's symptoms, the inference engine applies the relevant rules and produces a conclusion.
+
+### Why expert systems mattered
+
+Expert systems were an early demonstration that intelligent behavior could be produced by **explicitly representing knowledge and reasoning over it**, rather than encoding every possible situation as a fixed procedure.
+
+They were particularly useful in narrow domains such as diagnosis, configuration, and troubleshooting.
+
+### Limitations
+
+Their major weakness is that the system depends heavily on the quality and completeness of its knowledge base.
+
+They struggle when:
+
+- knowledge is difficult to express as explicit rules,
+- situations are uncertain or novel,
+- the number of rules becomes very large,
+- or knowledge must be continuously updated.
+
+This is one reason modern AI increasingly relies on **learning from data** rather than requiring humans to explicitly encode all relevant knowledge.
+
+> **Expert systems = explicit knowledge + inference rules + reasoning mechanism.**
+
+With this, the **Intelligent Agents** portion is complete enough for our purposes.
+## 3. Problem Solving and Search
+## 4. Knowledge Representation and Reasoning
+## 5. Planning
+## 6. Constraint Satisfaction Problem
+## 7. Local Search and Optimization
+## 8. Advesarial Search and Game Playing
