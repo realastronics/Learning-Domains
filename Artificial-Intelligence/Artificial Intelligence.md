@@ -36,44 +36,49 @@ So the progression is:
 > **Human imitation → Formal reasoning → Rational action**
 
 The **rational-agent perspective** provides the foundation for how we will study search, planning, reasoning, learning, and modern AI systems.
-## 2. Intelligent Agents
-An **agent** is a system that **perceives its environment through sensors and acts upon that environment through actuators**. Agent is not defined by being human-like but by being able to act without human-intervention.
+## 2. Intelligent Agents & Expert Systems
 
-A thermostat, robot, chess program, self-driving car, and LLM-based system can all be considered agents because they:
-- receive information from some environment, 
-- process that information,
-- and produce actions or outputs.
+## 2.1) Agents, Rationality & Task Environments
+An **agent** is a system that **perceives its environment through sensors and acts upon it through actuators**. The important idea is not that an agent must be human-like, but that it can **use percepts to select actions** in an environment.
 
-A **percept** is the information an agent receives from its environment at a particular moment. **Percept Sequence** is the complete order of percepts received over time to the agent. Example: for a self-driving car:
+A thermostat, robot, chess program, or autonomous vehicle can be an agent because it receives information, processes it, and produces actions or outputs.
+
+**Percept** is the information an agent receives from its environment at a particular moment. **Percept sequence** is the complete history of percepts received by the agent.
 ```
-Percept → camera image + speed + GPS + radar + other sensor data
+Percept → camera image + speed + GPS + radar
 Action  → accelerate / brake / steer
 ```
 
-The **agent function** describes the mapping from the agent's percept history to an action:
+The **agent function** specifies the mapping from the percept sequence to an action:
 ```
 f : percept sequence → action
 ```
+It answers:
+> **Given what the agent has perceived so far, what should it do next?**
 
-> **Given everything the agent has perceived so far, what should it do next?**
-The agent function is an abstract description of the agent's behavior. An **agent program** is the actual computational implementation of that function.
-### 2.1 Rational Agent
-An agent is **rational** when it chooses the action expected to maximize its performance measure, given:
-- the percept sequence available to it,
-- its knowledge,
-- the actions it can perform,
-- and the uncertainty of the environment.
+The **agent program** is the actual computational implementation of the agent function.
 
-Rational does **not** mean always successful.
+**Rational agent:** an agent that chooses the action expected to maximize its **performance measure**, given its percept sequence, available knowledge, available actions, and the uncertainty of the environment.
+> **Rationality means choosing the best action justified by the information available, not guaranteeing a successful outcome.**
 
-A rational agent can make a wrong decision because it may have incomplete information or an imperfect model of the world.
-> **Rationality is about choosing the best action given what the agent knows, not about guaranteeing the best outcome.**
-### 2.2 PEAS
-To specify an agent's task environment, we use **PEAS**:
-- **P — Performance measure:** How is success evaluated?
-- **E — Environment:** What world does the agent operate in?
-- **A — Actuators:** What actions can it perform?
-- **S — Sensors:** What information can it perceive?
+A **task environment** is the environment in which an agent operates and whose state can be affected by its actions. The environment can be described using several important properties:
+
+- **Fully observable vs. partially observable:** whether the agent can perceive all relevant aspects of the current state.
+- **Deterministic vs. stochastic:** whether an action's outcome is completely predictable.
+- **Episodic vs. sequential:** whether each decision is independent or affects future decisions.
+- **Static vs. dynamic:** whether the environment can change while the agent is deciding.
+- **Discrete vs. continuous:** whether states, actions, or time have distinct values or vary continuously.
+- **Single-agent vs. multi-agent:** whether other agents also influence the outcome.
+- **Known vs. unknown:** whether the agent knows the rules governing how the environment works.
+
+These properties matter because the **nature of the environment determines the kind of reasoning, representation, planning, and decision-making the agent requires**.
+
+To specify a task environment, we use **PEAS**:
+- **P — Performance measure:** how success is evaluated.
+- **E — Environment:** the world in which the agent operates.
+- **A — Actuators:** the actions the agent can perform.
+- **S — Sensors:** the information the agent can perceive.
+
 **Example: Autonomous taxi**
 
 | Component   | Example                              |
@@ -83,91 +88,38 @@ To specify an agent's task environment, we use **PEAS**:
 | Actuators   | Steering, brakes, accelerator        |
 | Sensors     | Cameras, GPS, radar, lidar           |
 
-The agent perspective turns AI into a very concrete question:
+The agent perspective reduces AI to a fundamental question:
 > **Given what the system can perceive, what action should it take to achieve its objective?**
+## 2.2) Agent Architectures & Problem Solving
+An **agent architecture** describes how an agent converts percepts and internal information into actions. The architectures become progressively more capable by introducing **internal state, goals, preferences, and learning**.
 
-Search, planning, reasoning, learning, and modern AI models can all be understood as different mechanisms for answering this question.
-### 2.3 Task Environments
-A **task environment** is the part of the world in which an agent operates and whose state can be affected by the agent's actions. The nature of the environment determines what kind of intelligence the agent needs.
-
-**Important properties of task environments**
-
-1. Fully observable vs. partially observable**
-   - **Fully observable:** The agent's sensors provide all information relevant to choosing an action.
-   - **Partially observable:** The agent has incomplete information about the current state.
-  Example: Chess is largely fully observable; driving is partially observable.
-
-2. **Deterministic vs. stochastic**
-   - **Deterministic:** An action has a predictable outcome given the current state.
-   - **Stochastic:** The outcome involves uncertainty.
-  Example: A calculator is deterministic; a robot moving through a crowded room is stochastic.
-
-3. **Episodic vs. sequential**
-   - **Episodic:** Each decision is largely independent of previous decisions.
-   - **Sequential:** Current actions affect future states and decisions. 
-  Example: Image classification can be episodic; chess is sequential.
-
-4. **Static vs. dynamic**
-   - **Static:** The environment does not change while the agent is deciding.
-   - **Dynamic:** The environment can change independently of the agent.
-  Example: Crossword solving is relatively static; driving is dynamic.
-
-5. **Discrete vs. continuous**
-   - **Discrete:** States, actions, or time can be represented as distinct values.
-   - **Continuous:** They vary over a continuous range. 
-  Example: Chess is discrete; vehicle steering is continuous.
-
-5. **Single-agent vs. multi-agent**
-   - **Single-agent:** The outcome depends mainly on the agent's own actions.
-   - **Multi-agent:** Other agents also influence the environment and may cooperate or compete.
-  Example: Sudoku is single-agent; poker is multi-agent.
-  
-These properties tell us **what kind of reasoning an agent requires**.
-
-A simple, fully observable, deterministic environment may need very little sophisticated intelligence. A partially observable, stochastic, dynamic, multi-agent environment requires much more.
-
-So before designing an agent, we should ask:
-> **What kind of world is the agent operating in?**
-
-That question directly influences its architecture, representation, planning, and decision-making strategy.
-## Agent Architectures
-An **agent architecture** describes how an agent transforms its percepts and internal information into actions.
-
-The architectures differ mainly in **how much internal knowledge and reasoning the agent uses**.
-### 1. Simple Reflex Agent
-Acts only on the **current percept** using condition-action rules.
-
+**Simple Reflex Agent**
+Uses condition-action rules based only on the **current percept**.
 ```
 Percept → Rule → Action
 ```
+
 Example:
 ```
-If temperature < 20°C → turn heater on
+IF temperature < 20°C → turn heater on
 ```
+Simple and fast, but ineffective when the current percept alone is insufficient to determine the appropriate action.
 
-**Strength:** Simple and fast.  
-**Limitation:** Cannot handle situations where the current percept does not contain enough information.
-### 2. Model-Based Reflex Agent
-Maintains an **internal state** that represents aspects of the world that cannot be directly observed.
-
+**Model-Based Reflex Agent**
+Maintains an **internal state** that represents aspects of the world that may not be directly observable.
 ```
-Percept + Internal State
+Percept + Previous State
           ↓
-     Update State
+    Update Internal State
           ↓
-         Rule
+          Rule
           ↓
         Action
 ```
+The internal state acts as a model of how the world changes. This allows the agent to function in **partially observable environments**.
 
-The internal state acts as a **model of the world**.
-
-Example: A robot may remember that an obstacle was previously detected even though it is currently outside its sensors' view.
-
-This allows the agent to operate in **partially observable environments**.
-### 3. Goal-Based Agent
-A goal-based agent explicitly considers **what it wants to achieve** and chooses actions that help reach that goal.
-
+**Goal-Based Agent**
+Chooses actions by considering a desired **goal state**.
 ```
 Current State + Goal
         ↓
@@ -175,22 +127,15 @@ Current State + Goal
         ↓
       Action
 ```
-
 Example:
-
 > Goal: Reach Room B.
 
-The agent considers possible paths and selects actions that eventually reach Room B.
+The agent considers possible sequences of actions and selects one that achieves the goal.
 
-This introduces **planning and search** into the agent.
-### 4. Utility-Based Agent
-Goals alone may not be enough. Suppose two routes both reach the destination, but one is:
-- faster
-- safer
-- cheaper
-- or more comfortable.
+**Utility-Based Agent**
+Goals tell an agent whether an outcome is acceptable, but not necessarily **which acceptable outcome is better**. 
 
-A utility-based agent uses a **utility function** to measure how desirable different outcomes are.
+A utility function assigns a measure of desirability to outcomes.
 ```
 Possible outcomes
        ↓
@@ -200,42 +145,38 @@ Choose action with
 highest expected utility
 ```
 
-This becomes particularly important when there is **uncertainty or competing objectives**.
+For example, two routes may both reach the destination, but one may be faster, safer, or cheaper.
 
 > **Goal:** What outcomes are acceptable?  
 > **Utility:** How desirable is each outcome?
-### 5. Learning Agent
-A learning agent can **improve its behavior from experience** rather than relying entirely on rules designed beforehand.
+
+Utility becomes especially important when outcomes are uncertain or objectives compete.
+
+**Learning Agent**
+A learning agent improves its behavior through **experience** rather than relying entirely on knowledge and rules specified beforehand.
 
 A standard learning-agent architecture contains:
-
 - **Performance element:** selects actions.
 - **Learning element:** improves the performance element.
-- **Critic:** evaluates how well the agent is performing.
-- **Problem generator:** suggests useful exploratory actions.
+- **Critic:** evaluates the agent's performance.
+- **Problem generator:** encourages useful exploration.
 
 ```
-                 ┌──────────────┐
+                   ┌──────────────────┐
 Environment → Percepts → Performance Element → Actions
                               ↑
-                        Learning Element
+                       Learning Element
                               ↑
-                           Critic
+                            Critic
                               ↑
-                         Feedback
+                           Feedback
 
-                     Problem Generator
+                    Problem Generator
                            ↓
-                    Exploration
+                       Exploration
 ```
 
-The important shift is:
-
-> **Earlier architectures are primarily designed by us; a learning agent can modify or improve its behavior through experience.**
-## The progression
-
-These architectures can be understood as increasing sophistication:
-
+The progression is:
 ```
 Simple Reflex
       ↓
@@ -248,91 +189,48 @@ Utility-Based
 Learning
 ```
 
-Each step addresses a limitation of the previous one:
+These architectures are not mutually exclusive. A modern system can maintain an internal model, pursue goals, optimize utility, and learn from experience at the same time.
 
-|Architecture|Adds|
-|---|---|
-|Simple Reflex|Immediate rule-based response|
-|Model-Based|Internal representation of the world|
-|Goal-Based|Explicit objectives and planning|
-|Utility-Based|Preference between possible outcomes|
-|Learning|Ability to improve from experience|
+A **problem-solving agent** is a goal-based agent that formulates a problem and searches for a sequence of actions that reaches a goal.
 
-The key idea is not that newer architectures always replace older ones. **Modern AI systems often combine several of these ideas.** A system may have an internal model, pursue goals, optimize utility, and learn from experience simultaneously.
+This creates the bridge to the next major topic:
 
-### Core mental model
+> **Agent → Goal → Problem Formulation → Search → Action**
 
-> **Agent architecture is essentially the machinery between perception and action: how an agent represents the world, evaluates possibilities, and decides what to do.
-
-### Expert Systems
-
-An **expert system** is an AI system designed to solve problems in a specific domain by combining **stored domain knowledge** with an **inference mechanism**.
+## 2.3) Expert Systems
+An **expert system** is an AI system designed to solve problems in a specific domain by combining **explicit domain knowledge** with an **inference mechanism**.
 
 The central idea is:
-
 > **Separate what the system knows from how it reasons with that knowledge.**
 
-### Architecture
-
+Its basic architecture consists of:
 ```
-User / Environment
-        ↓
-   User Interface
-        ↓
-   Inference Engine
-        ↕
-   Knowledge Base
-        ↓
-      Output
+User
+  ↓
+User Interface
+  ↓
+Inference Engine ↔ Knowledge Base
+  ↓
+Conclusion / Recommendation
 ```
 
-**Knowledge Base**  
-Contains domain-specific knowledge, often represented as facts and rules.
-
+**Knowledge Base:** stores domain-specific knowledge, commonly as facts and rules.
 ```
 Fact: Patient has a fever.
 Rule: IF fever AND cough → possible infection.
 ```
 
-**Inference Engine**  
-Applies the rules to known facts to derive new conclusions.
+**Inference Engine:** applies the rules to known facts to derive conclusions.
 
-**User Interface**  
-Allows users to provide information and receive conclusions or recommendations.
+**Knowledge Acquisition:** the process of obtaining and encoding knowledge from human experts or other sources.
 
-### Example
+Expert systems were important because they demonstrated that useful intelligent behavior could be produced by **explicitly representing domain knowledge and reasoning over it**.
 
-A medical expert system might contain:
+They were used in areas such as diagnosis, configuration, and troubleshooting.
 
-```
-Fever + Cough → Possible respiratory infection
-Respiratory infection + Test result → Diagnosis
-```
+Their main limitation is their dependence on the **quality, completeness, and maintainability of explicitly encoded knowledge**. They struggle when knowledge is difficult to express as rules, situations are novel or uncertain, or the rule base becomes very large and difficult to maintain.
 
-Given a patient's symptoms, the inference engine applies the relevant rules and produces a conclusion.
-
-### Why expert systems mattered
-
-Expert systems were an early demonstration that intelligent behavior could be produced by **explicitly representing knowledge and reasoning over it**, rather than encoding every possible situation as a fixed procedure.
-
-They were particularly useful in narrow domains such as diagnosis, configuration, and troubleshooting.
-
-### Limitations
-
-Their major weakness is that the system depends heavily on the quality and completeness of its knowledge base.
-
-They struggle when:
-
-- knowledge is difficult to express as explicit rules,
-- situations are uncertain or novel,
-- the number of rules becomes very large,
-- or knowledge must be continuously updated.
-
-This is one reason modern AI increasingly relies on **learning from data** rather than requiring humans to explicitly encode all relevant knowledge.
-
-> **Expert systems = explicit knowledge + inference rules + reasoning mechanism.**
-
-With this, the **Intelligent Agents** portion is complete enough for our purposes.
+> **Expert system = explicit domain knowledge + inference mechanism + reasoning over that knowledge.**
 ## 3. Problem Solving and Search
 ## 4. Knowledge Representation and Reasoning
 ## 5. Planning
