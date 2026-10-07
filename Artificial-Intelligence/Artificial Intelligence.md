@@ -37,26 +37,20 @@ So the progression is:
 
 The **rational-agent perspective** provides the foundation for how we will study search, planning, reasoning, learning, and modern AI systems.
 ## 2. Intelligent Agents
-An **agent** is a system that **perceives its environment through sensors and acts upon that environment through actuators**. Agent is not defined by being human-like or even by being complex.
+An **agent** is a system that **perceives its environment through sensors and acts upon that environment through actuators**. Agent is not defined by being human-like but by being able to act without human-intervention.
 
 A thermostat, robot, chess program, self-driving car, and LLM-based system can all be considered agents because they:
 - receive information from some environment, 
 - process that information,
 - and produce actions or outputs.
-### Percept
-A **percept** is the information an agent receives from its environment at a particular moment.
 
-The complete sequence of percepts received over time is the **percept sequence**.
-
-For a self-driving car:
+A **percept** is the information an agent receives from its environment at a particular moment. **Percept Sequence** is the complete order of percepts received over time to the agent. Example: for a self-driving car:
 ```
 Percept → camera image + speed + GPS + radar + other sensor data
 Action  → accelerate / brake / steer
 ```
-
-Agent function
+### 2.1 Agent function
 The **agent function** describes the mapping from the agent's percept history to an action:
-
 ```
 f : percept sequence → action
 ```
@@ -65,24 +59,19 @@ In other words:
 > **Given everything the agent has perceived so far, what should it do next?**
 
 The agent function is an abstract description of the agent's behavior. An **agent program** is the actual computational implementation of that function.
-
-### Rational Agent
+### 2.2 Rational Agent
 An agent is **rational** when it chooses the action expected to maximize its performance measure, given:
 
 - the percept sequence available to it,
-    
 - its knowledge,
-    
 - the actions it can perform,
-    
 - and the uncertainty of the environment.
-    
+
 Rational does **not** mean always successful.
 
 A rational agent can make a wrong decision because it may have incomplete information or an imperfect model of the world.
-
 > **Rationality is about choosing the best action given what the agent knows, not about guaranteeing the best outcome.**
-### PEAS
+### 2.3 PEAS
 To specify an agent's task environment, we use **PEAS**:
 - **P — Performance measure:** How is success evaluated?
 - **E — Environment:** What world does the agent operate in?
@@ -97,9 +86,8 @@ To specify an agent's task environment, we use **PEAS**:
 | Environment | Roads, traffic, pedestrians, weather |
 | Actuators   | Steering, brakes, accelerator        |
 | Sensors     | Cameras, GPS, radar, lidar           |
-### The central idea
-The agent perspective turns AI into a very concrete question:
 
+The agent perspective turns AI into a very concrete question:
 > **Given what the system can perceive, what action should it take to achieve its objective?**
 
 Search, planning, reasoning, learning, and modern AI models can all be understood as different mechanisms for answering this question.
