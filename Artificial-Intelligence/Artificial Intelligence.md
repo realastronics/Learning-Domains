@@ -43,7 +43,6 @@ An **agent** is a system that **perceives its environment through sensors and ac
 
 The important idea is not that an agent must be human-like, but that it can **use percepts to select actions** in an environment. A thermostat, robot, chess program, or autonomous vehicle can be an agent because it receives information, processes it, and produces actions or outputs.
 
----
 **Percept** is the information an agent receives from its environment at a particular moment. **Percept sequence** is the complete history of percepts received by the agent.
 ```
 Percept → camera image + speed + GPS + radar
@@ -54,11 +53,9 @@ The **agent function** specifies the mapping from the percept sequence to an act
 *f : percept sequence → action*
 The **agent program** is the actual computational implementation of the agent function.
 
----
 **Rational agent** is an agent that chooses the action expected to **maximize its performance measure**, given its percept sequence, available knowledge, available actions, and the uncertainty of the environment.
 > **Rationality means choosing the best action justified by the information available, not guaranteeing a successful outcome.**
 
----
 A **task environment** is the environment in which an agent operates and whose state can be affected by its actions. The environment can be described using several important properties such as:
 1. **Fully observable vs. partially observable:** whether the agent can perceive all relevant aspects of the current state.
 2. **Deterministic vs. stochastic:** whether an action's outcome is completely predictable.
@@ -258,13 +255,11 @@ The root is the initial state, and each branch represents an action sequence.
 ```
 
 The crucial distinction is:
-
 > **State-space graph describes the problem; search tree describes the exploration of that problem.**
 
 A search tree may contain the **same state multiple times** because different action sequences can reach the same state.
 
 For example:
-
 ```
         A
        / \
@@ -274,7 +269,6 @@ For example:
 ```
 
 `D` is one state in the state-space graph, but a search tree could contain two copies of `D`:
-
 ```
         A
        / \
@@ -305,6 +299,208 @@ Problem formulation
 > **Search tree = the possibilities explored by the algorithm.**
 
 This distinction becomes essential when we compare **BFS, DFS, Uniform-Cost Search, and A***.
+## 3.3) Uninformed Search
+**Uninformed search** explores the state space without using domain-specific knowledge about how close a state is to a goal. It uses only the problem formulation: **initial state, actions, transition model, goal test, and path cost**. The central question is:
+
+> **Which unexpanded node should be explored next?**
+
+A search procedure maintains a **frontier** of generated but unexpanded nodes. When a node is expanded, its successors are generated and added to the frontier according to the strategy being used. In graph search, an **explored set** is also maintained to avoid repeatedly expanding the same state.
+#### Breadth-First Search (BFS)
+BFS expands the **shallowest node first**, exploring the search tree level by level. It uses a **FIFO queue**.
+
+```
+        A
+      / | \
+     B  C  D
+    / \
+   E   F
+
+Expansion: A → B → C → D → E → F
+```
+
+BFS is appropriate when **solution depth** is the main concern. With equal step costs, the shallowest solution is also the cheapest.
+- **Complete:** Yes, if the branching factor is finite.
+- **Optimal:** Yes, when all step costs are equal.
+- **Time:** O(b^d)
+- **Space:** O(b^d)
+where `b` is the branching factor and `d` is the depth of the shallowest goal.
+
+**Key idea:** BFS minimizes **number of actions**, not general path cost.
+#### Uniform-Cost Search (UCS)
+BFS treats every step as having the same cost. **Uniform-Cost Search** instead expands the node with the **lowest path cost from the initial state**.
+$$f(n)=g(n)$$
+where `g(n)` is the actual cost of the path from the initial state to node `n`.
+
+UCS uses a **priority queue** ordered by `g(n)`.
+```
+A → B → Goal      cost = 10
+A → C → D → Goal  cost = 7
+```
+UCS chooses the second path even though it is deeper, because its total cost is lower.
+
+- **Complete:** Yes, if every step cost is at least some positive constant varepsilon > 0.
+- **Optimal:** Yes, under the same condition.
+- **Time/Space:** Can be exponential in the optimal solution cost; commonly expressed as $$O\left(b^{1+\lfloor C^*/\varepsilon \rfloor}\right)$$, where `C*` is the optimal solution cost.
+
+**Key idea:** UCS minimizes **path cost**, whereas BFS minimizes **depth**.
+#### Depth-First Search (DFS)
+DFS expands the **deepest unexpanded node first**, following one branch as far as possible before backtracking. It uses a **LIFO stack**.
+```
+        A
+       / \
+      B   C
+     / \
+    D   E
+
+Expansion: A → B → D → E → C
+```
+Its major advantage is memory efficiency; its major weakness is that it can spend a very long time following an unproductive branch.
+- **Complete:** No, in general; it may follow an infinite path or become trapped in cycles.
+- **Optimal:** No.
+- **Time:** O(b^m)
+- **Space:** O(bm)
+where `m` is the maximum depth of the search tree.
+
+**Key idea:** DFS prioritizes **depth over solution quality**.
+#### Depth-Limited Search (DLS)
+DLS is DFS with a predetermined **depth limit** `l`. Nodes at depth `l` are not expanded. This prevents DFS from descending indefinitely, but introduces a new failure mode: a valid solution deeper than the limit will not be found.
+- **Complete:** Only if l \geq d, assuming finite branching.
+- **Optimal:** No, in general.
+- **Time:** O(b^l)
+- **Space:** O(bl)
+
+**Key idea:** DLS trades unrestricted depth for a controlled search boundary.
+#### Iterative Deepening Search (IDS)
+IDS repeatedly performs depth-limited search with increasing limits:
+```
+Depth 0
+   ↓
+Depth 1
+   ↓
+Depth 2
+   ↓
+Depth 3
+   ↓
+...
+```
+
+It combines the **shallow-solution behavior of BFS** with the **low memory requirement of DFS**.
+- **Complete:** Yes, for finite branching factor.
+- **Optimal:** Yes, when step costs are equal.
+- **Time:** O(b^d)
+- **Space:** O(bd)
+
+Although shallow nodes are generated repeatedly, most nodes in a tree search occur at the deepest level, so the repeated work is usually acceptable.
+
+**Key idea:** IDS is useful when the solution depth is unknown but memory is limited.
+#### Comparison Table
+
+| Strategy | Expands next            | Complete       | Optimal          | Main strength              | Main weakness                |
+| -------- | ----------------------- | -------------- | ---------------- | -------------------------- | ---------------------------- |
+| **BFS**  | Shallowest node         | Yes            | Yes, equal costs | Finds shallow solutions    | Very high memory             |
+| **UCS**  | Lowest $$g(n)$$         | Yes*           | Yes*             | Minimum-cost solution      | Can be expensive             |
+| **DFS**  | Deepest node            | No, in general | No               | Very low memory            | Can get lost in bad branches |
+| **DLS**  | Deepest within limit    | If $$l\ge d$$  | No               | Prevents infinite depth    | Requires a suitable limit    |
+| **IDS**  | Increasing depth limits | Yes            | Yes, equal costs | BFS-like + DFS-like memory | Repeats shallow work         |
+*UCS requires step costs bounded below by a positive constant.
+
+The progression is therefore:
+```
+BFS
+→ "Which solution is shallowest?"
+
+UCS
+→ "Which solution costs the least?"
+
+DFS
+→ "Which branch can I explore deepest?"
+
+DLS
+→ "How deep may I explore?"
+
+IDS
+→ "What if I do not know the required depth?"
+```
+
+The deeper principle is:
+> **Uninformed search does not know which state is closer to the goal. It can only impose a policy for deciding which unexplored possibility to examine next.**
+
+That limitation motivates **informed search**. A heuristic gives the search algorithm additional knowledge about **which states appear more promising**, leading to **Greedy Best-First Search and A(`*`)***.
+
+Add a search-graph notation boxClarify tree-search versus graph-search costs
+## 3.4 Informed Search
+**Informed search** uses additional problem-specific knowledge to decide which states are more promising. Unlike uninformed search, it does not treat all unexplored states as equally useful.
+
+The key idea is a **heuristic function**. **Heuristic** is an estimate of the remaining cost from a state `n` to a goal.
+$$ [ h(n) = \text{estimated cost from } n \text{ to a goal} ] $$
+For example, in route finding, the **straight-line distance** from the current city to the destination can be used as a heuristic. It does not tell us the actual road distance, but it gives us useful information about which locations are likely to be closer to the goal.
+
+```
+Current state
+     ↓
+   h(n)
+     ↓
+Estimated distance to goal
+```
+
+The important distinction is:
+> **Path cost tells us how much we have already paid.**  
+> **Heuristic cost estimates how much remains.**
+
+This gives an informed search algorithm a way to distinguish between alternatives that an uninformed algorithm would treat identically.
+### Greedy Best-First Search
+**Greedy Best-First Search** selects the node that appears closest to the goal according to the heuristic.
+
+Its evaluation function is:
+$$f(n) = h(n)$$
+So it asks:
+> **Which state looks closest to the goal right now?**
+
+Example:
+```
+             A
+           /   \
+         B       C
+       h=7      h=3
+```
+Greedy search chooses `C` because `h(C) < h(B)`.
+
+The advantage is that it can reach a goal quickly when the heuristic is informative.
+
+However, it considers **only the estimated remaining cost** and ignores the cost already incurred.
+
+This can produce poor decisions:
+```
+Path 1: expensive so far + appears close
+Path 2: cheap so far + appears slightly farther
+```
+
+Greedy search may choose Path 1 simply because its destination _looks_ closer.
+
+**Completeness:** Not guaranteed in general.
+**Optimality:** No.
+**Core weakness:** It can be misled by a heuristic because it does not consider the cost already paid.
+
+Uninformed search has no basis for saying:
+> "This branch looks more promising than that one."
+
+Informed search introduces that knowledge through a heuristic:
+```
+Uninformed Search
+→ "What can I explore next?"
+
+Informed Search
+→ "What can I explore next that looks more promising?"
+```
+This is the fundamental shift from **blind exploration** to **guided exploration**.
+
+But there is an important trade-off:
+> **A heuristic can make search dramatically more efficient, but a misleading heuristic can also lead the search in the wrong direction.**
+
+This leads naturally to **A***, which combines the cost already incurred with the estimated cost remaining:
+$$f(n)=g(n)+h(n)$$
+
+where `g(n)` is the actual cost from the initial state to `n`, and `h(n)` estimates the cost from `n` to a goal.
 ## 4. Knowledge Representation and Reasoning
 ## 5. Planning
 ## 6. Constraint Satisfaction Problem
