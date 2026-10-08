@@ -104,8 +104,7 @@ Percept + Previous State
 ```
 The internal state acts as a model of how the world changes. This allows the agent to function in **partially observable environments**.
 
-**Goal-Based Agent**
-Chooses actions by considering a desired **goal state**.
+**Goal-Based Agent -** Chooses actions by considering a desired **goal state**.
 ```
 Current State + Goal
         ↓
@@ -118,8 +117,7 @@ Example:
 
 The agent considers possible sequences of actions and selects one that achieves the goal.
 
-**Utility-Based Agent**
-Goals tell an agent whether an outcome is acceptable, but not necessarily **which acceptable outcome is better**. 
+**Utility-Based Agent -** In this, the goals tell an agent whether an outcome is acceptable, but not necessarily **which acceptable outcome is better**. 
 
 A utility function assigns a measure of desirability to outcomes.
 ```
@@ -137,8 +135,7 @@ For example, two routes may both reach the destination, but one may be faster, s
 
 Utility becomes especially important when outcomes are uncertain or objectives compete.
 
-**Learning Agent**
-A learning agent improves its behavior through **experience** rather than relying entirely on knowledge and rules specified beforehand.
+**Learning Agent -** A learning agent improves its behavior through **experience** rather than relying entirely on knowledge and rules specified beforehand.
 
 A standard learning-agent architecture contains:
 - **Performance element:** selects actions.
@@ -177,13 +174,8 @@ Learning
 These architectures are not mutually exclusive. A modern system can maintain an internal model, pursue goals, optimize utility, and learn from experience at the same time.
 
 A **problem-solving agent** is a goal-based agent that formulates a problem and searches for a sequence of actions that reaches a goal.
-
-This creates the bridge to the next major topic:
-> **Agent → Goal → Problem Formulation → Search → Action**
 ## 2.3) Expert Systems
-An **expert system** is an AI system designed to solve problems in a specific domain by **combining explicit domain knowledge with an inference mechanism**.
-
-The central idea is:
+An **expert system** is an AI system designed to solve problems in a specific domain by **combining explicit domain knowledge with an inference mechanism**. The central idea is:
 > **Separate what the system knows from how it reasons with that knowledge.**
 
 Its basic architecture consists of:
@@ -213,15 +205,10 @@ Their main limitation is their dependence on the **quality, completeness, and ma
 
 > **Expert system = explicit domain knowledge + inference mechanism + reasoning over that knowledge.**
 ## 3. Problem Solving & Search
-
 ## 3.1) Problem Formulation
-
-A **problem formulation** is a formal description of a problem that specifies what the agent is trying to achieve and the possible actions it can take to get there.
-
-The purpose is to convert a real-world objective into a representation that a search algorithm can solve.
+A **problem formulation** is a formal description of a problem that specifies what the agent is trying to achieve and the possible actions it can take to get there. The purpose is to convert a real-world objective into a representation that a search algorithm can solve.
 
 A well-defined search problem consists of five components:
-
 1. **Initial state** — where the agent starts.
 2. **Actions** — the actions available to the agent in a given state.
 3. **Transition model** — describes the state that results from taking an action.
@@ -243,9 +230,7 @@ Transition Model
 ```
 
 **Example: Route finding**
-
 Suppose the agent must travel from Delhi to Jaipur.
-
 ```
 Initial state → Delhi
 Actions       → Travel to connected cities
@@ -257,11 +242,9 @@ Path cost     → Total distance or travel time
 The solution is a **sequence of actions** that transforms the initial state into a state satisfying the goal.
 
 ### State-Space Representation
-
 The **state space** is the set of possible states reachable by the agent through its actions.
 
 A search algorithm explores this space looking for a path from the initial state to a goal state.
-
 ```
           Initial
           State
@@ -279,6 +262,83 @@ An important distinction:
 > **Search = the process of exploring those possibilities to find a solution.**
 
 The formulation determines what the search algorithm can see. A poor representation can make a simple problem unnecessarily difficult, while a good abstraction can reduce a huge real-world problem to a manageable search space.
+## 3.2) Search Trees & State-Space Graphs
+Once a problem has been formulated, the agent needs a way to **explore the possible states** to find a solution. Two related representations are important: the **state-space graph** and the **search tree**.
+
+**State-space graph** represents the actual problem:
+
+- **Nodes** represent states.
+- **Edges** represent actions that move from one state to another.
+- It shows which states are actually connected by the problem's rules.
+
+```
+A ── B ── C
+│    │
+D ── E
+```
+
+Here, `A, B, C, D, E` are states and the edges represent possible actions.
+
+**Search tree** represents the **process of exploring the state space** from a particular initial state.
+
+The root is the initial state, and each branch represents an action sequence.
+
+```
+        A
+      /   \
+     B     D
+    / \     \
+   C   E     F
+```
+
+The crucial distinction is:
+
+> **State-space graph describes the problem; search tree describes the exploration of that problem.**
+
+A search tree may contain the **same state multiple times** because different action sequences can reach the same state.
+
+For example:
+
+```
+        A
+       / \
+      B   C
+       \ /
+        D
+```
+
+`D` is one state in the state-space graph, but a search tree could contain two copies of `D`:
+
+```
+        A
+       / \
+      B   C
+       \ /
+        D
+```
+
+This distinction matters because repeated states can cause **redundant work and even infinite loops** during search. Search algorithms therefore often maintain an **explored/visited set** to avoid repeatedly expanding states they have already encountered.
+
+### Core mental model
+
+```
+Problem formulation
+        ↓
+   State-space
+        ↓
+     Search
+        ↓
+ Explore possible paths
+        ↓
+      Solution
+```
+
+> **State = where the agent can be.**  
+> **Action = how it moves.**  
+> **State space = all reachable possibilities.**  
+> **Search tree = the possibilities explored by the algorithm.**
+
+This distinction becomes essential when we compare **BFS, DFS, Uniform-Cost Search, and A***.
 ## 4. Knowledge Representation and Reasoning
 ## 5. Planning
 ## 6. Constraint Satisfaction Problem
