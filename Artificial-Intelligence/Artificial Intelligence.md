@@ -50,26 +50,22 @@ Action  → accelerate / brake / steer
 ```
 
 The **agent function** specifies the mapping from the percept sequence to an action:
-```
-f : percept sequence → action
-```
-It answers:
-> **Given what the agent has perceived so far, what should it do next?**
-
+*f : percept sequence → action*
 The **agent program** is the actual computational implementation of the agent function.
 
-**Rational agent:** an agent that chooses the action expected to maximize its **performance measure**, given its percept sequence, available knowledge, available actions, and the uncertainty of the environment.
+---
+**Rational agent** is an agent that chooses the action expected to **maximize its performance measure**, given its percept sequence, available knowledge, available actions, and the uncertainty of the environment.
 > **Rationality means choosing the best action justified by the information available, not guaranteeing a successful outcome.**
 
-A **task environment** is the environment in which an agent operates and whose state can be affected by its actions. The environment can be described using several important properties:
-
-- **Fully observable vs. partially observable:** whether the agent can perceive all relevant aspects of the current state.
-- **Deterministic vs. stochastic:** whether an action's outcome is completely predictable.
-- **Episodic vs. sequential:** whether each decision is independent or affects future decisions.
-- **Static vs. dynamic:** whether the environment can change while the agent is deciding.
-- **Discrete vs. continuous:** whether states, actions, or time have distinct values or vary continuously.
-- **Single-agent vs. multi-agent:** whether other agents also influence the outcome.
-- **Known vs. unknown:** whether the agent knows the rules governing how the environment works.
+---
+A **task environment** is the environment in which an agent operates and whose state can be affected by its actions. The environment can be described using several important properties such as:
+1. **Fully observable vs. partially observable:** whether the agent can perceive all relevant aspects of the current state.
+2. **Deterministic vs. stochastic:** whether an action's outcome is completely predictable.
+3. **Episodic vs. sequential:** whether each decision is independent or affects future decisions.
+4. **Static vs. dynamic:** whether the environment can change while the agent is deciding.
+5. **Discrete vs. continuous:** whether states, actions, or time have distinct values or vary continuously.
+6. **Single-agent vs. multi-agent:** whether other agents also influence the outcome.
+7. **Known vs. unknown:** whether the agent knows the rules governing how the environment works.
 
 These properties matter because the **nature of the environment determines the kind of reasoning, representation, planning, and decision-making the agent requires**.
 
@@ -87,26 +83,16 @@ To specify a task environment, we use **PEAS**:
 | Environment | Roads, traffic, pedestrians, weather |
 | Actuators   | Steering, brakes, accelerator        |
 | Sensors     | Cameras, GPS, radar, lidar           |
-
-The agent perspective reduces AI to a fundamental question:
-> **Given what the system can perceive, what action should it take to achieve its objective?**
 ## 2.2) Agent Architectures & Problem Solving
 An **agent architecture** describes how an agent converts percepts and internal information into actions. The architectures become progressively more capable by introducing **internal state, goals, preferences, and learning**.
 
-**Simple Reflex Agent**
-Uses condition-action rules based only on the **current percept**.
-```
-Percept → Rule → Action
-```
+There are many kinds of agents as we have noted below:
 
+**Simple Reflex Agent -** It uses direct condition-action rules based only on the **current percept**, (*Percept → Rule → Action*). It's simple and fast, but ineffective when the current percept alone is insufficient to determine the appropriate action. 
 Example:
-```
 IF temperature < 20°C → turn heater on
-```
-Simple and fast, but ineffective when the current percept alone is insufficient to determine the appropriate action.
 
-**Model-Based Reflex Agent**
-Maintains an **internal state** that represents aspects of the world that may not be directly observable.
+**Model-Based Reflex Agent -** It maintains an **internal state** that represents aspects of the world that may not be directly observable.
 ```
 Percept + Previous State
           ↓
@@ -146,7 +132,6 @@ highest expected utility
 ```
 
 For example, two routes may both reach the destination, but one may be faster, safer, or cheaper.
-
 > **Goal:** What outcomes are acceptable?  
 > **Utility:** How desirable is each outcome?
 
@@ -194,11 +179,9 @@ These architectures are not mutually exclusive. A modern system can maintain an 
 A **problem-solving agent** is a goal-based agent that formulates a problem and searches for a sequence of actions that reaches a goal.
 
 This creates the bridge to the next major topic:
-
 > **Agent → Goal → Problem Formulation → Search → Action**
-
 ## 2.3) Expert Systems
-An **expert system** is an AI system designed to solve problems in a specific domain by combining **explicit domain knowledge** with an **inference mechanism**.
+An **expert system** is an AI system designed to solve problems in a specific domain by **combining explicit domain knowledge with an inference mechanism**.
 
 The central idea is:
 > **Separate what the system knows from how it reasons with that knowledge.**
@@ -224,14 +207,78 @@ Rule: IF fever AND cough → possible infection.
 
 **Knowledge Acquisition:** the process of obtaining and encoding knowledge from human experts or other sources.
 
-Expert systems were important because they demonstrated that useful intelligent behavior could be produced by **explicitly representing domain knowledge and reasoning over it**.
-
-They were used in areas such as diagnosis, configuration, and troubleshooting.
+Expert systems were important because they demonstrated that useful intelligent behavior could be produced by **explicitly representing domain knowledge and reasoning over it**. They were used in areas such as diagnosis, configuration, and troubleshooting.
 
 Their main limitation is their dependence on the **quality, completeness, and maintainability of explicitly encoded knowledge**. They struggle when knowledge is difficult to express as rules, situations are novel or uncertain, or the rule base becomes very large and difficult to maintain.
 
 > **Expert system = explicit domain knowledge + inference mechanism + reasoning over that knowledge.**
-## 3. Problem Solving and Search
+## 3. Problem Solving & Search
+
+## 3.1) Problem Formulation
+
+A **problem formulation** is a formal description of a problem that specifies what the agent is trying to achieve and the possible actions it can take to get there.
+
+The purpose is to convert a real-world objective into a representation that a search algorithm can solve.
+
+A well-defined search problem consists of five components:
+
+1. **Initial state** — where the agent starts.
+2. **Actions** — the actions available to the agent in a given state.
+3. **Transition model** — describes the state that results from taking an action.
+4. **Goal test** — determines whether a state satisfies the objective.
+5. **Path cost** — assigns a cost to a sequence of actions.
+
+```
+Initial State
+      ↓
+  Actions
+      ↓
+Transition Model
+      ↓
+ Successor States
+      ↓
+   Goal Test
+      ↓
+  Solution + Cost
+```
+
+**Example: Route finding**
+
+Suppose the agent must travel from Delhi to Jaipur.
+
+```
+Initial state → Delhi
+Actions       → Travel to connected cities
+Transition    → Moving to a city produces a new location
+Goal test     → Current location = Jaipur
+Path cost     → Total distance or travel time
+```
+
+The solution is a **sequence of actions** that transforms the initial state into a state satisfying the goal.
+
+### State-Space Representation
+
+The **state space** is the set of possible states reachable by the agent through its actions.
+
+A search algorithm explores this space looking for a path from the initial state to a goal state.
+
+```
+          Initial
+          State
+         /      \
+        A        B
+       / \        \
+      C   D        E
+          |
+        Goal
+```
+
+An important distinction:
+
+> **State space = the possible configurations of the problem.**  
+> **Search = the process of exploring those possibilities to find a solution.**
+
+The formulation determines what the search algorithm can see. A poor representation can make a simple problem unnecessarily difficult, while a good abstraction can reduce a huge real-world problem to a manageable search space.
 ## 4. Knowledge Representation and Reasoning
 ## 5. Planning
 ## 6. Constraint Satisfaction Problem
