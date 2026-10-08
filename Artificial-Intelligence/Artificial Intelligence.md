@@ -39,10 +39,11 @@ The **rational-agent perspective** provides the foundation for how we will study
 ## 2. Intelligent Agents & Expert Systems
 
 ## 2.1) Agents, Rationality & Task Environments
-An **agent** is a system that **perceives its environment through sensors and acts upon it through actuators**. The important idea is not that an agent must be human-like, but that it can **use percepts to select actions** in an environment.
+An **agent** is a system that **perceives its environment through sensors and acts upon it through actuators**. 
 
-A thermostat, robot, chess program, or autonomous vehicle can be an agent because it receives information, processes it, and produces actions or outputs.
+The important idea is not that an agent must be human-like, but that it can **use percepts to select actions** in an environment. A thermostat, robot, chess program, or autonomous vehicle can be an agent because it receives information, processes it, and produces actions or outputs.
 
+---
 **Percept** is the information an agent receives from its environment at a particular moment. **Percept sequence** is the complete history of percepts received by the agent.
 ```
 Percept → camera image + speed + GPS + radar
@@ -86,54 +87,19 @@ To specify a task environment, we use **PEAS**:
 ## 2.2) Agent Architectures & Problem Solving
 An **agent architecture** describes how an agent converts percepts and internal information into actions. The architectures become progressively more capable by introducing **internal state, goals, preferences, and learning**.
 
-There are many kinds of agents as we have noted below:
+There are many kinds of agent architectures as we have noted below:
 
-**Simple Reflex Agent -** It uses direct condition-action rules based only on the **current percept**, (*Percept → Rule → Action*). It's simple and fast, but ineffective when the current percept alone is insufficient to determine the appropriate action. 
-Example:
-IF temperature < 20°C → turn heater on
+**Simple Reflex Agent -** It uses direct condition-action rules based only on the **current percept** . It's simple and fast, but ineffective when the current percept alone is insufficient to determine the appropriate action. 
+	(*Percept → Rule → Action*)
 
-**Model-Based Reflex Agent -** It maintains an **internal state** that represents aspects of the world that may not be directly observable.
-```
-Percept + Previous State
-          ↓
-    Update Internal State
-          ↓
-          Rule
-          ↓
-        Action
-```
-The internal state acts as a model of how the world changes. This allows the agent to function in **partially observable environments**.
+**Model-Based Reflex Agent -** It maintains an **internal state** that represents aspects of the world that may not be directly observable. The internal state acts as a model of how the world changes. This allows the agent to function in **partially observable environments**.
+	*Percept + Previous State → Update Internal State → Rule → Action*
 
-**Goal-Based Agent -** Chooses actions by considering a desired **goal state**.
-```
-Current State + Goal
-        ↓
-   Search / Planning
-        ↓
-      Action
-```
-Example:
-> Goal: Reach Room B.
+**Goal-Based Agent -** It chooses actions by considering a desired **goal state**. The agent considers possible sequences of actions and selects one that achieves the goal.
+	Current State + Goal → Search/Planning → Action
 
-The agent considers possible sequences of actions and selects one that achieves the goal.
-
-**Utility-Based Agent -** In this, the goals tell an agent whether an outcome is acceptable, but not necessarily **which acceptable outcome is better**. 
-
-A utility function assigns a measure of desirability to outcomes.
-```
-Possible outcomes
-       ↓
-  Utility values
-       ↓
-Choose action with
-highest expected utility
-```
-
-For example, two routes may both reach the destination, but one may be faster, safer, or cheaper.
-> **Goal:** What outcomes are acceptable?  
-> **Utility:** How desirable is each outcome?
-
-Utility becomes especially important when outcomes are uncertain or objectives compete.
+**Utility-Based Agent -** In goal based, the goals tell an agent whether an outcome is acceptable, but not necessarily **which acceptable outcome is better**. Here, A utility function assigns a measure of desirability to outcomes, based on which actions are taken. This approach becomes especially important when outcomes are uncertain or objectives compete.
+	Possible outcomes → Utility Values → Choose action with highest expected utility
 
 **Learning Agent -** A learning agent improves its behavior through **experience** rather than relying entirely on knowledge and rules specified beforehand.
 
